@@ -1,0 +1,17 @@
+<ngx-smart-modal #findTutor [identifier]="'findTutor'">
+  <div class='container-fluid'>
+<h1>Which days of the week are most convenient for you<span style='color:#0f51f0;'> ??</span></h1>
+<div class='schedule-container'>
+<button (click)="monOn()" [ngClass]="{'active': monday == true}" class='btn btn-schedule'>Mon</button>
+<button (click)="tueOn()" [ngClass]="{'active': tuesday == true}" class='btn btn-schedule'>Tue</button>
+<button (click)="wedOn()" [ngClass]="{'active': wednesday == true}" class='btn btn-schedule'>Wed</button>
+<button (click)="thuOn()" [ngClass]="{'active': thursday == true}" class='btn btn-schedule'>Thu</button>
+<button (click)="friOn()" [ngClass]="{'active': friday == true}" class='btn btn-schedule' style='margin-left: 51px'>Fri</button>
+<button (click)="satOn()" [ngClass]="{'active': saturday == true}" class='btn btn-schedule'>Sat</button>
+<button (click)="sunOn()" [ngClass]="{'active': sunday == true}" class='btn btn-schedule'>Sun</button>
+</div>
+<button class='btn btn-go'>GO</button>
+</div>
+
+
+</ngx-smart-modal>

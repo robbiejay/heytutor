@@ -1,0 +1,163 @@
+
+#subjects .bg {
+  width: 100%;
+  position: absolute;
+  z-index: 0;
+}
+
+#subjects .bg img {
+  width: 100%;
+  height: auto;
+  position: absolute;
+}
+
+#subjects h2 {
+  font-family: 'Fredoka One', cursive;
+  color: #fff;
+  text-align: center;
+  margin-bottom: 14px;
+  letter-spacing: 1px;
+}
+
+#subjects h1 {
+  font-family: 'Fredoka One', cursive;
+  font-size: 1.333em;
+  color: #fff;
+  text-align: center;
+  margin-top: 70px;
+  margin-bottom: 30px;
+
+}
+
+.guo-yu {
+  font-family: 'Noto Sans TC', sans-serif !important;
+}
+
+
+#subjects .subject-icon {
+width: 100px;
+height: 100px;
+display: block;
+margin-left: auto;
+margin-right: auto;
+margin-bottom: 7px;
+margin-top: 7px;
+border-radius: 100%;
+background-color: #fff;
+border: 4px solid #000;
+font-family: 'Fredoka One', cursive;
+font-size: 4.109em;
+text-align: center;
+vertical-align: middle;
+line-height: 94px;
+}
+
+.subject-card {
+  position: relative;
+  background-color: #252525;
+  border: 4px solid #000;
+  border-radius: 7px;
+  z-index: 1;
+  margin-top: 140px;
+  padding-bottom: 70px;
+  padding-left: 14px;
+  padding-right: 14px;
+}
+
+#subject-tutors {
+    border: 4px solid rgba(0s,0,0,1);
+  overflow-y: scroll;
+  overflow-x: hidden;
+  border-radius: 7px;
+  margin-top: 140px;
+  padding: 7px;
+  height: 481px;
+  background-color: rgba(255,255,255,0.25);
+}
+
+.tutor-card {
+  background-color: #fefe78;
+  width: 100%;
+  border: 3px solid #000;
+  border-radius: 7px;
+  height: 168px;
+  font-family: 'Fredoka One', cursive;
+  margin-bottom: 7px;
+
+}
+
+.tutor-card .image-container {
+  width: 96px;
+  position: relative;
+  margin-left: 7px;
+  margin-top: 7px;
+  display: block;
+  float: left;
+}
+
+.tutor-card img {
+  width: 96px;
+  height: 96px;
+  margin-left: auto;
+  margin-right: auto;
+  display: inline-block;
+  float: left;
+  border: 4px solid #0f51f0;
+  box-shadow: 0px 0px 0px 2px #000;
+  border-radius: 100%;
+}
+
+.tutor-card h3 {
+
+margin-top: 14px;
+padding-bottom: 7px;
+border-bottom: 2px solid #000;
+letter-spacing: 1px;
+font-size: 1.333em;
+
+width: 96%;
+
+}
+
+.tutor-card h4 {
+  margin-top: 7px;
+  margin-bottom: 14px;
+}
+
+.tutor-card p {
+  margin-bottom: 14px;
+  padding-right: 14px;
+}
+
+/* width */
+
+
+::-webkit-scrollbar {
+
+  position: relative;
+  width: 7px;
+  margin-right: 7px;
+
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f10d63;
+  border-radius: 7px;
+  transform: translate(-20px) !important;
+
+
+}
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background:#0f51f0;
+  transition: 0.2s;
+border-radius: 7px;
+
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background:#0f51f0;
+
+}

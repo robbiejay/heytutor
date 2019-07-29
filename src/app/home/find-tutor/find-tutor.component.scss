@@ -1,0 +1,61 @@
+h1 {
+  font-family: 'Fredoka One', cursive;
+  font-size: 1.333em;
+  margin-top: 17px;
+  letter-spacing: 1px;
+  margin-bottom: 10px;
+  background-color: #fefefe;
+  color: #000;
+  border: 3px solid #000;
+  border-radius: 7px;
+  padding: 14px;
+}
+
+.btn-schedule {
+
+  width: 93px;
+  height: 93px;
+  margin-right: 7px;
+  vertical-align: top;
+  line-height: 1px;
+  border: 3px solid #000;
+  background-color: #fff;
+  margin-bottom: 0px;
+  margin-top: 7px;
+  font-family: 'Fredoka One', cursive;
+
+}
+
+.btn-go {
+  background-color: #f10d63;
+  border-radius: 7px;
+  border:3px solid #000;
+  font-family: 'Fredoka One', cursive;
+  color: #fff;
+  position: relative;
+  text-align: center;
+  float: right;
+  width: 140px;
+  margin-left: 50%;
+  margin-right: 146px;
+  margin-top: 10px;
+
+}
+
+.active {
+background-color: #0f51f0;
+color: #fff;
+}
+
+.container-fluid {
+  padding: 0;
+}
+
+::ng-deep .nsm-content {
+  border: 3px solid #000 !important;
+ background-color: #ffff5f;
+}
+
+.schedule-container {
+  margin-left: 14px;
+}

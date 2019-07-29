@@ -1,0 +1,164 @@
+body {
+  background-color: #d1fbff;
+}
+
+.container-fluid {
+  padding: 0px;
+}
+
+#header {
+  margin-bottom: 80px;
+    margin-top: 2vh;
+}
+
+#header h1 {
+  color: #000;
+  text-align: center;
+  font-size: 4.209em;
+  font-family: 'Fredoka One', cursive;
+  display: inline;
+  float: left;
+  letter-spacing: 5px;
+
+}
+
+#header h2 {
+  font-family: 'Fredoka One', cursive;
+  font-size: 1.333em;
+  position: relative;
+  margin-left: 168px;
+
+}
+
+#header h3 {
+
+  color: #000;
+  text-align: center;
+  font-size: 1.333em;
+  border-bottom: 2px solid #000;
+  padding-top: 7px;
+  padding-bottom: 7px;
+  font-family: 'Fredoka One', cursive;
+  letter-spacing: 2px;
+
+
+
+}
+
+#header h4 {
+
+  font-family: 'Fredoka One', cursive;
+  padding: 28px;
+  line-height: 1.333em;
+  background-color: #fefe73;
+  color: #151515;
+  letter-spacing: 1px;
+
+}
+
+
+
+nav {
+    font-family: 'Fredoka One', cursive;
+      letter-spacing: 1px;
+      font-size: 1.333em;
+      margin-bottom: 84px;
+}
+
+nav button {
+  width: 96px;
+}
+
+ul {
+  display: inline;
+  float: right;
+}
+
+li {
+  display: inline;
+  margin-left: 45px;
+}
+
+ #header span {
+  color: #000;
+  text-align: center;
+  font-size: 6.209em;
+  font-family: 'Fredoka One', cursive;
+  display: inline;
+  float: left;
+  transform: rotate(-16deg);
+  margin-left: 16px;
+  position: relative;
+  top: -16px;
+
+}
+
+#header .img-container {
+  position: relative;
+  top: 7px
+}
+
+
+
+ #header .header-btn {
+    position: absolute;
+    left: 292px;
+    bottom: 10px;
+    font-family: 'Fredoka One', cursive;
+    z-index: 1;
+    background-color: #f10d63;
+    color: #fff;
+    font-size: 1.777em;
+    letter-spacing: 1px;
+    border: 2px solid #000;
+    box-shadow: 0px 3px 0px 0px #000;
+    transition: 0.2s;
+}
+
+ #header button:hover {
+   box-shadow: 0px 0px 0px 0px #000;
+   bottom: 7px;
+
+ }
+
+.header-card {
+
+  border: 3px solid #000;
+  border-radius: 6px;
+  margin-bottom: 14px;
+  width: 66.667%;
+  position: relative;
+}
+
+.header-map {
+  position: relative;
+  z-index: 1;
+  margin-left: 160px;
+}
+
+.header-bunny {
+  position: absolute;
+  top: 110px;
+  z-index: 0;
+  left: -80px;
+}
+
+.btn-login {
+background-color: #252525;
+  color: #fff;
+}
+
+.btn-transparent {
+  background: rgba(255,255,255,0);
+
+}
+
+.btn-signup {
+
+  background: rgba(11, 68, 200, 0.9);
+  color: #fff;
+}
+
+.pink { background-color: #f10d63; margin-left: 16.66%;z-index: 1}
+.green { background-color: #0ff140; margin-left: 33.33%; margin-top: -28px;z-index: 2 }
+.blue { background-color: #0f51f0;z-index: 3; margin-top: -28px;}

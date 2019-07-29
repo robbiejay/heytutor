@@ -1,0 +1,35 @@
+<div class='container-fluid'  id='bulletins'>
+  <div class='container'>
+    <div class='row'>
+      <div class='col-3'>
+        <div class='img-container'>
+          <h2>BULLETINS</h2>
+          <img src='/assets/images/bulletin.png'>
+        </div>
+      </div>
+      <div class='col-6' id='bulletin-display'>
+        <div class='row'>
+          <div class='bulletin-controls'>
+            <span>
+              <button (click)='onOne()' [ngClass]="{'active': state == 'one'}" class='bulletin-control-btn'></button>
+              <button (click)='onTwo()' [ngClass]="{'active': state == 'two'}" class='bulletin-control-btn'></button>
+              <button (click)='onThree()' [ngClass]="{'active': state == 'three'}" class='bulletin-control-btn'></button>
+              <button (click)='onFour()' [ngClass]="{'active': state == 'four'}" class='bulletin-control-btn'></button>
+              <button (click)='onFive()'[ngClass]="{'active': state == 'five'}" class='bulletin-control-btn'></button> </span>
+          </div>
+        </div>
+        <div class='row' id='bulletin-display-inner'>
+          <div class='gradient-tile'><p>&nbsp;</p></div>
+
+            <div [@bulletinScroll]='state' class='bulletin-card' *ngFor='let bulletin of bulletins'>
+              <h3>{{bulletin.location}} - English | 650 / hr </h3>
+            </div>
+
+          </div>
+      </div>
+      <div class='col-3'>
+        <button class='post-bulletin-btn btn btn-success'>Post A Bulletin</button>
+      </div>
+    </div>
+  </div>
+</div>
