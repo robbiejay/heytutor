@@ -23,7 +23,8 @@
           <div class='gradient-tile'><p>&nbsp;</p></div>
 
             <div [@bulletinScroll]='state' class='bulletin-card' *ngFor='let bulletin of bulletins'>
-              <h3>{{bulletin.location}} - English | 650 / hr </h3>
+              <h3>{{bulletin.location}} - {{bulletin.subject}} | {{bulletin.price}} / hr </h3>
+              <p>{{bulletin.description}}</p>
             </div>
 
           </div>

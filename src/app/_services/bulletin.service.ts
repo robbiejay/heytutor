@@ -24,19 +24,23 @@ getBulletins() {
       return bulletinData.bulletins.map(bulletin => {
         return {
           id: bulletin._id,
-          timePosted: bulletin.timePosted,
-          location: bulletin.location,
+          fullname: bulletin.fullname,
           subject: bulletin.subject,
           price: bulletin.price,
-          description: bulletin.description
-        }
-      })
+          location: bulletin.location,
+          description: bulletin.description,
+          timePosted: bulletin.timePosted
+        };
+      });
     })
   )
   .subscribe(transformedBulletins => {
     this.bulletins = transformedBulletins;
     this.bulletinsUpdated.next([...this.bulletins]);
-  })
+  });
+}
+getBulletinUpdateListener() {
+  return this.bulletinsUpdated.asObservable();
 }
 
 postBulletin(
@@ -76,8 +80,5 @@ console.log(bulletinData);
   })
 }
 
-getBulletinUpdateListener() {
-  return this.bulletinsUpdated.asObservable();
-}
 
 }
