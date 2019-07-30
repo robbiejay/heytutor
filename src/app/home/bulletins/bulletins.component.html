@@ -1,3 +1,4 @@
+<app-new-bulletin></app-new-bulletin>
 <div class='container-fluid'  id='bulletins'>
   <div class='container'>
     <div class='row'>
@@ -28,7 +29,7 @@
           </div>
       </div>
       <div class='col-3'>
-        <button class='post-bulletin-btn btn btn-success'>Post A Bulletin</button>
+        <button (click)="NgxSmartModalService.getModal('newBulletinPopup').open()" class='post-bulletin-btn btn btn-success'>Post A Bulletin</button>
       </div>
     </div>
   </div>

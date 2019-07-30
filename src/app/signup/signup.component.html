@@ -10,7 +10,7 @@
     </mat-expansion-panel-header>
     <h2>Find tutors in your area. Browse through a growing marketplace of tutors in your area and take advantage of unique offers and benefits</h2>
 
-    <form>
+    <form (ngSubmit)='onCreateStudent(f)' #f='ngForm'>
     <div class='form-group'>
       <label for='email'>First Name</label>
       <input type='text' id='firstname' name='firstname' ngModel class='form-control'>
@@ -37,7 +37,7 @@
         Sign up as a tutor?
       </mat-panel-title>
     </mat-expansion-panel-header>
-    <form>
+    <!-- <form>
       <h2>Find new students, keep up to date with new private tutor posts nearby, be your own boss and work in your own time. You could pick up a little extra cash on the side or get your hustle on instead!</h2>
     <div class='form-group'>
       <label for='email'>First Name</label>
@@ -56,7 +56,7 @@
   <input type='password' id='password' name='password' ngModel class='form-control'>
     </div>
     <button class='btn' type='submit'>Sign Up</button>
-    </form>
+    </form> -->
   </mat-expansion-panel>
 </mat-accordion>
 <!-- <h2>Sign up as a student or parent?</h2>

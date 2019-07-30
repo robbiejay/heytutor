@@ -1,0 +1,65 @@
+.container {
+  margin-top: 14px;
+}
+
+nav {
+    font-family: 'Fredoka One', cursive;
+      letter-spacing: 1px;
+      font-size: 1.333em;
+      margin-bottom: 84px;
+      margin-top: 14px;
+}
+
+nav button {
+  width: 96px;
+}
+
+ul {
+  display: inline;
+  float: right;
+}
+
+li {
+  display: inline;
+  margin-left: 45px;
+}
+
+span {
+ color: #000;
+ text-align: center;
+ font-size: 6.209em;
+ font-family: 'Fredoka One', cursive;
+ display: inline;
+ float: left;
+ transform: rotate(-16deg);
+ margin-left: 16px;
+ position: relative;
+ top: -16px;
+
+}
+
+
+h1 {
+  color: #000;
+  text-align: center;
+  font-size: 4.209em;
+  font-family: 'Fredoka One', cursive;
+  display: inline;
+  float: left;
+  letter-spacing: 5px;
+
+}
+
+.btn-login {
+background-color: #252525;
+  color: #fff;
+}
+
+.btn-transparent {
+  background: rgba(255,255,255,0);
+}
+
+.btn-signup {
+  background: rgba(11, 68, 200, 0.9);
+  color: #fff;
+}

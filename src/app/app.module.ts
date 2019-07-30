@@ -4,8 +4,16 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+
 import { AppRoutingModule } from './app-routing.module';
 import { HomeComponent } from './home/home.component';
+import { AuthService } from './_services/auth/auth.service';
+import { AuthInterceptor } from './_services/auth/auth-interceptor';
+import { BulletinService } from './_services/bulletin.service';
+
+import { FormsModule } from '@angular/forms';
+
 
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
 import { BulletinsComponent } from './home/bulletins/bulletins.component';
@@ -19,6 +27,8 @@ import {MatExpansionModule } from '@angular/material/expansion';
 import { FindTutorComponent } from './home/find-tutor/find-tutor.component';
 import { TutorsNearMeComponent } from './tutors-near-me/tutors-near-me.component';
 import { NavComponent } from './nav/nav.component';
+import {SliderModule} from 'primeng/slider';
+import { NewBulletinComponent } from './home/bulletins/new-bulletin/new-bulletin.component';
 
 
 @NgModule({
@@ -32,17 +42,24 @@ import { NavComponent } from './nav/nav.component';
     LoginComponent,
     FindTutorComponent,
     TutorsNearMeComponent,
-    NavComponent
+    NavComponent,
+    NewBulletinComponent
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
+    FormsModule,
+    HttpClientModule,
     AngularFontAwesomeModule,
     MatExpansionModule,
+    SliderModule,
     NgxSmartModalModule.forRoot()
   ],
-  providers: [NgxSmartModalService],
+  providers: [NgxSmartModalService,
+              AuthService,
+              BulletinService,
+            {  provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

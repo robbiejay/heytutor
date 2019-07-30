@@ -26,6 +26,8 @@
     "font-awesome": "^4.7.0",
     "ngx-bootstrap": "^5.0.0",
     "ngx-smart-modal": "^7.1.1",
+    "primeicons": "^2.0.0",
+    "primeng": "^8.0.2",
     "rxjs": "~6.3.3",
     "tslib": "^1.9.0",
     "zone.js": "~0.8.26"

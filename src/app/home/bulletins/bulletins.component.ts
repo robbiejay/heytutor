@@ -1,5 +1,11 @@
 import { Component, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
 import { trigger, state, style, transition, animate } from '@angular/animations';
+import { BulletinService } from '../../_services/bulletin.service';
+import { Bulletin } from '../../_models/bulletin.model';
+import { NgxSmartModalService } from 'ngx-smart-modal';
+
+
 @Component({
   selector: 'app-bulletins',
   templateUrl: './bulletins.component.html',
@@ -32,31 +38,38 @@ import { trigger, state, style, transition, animate } from '@angular/animations'
   ]
 })
 export class BulletinsComponent implements OnInit {
+
   state = 'one';
+  public bulletins: Bulletin[] = [];
+  private bulletinSubscription: Subscription;
+  // bulletins = [
+  //   {
+  //     location: 'Shau Kei Wan'
+  //   },
+  //   {
+  //     location: 'Kennedy Town'
+  //   },
+  //   {
+  //     location: 'Yau Ma Tei'
+  //   },
+  //   {
+  //     location: 'Wan Chai'
+  //   },
+  //   {
+  //     location: 'Ap Lei Chau'
+  //   }
+  // ];
 
-  bulletins = [
-    {
-      location: 'Shau Kei Wan'
-    },
-    {
-      location: 'Kennedy Town'
-    },
-    {
-      location: 'Yau Ma Tei'
-    },
-    {
-      location: 'Wan Chai'
-    },
-    {
-      location: 'Ap Lei Chau'
-    }
-  ];
 
-
-  constructor() { }
+  constructor(public bulletinService: BulletinService,
+              public NgxSmartModalService: NgxSmartModalService) { }
 
   ngOnInit() {
-
+    this.bulletinService.getBulletins();
+    this.bulletinSubscription = this.bulletinService.getBulletinUpdateListener()
+    .subscribe((bulletins: Bulletin[]) => {
+      this.bulletins = bulletins;
+    })
   }
 
   ngAfterViewInit() {

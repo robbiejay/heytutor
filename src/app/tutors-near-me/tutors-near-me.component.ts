@@ -6,6 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./tutors-near-me.component.scss']
 })
 export class TutorsNearMeComponent implements OnInit {
+  rangeValues: number[] = [20,80];
 
   constructor() { }
 

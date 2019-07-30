@@ -1,0 +1,26 @@
+<ngx-smart-modal #newBulletinPopup [identifier]="'newBulletinPopup'">
+<h1>Post a Bulletin</h1>
+<form (ngSubmit)='onPostBulletin(f)' #f='ngForm'>
+  <div class='form-group'>
+    <label for='fullname'>Full Name</label>
+    <input type='text' id='fullname' name='fullname' ngModel class='form-control'>
+  </div>
+  <div class='form-group'>
+    <label for='subject'>Subject</label>
+    <input type='text' id='subject' name='subject' ngModel class='form-control'>
+  </div>
+  <div class='form-group'>
+    <label for='price'>Price</label>
+    <input type='text' id='price' name='price' ngModel class='form-control'>
+  </div>
+  <div class='form-group'>
+    <label for='price'>Location</label>
+    <input type='text' id='location' name='location' ngModel class='form-control'>
+  </div>
+  <div class='form-group'>
+    <label for='description'>Description</label>
+    <textarea rows='5' id='description' name='description' ngModel class='form-control'></textarea>
+  </div>
+  <button class='btn' type='submit'>Post Bulletin</button>
+</form>
+</ngx-smart-modal>
