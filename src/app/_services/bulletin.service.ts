@@ -51,7 +51,7 @@ postBulletin(
   description: string,
   timePosted: string,
 ) {
-  const bulletinData = new FormData();
+
 const bulletinData = {
   fullname: fullname,
   subject: subject,

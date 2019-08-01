@@ -37,15 +37,19 @@ bcrypt.hash(req.body.password, 10)
 
 router.post('/signin', (req, res, next) => {
   let fetchedStudent;
+  console.log(req.body.email);
   Student.findOne({ email: req.body.email })
     .then(student => {
+      console.log(student);
       if (!student) {
         return res.status(401).json({
           message: "Authorization failure"
         })
       }
       fetchedStudent = student;
-      return bcrypt.compare(req.body.password, student.password)
+      return bcrypt.compare(req.body.password, student.password).catch(err => {
+        console.log(err);
+      })
     })
     .then(result => {
       if (!result) {
@@ -64,8 +68,8 @@ router.post('/signin', (req, res, next) => {
        expiresIn: 21600
      });
     })
-    .catch( err => {
-      return res.status(401).json({
+    .catch(err => {
+      res.status(401).json({
         message: "Authorization failure"
       })
     });

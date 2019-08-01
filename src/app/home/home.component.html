@@ -1,12 +1,8 @@
-<app-login></app-login>
-<app-signup></app-signup>
 <app-find-tutor></app-find-tutor>
+<app-nav></app-nav>
 <div class='container' id='header'>
   <div class='row'>
     <div class='col-6'>
-      <div class='row'>
-        <h1>HeyTutor</h1><span>!</span>
-      </div>
         <h2>Find private tutors in Hong Kong!</h2>
       <div class='img-container'>
         <img class='header-map' src='assets/images/map.png'>
@@ -15,14 +11,6 @@
       </div>
     </div>
     <div class='col-6'>
-      <div class='row'>
-        <nav>
-          <ul><li><button class='btn btn-signup' (click)="NgxSmartModalService.getModal('signUp').open()">Sign Up</button></li></ul>
-          <ul><li><button class='btn btn-login' (click)="NgxSmartModalService.getModal('logIn').open()">Log in</button></li></ul>
-          <ul><li><button class='btn btn-transparent'>Parents</button></li></ul>
-          <ul><li><button class='btn btn-transparent'>Tutors</button></li></ul>
-        </nav>
-      </div>
       <div class='header-card pink'>
         <h3>Find a tutor close to home</h3>
         <h4>Search for a tutor that matches your location, subject or budget</h4>

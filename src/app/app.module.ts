@@ -29,6 +29,10 @@ import { TutorsNearMeComponent } from './tutors-near-me/tutors-near-me.component
 import { NavComponent } from './nav/nav.component';
 import {SliderModule} from 'primeng/slider';
 import { NewBulletinComponent } from './home/bulletins/new-bulletin/new-bulletin.component';
+import { OnLogoutComponent } from './modals/on-logout/on-logout.component';
+import { OnLoginComponent } from './modals/on-login/on-login.component';
+import { BulletinBoardComponent } from './bulletin-board/bulletin-board.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 
 @NgModule({
@@ -43,7 +47,11 @@ import { NewBulletinComponent } from './home/bulletins/new-bulletin/new-bulletin
     FindTutorComponent,
     TutorsNearMeComponent,
     NavComponent,
-    NewBulletinComponent
+    NewBulletinComponent,
+    OnLogoutComponent,
+    OnLoginComponent,
+    BulletinBoardComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,

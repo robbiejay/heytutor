@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { Subject } from 'rxjs';
 import { AuthData } from './auth-data.model';
+import { NgxSmartModalService } from 'ngx-smart-modal';
 
 import { Student } from '../../_models/student.model';
 
@@ -23,7 +24,9 @@ private students: Student[] = [];
 
 
 
-  constructor(private http: HttpClient, private router: Router) { }
+  constructor(private http: HttpClient,
+              private router: Router,
+              private NgxSmartModalService: NgxSmartModalService) { }
 
   getToken() {
     return this.token;
@@ -55,8 +58,9 @@ this.http.post<{message: string; student: Student}>('http://localhost:3000/api/s
 });
 }
 
-login(firstname: string, lastname: string, email: string, password: string) {
-  const authData: AuthData = {firstname: firstname, lastname: lastname, email: email, password: password};
+login(email: string, password: string, firstname: string, lastname: string ) {
+  const authData: AuthData = {email: email, password: password, firstname: firstname, lastname: lastname, };
+  console.log(authData);
   this.http.post<{token: string, studentId: string, expiresIn: number }>("http://localhost:3000/api/students/signin", authData)
   .subscribe(response => {
     console.dir(response);
@@ -71,7 +75,9 @@ login(firstname: string, lastname: string, email: string, password: string) {
       const now = new Date();
       const expirationDate = new Date(now.getTime() + expiresInDuration * 1000);
       this.saveAuthData(token, studentId, expirationDate);
-      this.router.navigate(['/'])
+      this.NgxSmartModalService.close('logIn');
+      this.NgxSmartModalService.open('onLogin');
+
     }
   }, error => {
       if(error.status === 401) {
@@ -91,6 +97,7 @@ autoAuthUser() {
   if (expiresIn > 0) {
     this.token = authInformation.token;
     this.isAuthenticated = true;
+    console.log(this.isAuthenticated);
     this.setAuthTimer(expiresIn / 1000);
     this.authStatusListener.next(true);
   }

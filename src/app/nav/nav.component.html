@@ -1,3 +1,8 @@
+<app-login></app-login>
+<app-signup></app-signup>
+<app-on-logout></app-on-logout>
+<app-on-login></app-on-login>
+
 <div class='container-fluid'>
   <div class='container'>
     <div class='row'>
@@ -7,10 +12,14 @@
       <div class='col-6'>
         <div class='row'>
         <nav>
-          <ul><li><button class='btn btn-signup' (click)="NgxSmartModalService.getModal('signUp').open()">Sign Up</button></li></ul>
-          <ul><li><button class='btn btn-login' (click)="NgxSmartModalService.getModal('logIn').open()">Log in</button></li></ul>
-          <ul><li><button class='btn btn-transparent'>Parents</button></li></ul>
-          <ul><li><button class='btn btn-transparent'>Tutors</button></li></ul>
+          <ul>
+          <li *ngIf='!isAuth'><button class='btn btn-signup' (click)="NgxSmartModalService.getModal('signUp').open()">Sign Up</button></li>
+          <li *ngIf='!isAuth'><button class='btn btn-login' (click)="NgxSmartModalService.getModal('logIn').open()">Log in</button></li>
+          <li><button class='btn btn-transparent'>Parents</button></li>
+          <li><button class='btn btn-transparent'>Tutors</button></li>
+          <a routerLink='/dashboard'><li *ngIf='isAuth'><button class='btn btn-signup'>Dashboard</button></li></a>
+          <li *ngIf='isAuth'><button class='btn btn-login' (click)="onLogout()">Logout</button></li>
+        </ul>
         </nav>
         </div>
       </div>

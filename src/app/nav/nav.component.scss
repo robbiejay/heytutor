@@ -11,7 +11,7 @@ nav {
 }
 
 nav button {
-  width: 96px;
+  min-width: 96px;
 }
 
 ul {
@@ -21,7 +21,7 @@ ul {
 
 li {
   display: inline;
-  margin-left: 45px;
+  margin-left: 14px;
 }
 
 span {
@@ -57,6 +57,11 @@ background-color: #252525;
 
 .btn-transparent {
   background: rgba(255,255,255,0);
+}
+
+.btn-dashboard {
+  background: #f10d63;
+  color: #fff;
 }
 
 .btn-signup {
