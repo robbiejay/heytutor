@@ -24,6 +24,8 @@ import { SignupComponent } from './signup/signup.component';
 import { LoginComponent } from './login/login.component';
 
 import {MatExpansionModule } from '@angular/material/expansion';
+import {MatTabsModule} from '@angular/material/tabs';
+
 import { FindTutorComponent } from './home/find-tutor/find-tutor.component';
 import { TutorsNearMeComponent } from './tutors-near-me/tutors-near-me.component';
 import { NavComponent } from './nav/nav.component';
@@ -33,6 +35,11 @@ import { OnLogoutComponent } from './modals/on-logout/on-logout.component';
 import { OnLoginComponent } from './modals/on-login/on-login.component';
 import { BulletinBoardComponent } from './bulletin-board/bulletin-board.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { StudentSignupComponent } from './signup/student-signup/student-signup.component';
+import { TutorSignupComponent } from './signup/tutor-signup/tutor-signup.component';
+import { StudentLoginComponent } from './login/student-login/student-login.component';
+import { TutorLoginComponent } from './login/tutor-login/tutor-login.component';
+import { TutorRegistrationComponent } from './tutor-registration/tutor-registration.component';
 
 
 @NgModule({
@@ -51,7 +58,12 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     OnLogoutComponent,
     OnLoginComponent,
     BulletinBoardComponent,
-    DashboardComponent
+    DashboardComponent,
+    StudentSignupComponent,
+    TutorSignupComponent,
+    StudentLoginComponent,
+    TutorLoginComponent,
+    TutorRegistrationComponent
   ],
   imports: [
     BrowserModule,
@@ -61,6 +73,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     HttpClientModule,
     AngularFontAwesomeModule,
     MatExpansionModule,
+    MatTabsModule,
     SliderModule,
     NgxSmartModalModule.forRoot()
   ],

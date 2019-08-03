@@ -1,0 +1,147 @@
+.fluid-container {
+  background-color: #0f51f0;
+  min-height: 100vh;
+}
+
+.form-container {
+  min-height: 420px;
+  display: inline-block;
+  border: 2px solid #fff;
+  width: 100%;
+  border-radius: 7px;
+  margin-top: 70px;
+  width: 66.666%;
+  margin-left:16.6666%;
+  padding: 42px;
+  color: #fff;
+  font-family: 'Fredoka One', cursive;
+
+}
+
+.subject-container {
+  width: 92%;
+  margin-left: 4%
+}
+
+.form-group {
+  border-radius: 7px;
+
+}
+
+.white-border {
+  border: 2px solid #fff;
+  border-radius: 7px;
+}
+
+input[type='file'] {
+  visibility: hidden;
+}
+
+button[type='submit'] {
+  padding: 14px;
+  margin: auto;
+  margin-left: 33.333%;
+  border: 2px solid #fff;
+  border-radius: 7px;
+  min-width: 33.333%;
+  background-color: rgba(255,255,255,0.8);
+}
+
+h1 {
+  font-size: 1.777em;
+  margin-bottom: 14px;
+}
+
+p {
+
+  margin-bottom: 14px;
+  font-family: 'Open Sans', sans-serif;
+  line-height: 1.333em;
+}
+
+label {
+  width: 100%;
+  text-align: center;
+  margin-top: 14px;
+  margin-bottom: 14px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid #fff;
+}
+
+textarea {
+  width: 100%;
+  border: 2px solid #fff;
+  background-color: none;
+  border-radius: 7px;
+  margin-bottom: 14px;
+  margin-top: 14px;
+}
+
+select {
+  padding: 7px;
+  border-radius: 7px;
+  margin-bottom: 14px;
+  margin-top: 14px;
+  width: 100%;
+}
+
+
+
+.green {
+  background-color: #0ff140;
+  color: #fff;
+}
+
+.credentials {
+  width: 50%;
+  margin-left: 25%;
+  bottom: 0px;
+}
+
+.temp-circle {
+  width: 120px;
+  height: 120px;
+  border: 2px solid #fff;
+  border-radius: 100%;
+  margin: auto;
+  margin-top: 14px;
+  margin-bottom: 14px;
+}
+
+
+.add-new-specialization {
+  background: #0ff140;
+  border: 2px solid #0ff140;
+  font-size: 1em;
+  color: #fff;
+  border-radius: 7px;
+}
+
+.specialization-input {
+
+  border: 7px;
+  padding: 7px;
+  border-radius: 7px;
+  border: 2px solid #fff;
+}
+
+.specialization-submit {
+  background-color: #f10d63 !important;
+  width: 100% !important;
+  margin-left: 0 !important;
+  border: 2px solid #f10d63 !important;
+  padding: 8px !important;
+  color: #fff !important;
+}
+
+h6 {
+  color: #fff;
+  border: 2px solid #fff;
+  border-radius: 7px;
+  padding: 4px;
+  display: inline-block;
+  margin-right: 14px;
+  margin-top: 14px;
+  margin-bottom: 14px;
+
+}

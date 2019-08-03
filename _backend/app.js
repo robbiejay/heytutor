@@ -6,6 +6,7 @@ const bodyParser = require('body-parser');
 
 const bulletinRoutes = require('./routes/bulletins');
 const studentRoutes = require('./routes/students');
+const tutorRoutes = require('./routes/tutors');
 
 mongoose.connect(
  'mongodb+srv://robbie:$impsons10HEYTUTOR@heytutor-vlnhh.azure.mongodb.net/test?retryWrites=true&w=majority',
@@ -33,5 +34,6 @@ app.use((req, res, next) => {
 
 app.use('/api/bulletins', bulletinRoutes);
 app.use('/api/students', studentRoutes);
+app.use('/api/tutors', tutorRoutes);
 
 module.exports = app;

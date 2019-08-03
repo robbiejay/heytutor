@@ -1,0 +1,110 @@
+<div class='fluid-container'>
+  <div class='container'>
+    <div class='form-container'>
+      <form>
+      <h1>Welcome to the teaching community at HeyTutor!</h1>
+      <p>Before you start teaching, we need you to supply some information about yourself first. You will need a form of ID and your most recent CV</p>
+      <div class='row'>
+        <div class='col-6'>
+          <div class='form-group white-border'>
+            <label for='identification'>Add Identification</label>
+            <div class='temp-circle'></div>
+            <div class='form-preview' *ngIf="identificationPreview !== '' && identificationPreview && form.get('identification').valid">
+              <p style='margin-bottom: 14px'>ID added! <i class="fas fa-check"></i> : {{this.identificationPreview}}</p>
+            </div>
+            <button type='button' (click)="idPicker.click()" class='btn green credentials'>Upload</button>
+            <input type='file' name='identification' #idPicker (change)="onIdentificationPicked($event)">
+          </div>
+        </div>
+        <div class='col-6'>
+          <div class='form-group white-border'>
+            <label for='cv'>Add CV</label>
+            <div class='temp-circle'></div>
+            <div class='form-preview' *ngIf="cvPreview !== '' && cvPreview && form.get('cv').valid">
+              <p style='margin-bottom: 14px'>CV added! <i class="fas fa-check"></i> : {{this.cvPreview}}</p>
+            </div>
+            <button type='button' (click)="cvPicker.click()" class='btn green credentials'>Upload</button>
+            <input type='file' name='cv' #cvPicker (change)="oncvPicked($event)">
+          </div>
+        </div>
+      </div>
+      <button type='submit'>Continue</button>
+      </form>
+    </div>
+
+    <div class='form-container'>
+      <form>
+      <h1>It's time to let us know a bit more about yourself!</h1>
+      <p>This is the first thing people will read about you when they're looking for a new teacher so give it your best shot! What sort of teacher are you? How long have you been teaching? What do you specialise in?</p>
+      <textarea rows='7'></textarea>
+      <button type='submit'>Continue</button>
+      </form>
+    </div>
+
+    <div class='form-container'>
+      <form>
+      <h1>Education & Work Experience</h1>
+      <p>Let us know how long you've worked as a teacher, and your relevant qualifications</p>
+      <select>
+      <option>High School</option>
+      <option>Undergraduate</option>
+      <option>Postgraduate</option>
+      <option>Doctorate</option>
+      </select>
+      <div class='form-group white-border'>
+        <label for='cv'>Add Diploma</label>
+        <div class='temp-circle'></div>
+        <div class='form-preview' *ngIf="diplomaPreview !== '' && diplomaPreview && form.get('cv').valid">
+          <p style='margin-bottom: 14px'>Diploma added! <i class="fas fa-check"></i> : {{this.diplomaPreview}}</p>
+        </div>
+        <button type='button' (click)="diplomaPicker.click()" class='btn green credentials'>Upload</button>
+        <input type='file' name='cv' #diplomaPicker (change)="ondiplomaPicked($event)">
+      </div>
+      <button type='submit'>Continue</button>
+      </form>
+    </div>
+
+    <div class='form-container'>
+      <form>
+      <h1>Choose your Subjects</h1>
+      <p>This is where you start to specialise! You can add specializations within each subject. You can add multiple subjects later if you wish.</p>
+      <div class='form-group'>
+      <select>
+      <option>English</option>
+      <option>Maths</option>
+      <option>Mandarin</option>
+      <option>Music</option>
+      <option>French</option>
+      <option>Coding</option>
+      <option>Other...</option>
+      </select>
+      </div>
+      <p>You can add a new specialization for SUBJECT here</p>
+      <div class='row'>
+        <div class='col-4'>
+        <button class='btn add-new-specialization'>Add New Specialisation +</button>
+        </div>
+        <div class='col-4'>
+        <input type='text' class='specialization-input'>
+        </div>
+        <div class='col-4'>
+        <button type='submit' class='specialization-submit'>Save</button>
+        </div>
+      </div>
+      <h6>Literature</h6><h6>IELTS</h6><h6>Phonics</h6>
+      <button type='submit'>Continue</button>
+
+      </form>
+    </div>
+
+    <div class='form-container'>
+      <form>
+      <h1>Choose your availability</h1>
+      <p>When are you available to teach? Highlight the times when you are <u>available</u></p>
+      <button type='submit'>Continue</button>
+      </form>
+    </div>
+
+
+  </div>
+</div>

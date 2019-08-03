@@ -6,6 +6,7 @@ import { AuthData } from './auth-data.model';
 import { NgxSmartModalService } from 'ngx-smart-modal';
 
 import { Student } from '../../_models/student.model';
+import { Tutor } from '../../_models/tutor.model';
 
 
 @Injectable({
@@ -21,6 +22,7 @@ public userIsCreated = false;
 public userIsUnauthorized = false;
 
 private students: Student[] = [];
+private tutors: Tutor[] = [];
 
 
 
@@ -58,6 +60,24 @@ this.http.post<{message: string; student: Student}>('http://localhost:3000/api/s
 });
 }
 
+createTutor(firstname: string, lastname: string, email: string, password: string) {
+const authData: AuthData = {
+  firstname: firstname,
+  lastname: lastname,
+  email: email,
+  password: password
+ };
+ console.log(authData);
+this.http.post<{message: string; tutor: Tutor}>('http://localhost:3000/api/tutors/signup', authData, { observe: 'response'})
+.subscribe(response => {
+  console.log(response);
+  console.log(response.status);
+  if(response.status === 201) {
+    this.userIsCreated = true;
+  }
+});
+}
+
 login(email: string, password: string, firstname: string, lastname: string ) {
   const authData: AuthData = {email: email, password: password, firstname: firstname, lastname: lastname, };
   console.log(authData);
@@ -77,6 +97,34 @@ login(email: string, password: string, firstname: string, lastname: string ) {
       this.saveAuthData(token, studentId, expirationDate);
       this.NgxSmartModalService.close('logIn');
       this.NgxSmartModalService.open('onLogin');
+
+    }
+  }, error => {
+      if(error.status === 401) {
+        this.userIsUnauthorized = true;
+      }
+      console.log(error.status);
+    })
+}
+
+loginTutor(email: string, password: string, firstname: string, lastname: string) {
+  const authData: AuthData = {email: email, password: password, firstname: firstname, lastname: lastname, };
+  console.log(authData);
+  this.http.post<{token: string, tutorId: string, expiresIn: number }>("http://localhost:3000/api/tutors/signin", authData)
+  .subscribe(response => {
+    console.dir(response);
+    const token = response.token;
+    const tutorId = response.tutorId;
+    this.token = token;
+    if (token) {
+      const expiresInDuration = response.expiresIn;
+      this.setAuthTimer(expiresInDuration);
+      this.isAuthenticated = true;
+      this.authStatusListener.next(true);
+      const now = new Date();
+      const expirationDate = new Date(now.getTime() + expiresInDuration * 1000);
+      this.saveTutorAuthData(token, tutorId, expirationDate);
+        this.router.navigate(['/dashboard']);
 
     }
   }, error => {
@@ -126,23 +174,38 @@ private saveAuthData(token: string, studentId: string, expirationDate: Date) {
     localStorage.setItem('expiration', expirationDate.toISOString());
 }
 
+private saveTutorAuthData(token: string, tutorId: string, expirationDate: Date) {
+    localStorage.setItem('token', token);
+    localStorage.setItem('tutorId', tutorId);
+    localStorage.setItem('expiration', expirationDate.toISOString());
+}
+
 private clearAuthData() {
   localStorage.removeItem('token');
   localStorage.removeItem('studentId');
+  localStorage.removeItem('tutorId');
   localStorage.removeItem('expiration');
 }
 
 getAuthData() {
   const token = localStorage.getItem('token');
   const studentId = localStorage.getItem('studentId');
+  const tutorId = localStorage.getItem('tutorId');
   const expirationDate = localStorage.getItem('expiration');
-  if (!token || !expirationDate || !studentId) {
+  if (!token || !expirationDate || (!studentId || !tutorId)) {
     return;
-  }
-  return {
-    token: token,
-    studentId: studentId,
-    expirationDate: new Date(expirationDate)
+  } else if (studentId) {
+    return {
+      token: token,
+      studentId: studentId,
+      expirationDate: new Date(expirationDate)
+    }
+  } else if (tutorId) {
+    return {
+      token: token,
+      tutorId: tutorId,
+      expirationDate: new Date(expirationDate)
+    }
   }
 }
 

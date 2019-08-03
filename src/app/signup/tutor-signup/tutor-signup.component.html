@@ -1,0 +1,20 @@
+<h2>Find new students, keep up to date with new private tutor posts nearby, be your own boss and work in your own time. You could pick up a little extra cash on the side or get your hustle on instead!</h2>
+<form (ngSubmit)='onCreateTutor(f)' #f='ngForm'>
+<div class='form-group'>
+  <label for='email'>First Name</label>
+  <input type='text' id='firstname' name='firstname' ngModel class='form-control'>
+</div>
+<div class='form-group'>
+<label for='email'>Last Name</label>
+<input type='text' id='lastname' name='lastname' ngModel class='form-control'>
+</div>
+<div class='form-group'>
+<label for='email'>Mail</label>
+<input type='email' id='email' name='email' ngModel class='form-control'>
+</div>
+<div class='form-group'>
+<label for='email'>Password</label>
+<input type='password' id='password' name='password' ngModel class='form-control'>
+</div>
+<button class='btn' type='submit'>Sign Up</button>
+</form>

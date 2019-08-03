@@ -1,0 +1,86 @@
+h1 {
+    font-family: 'Fredoka One', cursive;
+    padding-bottom: 7px;
+    border-bottom: #f10d63;
+    color: #f10d63;
+    font-size: 1.777em;
+    margin-bottom: 21px;
+}
+
+h2 {
+
+  margin-top: 21px;
+  width: 100%;
+  padding: 30px;
+  border-radius: 7px;
+  border: 4px solid #000;
+  font-family: 'Fredoka One', cursive;
+    font-size: 1em;
+    margin-bottom: 14px;
+    box-shadow: inset 0px 0px 14px 2px #0f51f0;
+}
+
+h3 {
+  margin-top: 21px;
+  width: 100%;
+  margin-bottom: 7px;
+  font-family: 'Fredoka One', cursive;
+}
+
+.mat-expansion-panel {
+  background: #fff;
+  border: 4px solid #000;
+  color: #000;
+  font-family: 'Fredoka One', cursive;
+  margin-bottom: 7px;
+
+}
+
+label {
+  font-family: 'Fredoka One', cursive;
+}
+
+input {
+  border: 3px solid #000;
+  font-family: 'Fredoka One', cursive;
+
+}
+
+.btn {
+  font-family: 'Fredoka One', cursive;
+  background-color: #f10d63;
+  border-radius: 7px;
+  color: #fff;
+  border: 4px solid #000;
+}
+
+mat-panel-title {
+  font-family: 'Fredoka One', cursive;
+  color: #000;
+}
+
+.mat-expansion-panel-header.mat-expanded {
+  background-color: #0f51f0;
+  border-radius: 0px;
+}
+.mat-expansion-panel-header.mat-expanded:focus {
+    background-color: #0f51f0;
+}
+
+.mat-expansion-panel-header.mat-expanded:hover
+
+.mat-expansion-panel-body.mat-expanded {
+  background-color: #0f51f0 !important;
+}
+
+.mat-expansion-panel:not(.mat-expanded):not([aria-disabled=true]) .mat-expansion-panel-header:hover {
+  background-color: #fff;
+}
+
+
+.mat-expansion-panel:not(.mat-expanded):not([aria-disabled=true]) {
+  background-color: #fff;
+}
+.mat-expansion-panel-header:hover {
+  background-color: #fff;
+}

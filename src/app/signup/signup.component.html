@@ -8,27 +8,7 @@
         Sign up as a student or parent?
       </mat-panel-title>
     </mat-expansion-panel-header>
-    <h2>Find tutors in your area. Browse through a growing marketplace of tutors in your area and take advantage of unique offers and benefits</h2>
-
-    <form (ngSubmit)='onCreateStudent(f)' #f='ngForm'>
-    <div class='form-group'>
-      <label for='email'>First Name</label>
-      <input type='text' id='firstname' name='firstname' ngModel class='form-control'>
-    </div>
-    <div class='form-group'>
-  <label for='email'>Last Name</label>
-  <input type='text' id='lastname' name='lastname' ngModel class='form-control'>
-    </div>
-    <div class='form-group'>
-  <label for='email'>Mail</label>
-  <input type='email' id='email' name='email' ngModel class='form-control'>
-    </div>
-    <div class='form-group'>
-  <label for='email'>Password</label>
-  <input type='password' id='password' name='password' ngModel class='form-control'>
-    </div>
-    <button class='btn' type='submit'>Sign Up</button>
-    </form>
+    <app-student-signup></app-student-signup>
   </mat-expansion-panel>
 
   <mat-expansion-panel>
@@ -37,26 +17,7 @@
         Sign up as a tutor?
       </mat-panel-title>
     </mat-expansion-panel-header>
-    <!-- <form>
-      <h2>Find new students, keep up to date with new private tutor posts nearby, be your own boss and work in your own time. You could pick up a little extra cash on the side or get your hustle on instead!</h2>
-    <div class='form-group'>
-      <label for='email'>First Name</label>
-      <input type='text' id='firstname' name='firstname' ngModel class='form-control'>
-    </div>
-    <div class='form-group'>
-  <label for='email'>Last Name</label>
-  <input type='text' id='lastname' name='lastname' ngModel class='form-control'>
-    </div>
-    <div class='form-group'>
-  <label for='email'>Mail</label>
-  <input type='email' id='email' name='email' ngModel class='form-control'>
-    </div>
-    <div class='form-group'>
-  <label for='email'>Password</label>
-  <input type='password' id='password' name='password' ngModel class='form-control'>
-    </div>
-    <button class='btn' type='submit'>Sign Up</button>
-    </form> -->
+    <app-tutor-signup></app-tutor-signup>
   </mat-expansion-panel>
 </mat-accordion>
 <!-- <h2>Sign up as a student or parent?</h2>
