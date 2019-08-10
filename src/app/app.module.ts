@@ -13,7 +13,7 @@ import { AuthInterceptor } from './_services/auth/auth-interceptor';
 import { BulletinService } from './_services/bulletin.service';
 
 import { FormsModule } from '@angular/forms';
-
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
 import { BulletinsComponent } from './home/bulletins/bulletins.component';
@@ -41,6 +41,12 @@ import { StudentLoginComponent } from './login/student-login/student-login.compo
 import { TutorLoginComponent } from './login/tutor-login/tutor-login.component';
 import { TutorRegistrationComponent } from './tutor-registration/tutor-registration.component';
 
+import { RegistrationAvailabilityComponent } from './tutor-registration/registration-availability/registration-availability.component';
+import { RegistrationSubjectsComponent } from './tutor-registration/registration-subjects/registration-subjects.component';
+import { RegistrationExperienceComponent } from './tutor-registration/registration-experience/registration-experience.component';
+import { RegistrationBioComponent } from './tutor-registration/registration-bio/registration-bio.component';
+import { RegistrationIdentificationComponent } from './tutor-registration/registration-identification/registration-identification.component';
+
 
 @NgModule({
   declarations: [
@@ -63,11 +69,17 @@ import { TutorRegistrationComponent } from './tutor-registration/tutor-registrat
     TutorSignupComponent,
     StudentLoginComponent,
     TutorLoginComponent,
-    TutorRegistrationComponent
+    TutorRegistrationComponent,
+    RegistrationAvailabilityComponent,
+    RegistrationSubjectsComponent,
+    RegistrationExperienceComponent,
+    RegistrationBioComponent,
+    RegistrationIdentificationComponent
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
+    ReactiveFormsModule,
     AppRoutingModule,
     FormsModule,
     HttpClientModule,

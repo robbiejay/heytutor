@@ -21,6 +21,8 @@ private isAuthenticated = false;
 public userIsCreated = false;
 public userIsUnauthorized = false;
 
+private tutorId: string;
+
 private students: Student[] = [];
 private tutors: Tutor[] = [];
 
@@ -36,6 +38,10 @@ private tutors: Tutor[] = [];
 
   getIsAuth() {
     return this.isAuthenticated;
+  }
+
+  getTutorId() {
+    return this.tutorId;
   }
 
   getAuthStatusListener() {
@@ -114,7 +120,7 @@ loginTutor(email: string, password: string, firstname: string, lastname: string)
   .subscribe(response => {
     console.dir(response);
     const token = response.token;
-    const tutorId = response.tutorId;
+    this.tutorId = response.tutorId;
     this.token = token;
     if (token) {
       const expiresInDuration = response.expiresIn;
@@ -123,7 +129,7 @@ loginTutor(email: string, password: string, firstname: string, lastname: string)
       this.authStatusListener.next(true);
       const now = new Date();
       const expirationDate = new Date(now.getTime() + expiresInDuration * 1000);
-      this.saveTutorAuthData(token, tutorId, expirationDate);
+      this.saveTutorAuthData(token, this.tutorId, expirationDate);
         this.router.navigate(['/dashboard']);
 
     }
@@ -153,6 +159,7 @@ autoAuthUser() {
 
 logout() {
   this.token = null;
+  this.tutorId = null;
   this.isAuthenticated = false;
   this.authStatusListener.next(false);
   console.log(this.token);

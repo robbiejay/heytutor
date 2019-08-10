@@ -1,0 +1,31 @@
+<div class='form-container'>
+  <form [formGroup]='form' (ngSubmit)='onFormSubmit(f)' enctype="multipart/form-data">
+  <h1>Welcome to the teaching community at HeyTutor!</h1>
+  <p>Before you start teaching, we need you to supply some information about yourself first. You will need a form of ID and your most recent CV</p>
+  <div class='row'>
+    <div class='col-6'>
+      <div class='form-group white-border'>
+        <label for='identification'>Add Identification</label>
+        <div class='temp-circle' *ngIf="!identificationPreview"></div>
+        <div class='form-preview' *ngIf="identificationPreview !== '' && identificationPreview && form.get('identification').valid">
+          <p>OK!</p>
+        </div>
+        <button type='button' (click)="idPicker.click()" class='btn green credentials'>Upload</button>
+        <input type='file' name='identification' #idPicker (change)="onIdentificationPicked($event)">
+      </div>
+    </div>
+    <div class='col-6'>
+      <div class='form-group white-border'>
+        <label for='cv'>Add CV</label>
+        <div class='temp-circle'></div>
+        <div class='form-preview' *ngIf="cvPreview !== '' && cvPreview && form.get('cv').valid">
+            <p>OK!</p>
+        </div>
+        <button type='button' (click)="cvPicker.click()" class='btn green credentials'>Upload</button>
+        <input type='file' name='cv' #cvPicker (change)="oncvPicked($event)">
+      </div>
+    </div>
+  </div>
+  <button type='submit'>Continue</button>
+  </form>
+</div>

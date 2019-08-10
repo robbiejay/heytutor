@@ -1,4 +1,5 @@
 const express = require('express');
+const multer = require('multer');
 const Tutor = require('../models/tutors');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
@@ -6,6 +7,44 @@ const path = require('path');
 const checkAuth = require('../middleware/check-auth');
 
 const router = express.Router();
+
+const IMG_TYPE_MAP = {
+  'image/png': 'png',
+  'image/jpeg': 'jpg',
+  'image/jpg': 'jpg'
+};
+
+const DOC_TYPE_MAP = {
+  'application/pdf': 'pdf',
+  'application/vnd.ms-powerpoint': 'ppt',
+  'application/vnd.ms-excel': 'xls',
+  'application/msword': 'doc'
+}
+
+const storage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    const identificationValid = IMG_TYPE_MAP[file.mimetype];
+    const cvValid = DOC_TYPE_MAP[file.mimetype];
+    let error = new Error('Invalid MIME type');
+    if(identificationValid || cvValid) {
+      error = null;
+    }
+    cb(error, 'documents');
+  },
+  filename: (req,file,cb) => {
+    const identificationValid = IMG_TYPE_MAP[file.mimetype];
+    const cvValid = DOC_TYPE_MAP[file.mimetype];
+
+    const name = file.originalname.toLowerCase().split(" ").join("-");
+
+    if (identificationValid ) {
+    cb(null,'ID-' + name + '-' + Data.now() + '.' + ext);
+  }
+  if(cvValid) {
+    cb(null,'ID-' + name + '-' + Data.now() + '.' + ext);
+  }
+  }
+});
 
 router.post('/signup', (req, res, next) => {
 bcrypt.hash(req.body.password, 10)
@@ -73,5 +112,26 @@ router.post('/signin', (req, res, next) => {
       })
     });
 });
+
+router.put(
+  '/identification/:id',
+  checkAuth,
+  multer({ storage: storage}).fields([
+    {name: "cv",
+     name: "identification"}
+  ]),
+  (req,res,next) => {
+    const identificationData = new Tutor({
+      _id: req.body.tutorId,
+      cvPath: url + "/documents/" + req.files.cv[0].filename,
+      identificationPath: url + "/documents/" + req.files.identification[0].filename
+    });
+
+    TutorupdateOne({_id: req.params.id}, identificationData).then(result => {
+      res.status(200).json({message: 'You just successfully updated the user credentials my boy!'})
+    })
+
+  }
+)
 
 module.exports = router;
