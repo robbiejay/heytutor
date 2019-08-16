@@ -1,8 +1,11 @@
 <div class='form-container'>
-  <form>
+  <form (ngSubmit)='onFormSubmit(f)' #f=ngForm>
   <h1>It's time to let us know a bit more about yourself!</h1>
   <p>This is the first thing people will read about you when they're looking for a new teacher so give it your best shot! What sort of teacher are you? How long have you been teaching? What do you specialise in?</p>
-  <textarea rows='7'></textarea>
+<div class='form-group'>
+  <label for='bio'>Your Bio : Try to write between 50 - 200 words</label>
+  <textarea id='bio' name='bio' ngModel class='form-control' rows='7'></textarea>
+</div>
   <button type='submit'>Continue</button>
   </form>
 </div>

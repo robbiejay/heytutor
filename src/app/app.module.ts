@@ -46,6 +46,7 @@ import { RegistrationSubjectsComponent } from './tutor-registration/registration
 import { RegistrationExperienceComponent } from './tutor-registration/registration-experience/registration-experience.component';
 import { RegistrationBioComponent } from './tutor-registration/registration-bio/registration-bio.component';
 import { RegistrationIdentificationComponent } from './tutor-registration/registration-identification/registration-identification.component';
+import { RegistrationLoginComponent } from './tutor-registration/registration-login/registration-login.component';
 
 
 @NgModule({
@@ -74,7 +75,8 @@ import { RegistrationIdentificationComponent } from './tutor-registration/regist
     RegistrationSubjectsComponent,
     RegistrationExperienceComponent,
     RegistrationBioComponent,
-    RegistrationIdentificationComponent
+    RegistrationIdentificationComponent,
+    RegistrationLoginComponent
   ],
   imports: [
     BrowserModule,

@@ -2,7 +2,9 @@ import { Component, OnInit, Input } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { AuthService } from '../../_services/auth/auth.service';
 import { TutorService } from '../../_services/tutor.service';
+import { Subscription } from 'rxjs';
 import { mimeType } from '../mime-type.validator';
+import { mimeTypePdf } from '../mime-type-pdf.validator';
 
 
 
@@ -13,15 +15,29 @@ import { mimeType } from '../mime-type.validator';
 })
 export class RegistrationIdentificationComponent implements OnInit {
 
-  @Input() userId: string;
+  @Input() tutorId: string;
   form: FormGroup;
   identificationPreview: string;
   cvPreview: string;
+  isIdentified: boolean;
+  isAuth: boolean;
+  private authListenerSubs: Subscription;
 
   constructor(public authService: AuthService,
               public tutorService: TutorService) { }
 
   ngOnInit() {
+
+    this.isAuth = this.authService.getIsAuth();
+    this.authListenerSubs = this.authService
+    .getAuthStatusListener()
+    .subscribe(isAuthenticated => {
+      this.isAuth = isAuthenticated;
+      console.log(isAuthenticated);
+    })
+    if(this.isAuth){
+    this.tutorId = this.authService.getAuthData().tutorId;
+  }
 
     this.form = new FormGroup({
       identification: new FormControl(null, {
@@ -39,7 +55,7 @@ export class RegistrationIdentificationComponent implements OnInit {
         ],
         asyncValidators:
         [
-          mimeType
+          mimeTypePdf
         ]
       })
     })
@@ -48,13 +64,13 @@ export class RegistrationIdentificationComponent implements OnInit {
 onFormSubmit() {
   if (this.form.invalid) {
     return;
+
   }
   this.tutorService.updateIdentification(
-    this.userId,
+    this.tutorId,
     this.form.value.cv,
     this.form.value.identification
   );
-this.form.reset();
 // Emit event
   }
 

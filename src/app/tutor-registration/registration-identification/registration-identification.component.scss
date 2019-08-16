@@ -15,11 +15,12 @@
 
 input[type='file'] {
   visibility: hidden;
+  height: 0;
+  width: 0;
 }
 
 button[type='submit'] {
   padding: 14px;
-  margin: auto;
   margin-left: 33.333%;
   border: 2px solid #fff;
   border-radius: 7px;
@@ -75,6 +76,14 @@ select {
   width: 100%;
 }
 
+span {
+  font-size: 0.75em;
+  text-align: center;
+  width: 100%;
+  display: inline-block;
+  margin-bottom: 14px;
+}
+
 .temp-circle {
   width: 120px;
   height: 120px;
@@ -109,4 +118,20 @@ select {
   margin-bottom: 14px;
   text-align: center;
   font-size: 2.369em;
+}
+
+.form-preview-error p {
+  font-family: 'Fredoka One', cursive;
+  height: 120px;
+  line-height: 120px;
+  width: 120px;
+  border: 2px solid #ff0000;
+  text-align: middle;
+  margin: auto;
+  border-radius: 100%;
+  margin-top: 14px;
+  margin-bottom: 14px;
+  text-align: center;
+  font-size: 2.369em;
+  color: #ff0000;
 }

@@ -5,7 +5,10 @@ const tutorSchema = mongoose.Schema({
   firstname: { type: String },
   lastname: { type: String },
   email: { type: String, required: true, unique: true },
-  password: { type: String, required: true }
+  password: { type: String, required: true },
+  identificationPath: { type: String },
+  cvPath: { type: String },
+  bio: { type: String }
 });
 
 tutorSchema.plugin(uniqueValidator);

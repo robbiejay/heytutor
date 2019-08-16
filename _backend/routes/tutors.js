@@ -38,10 +38,12 @@ const storage = multer.diskStorage({
     const name = file.originalname.toLowerCase().split(" ").join("-");
 
     if (identificationValid ) {
-    cb(null,'ID-' + name + '-' + Data.now() + '.' + ext);
+    const ext = IMG_TYPE_MAP[file.mimetype];
+    cb(null,'ID-' + name + '-' + Date.now() + '.' + ext);
   }
   if(cvValid) {
-    cb(null,'ID-' + name + '-' + Data.now() + '.' + ext);
+    const ext = DOC_TYPE_MAP[file.mimetype];
+    cb(null,'ID-' + name + '-' + Date.now() + '.' + ext);
   }
   }
 });
@@ -117,21 +119,39 @@ router.put(
   '/identification/:id',
   checkAuth,
   multer({ storage: storage}).fields([
-    {name: "cv",
-     name: "identification"}
+    {name: "cv"},
+    {name: "identification"}
   ]),
   (req,res,next) => {
+    const url = req.protocol + "://" + req.get("host");
     const identificationData = new Tutor({
-      _id: req.body.tutorId,
+      _id: req.body.id,
       cvPath: url + "/documents/" + req.files.cv[0].filename,
       identificationPath: url + "/documents/" + req.files.identification[0].filename
     });
-
-    TutorupdateOne({_id: req.params.id}, identificationData).then(result => {
+    console.log(identificationData);
+    Tutor.updateOne({_id: req.params.id}, identificationData).then(result => {
+      console.log(result);
+      console.log(res);
       res.status(200).json({message: 'You just successfully updated the user credentials my boy!'})
     })
+  })
 
-  }
-)
+router.put(
+  '/bio/:id',
+  checkAuth,
+  (req,res,next) => {
+    const bioCredentials = new Tutor({
+      _id: req.body.id,
+      bio: req.body.bio
+    });
+    console.log(bioCredentials);
+    Tutor.updateOne({_id: req.params.id}, bioCredentials)
+    .then(result => {
+      console.log(result);
+      res.status(200).json({ message: 'You just successfully updated the bio credentials my dude!'});
+    });
+});
+
 
 module.exports = router;

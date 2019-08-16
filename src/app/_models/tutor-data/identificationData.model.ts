@@ -1,5 +1,5 @@
 export interface IdentificationData {
-  userId: string;
+  id: string;
   cvPath: string;
   identificationPath: string;
 }

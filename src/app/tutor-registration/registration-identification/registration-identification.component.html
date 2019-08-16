@@ -6,23 +6,33 @@
     <div class='col-6'>
       <div class='form-group white-border'>
         <label for='identification'>Add Identification</label>
-        <div class='temp-circle' *ngIf="!identificationPreview"></div>
+        <div class='temp-circle' *ngIf="!identificationPreview && form.get('identification').invalid"></div>
+        <div class='form-preview-error' *ngIf="identificationPreview !== '' && identificationPreview && form.get('identification').invalid">
+            <p>X</p>
+            <span>Wrong filetype</span>
+        </div>
         <div class='form-preview' *ngIf="identificationPreview !== '' && identificationPreview && form.get('identification').valid">
           <p>OK!</p>
         </div>
         <button type='button' (click)="idPicker.click()" class='btn green credentials'>Upload</button>
         <input type='file' name='identification' #idPicker (change)="onIdentificationPicked($event)">
+        <span>Please upload in JPG / PNG</span>
       </div>
     </div>
     <div class='col-6'>
       <div class='form-group white-border'>
         <label for='cv'>Add CV</label>
-        <div class='temp-circle'></div>
+        <div class='temp-circle' *ngIf="!cvPreview && form.get('cv').invalid"></div>
+        <div class='form-preview-error' *ngIf="cvPreview !== '' && cvPreview && form.get('cv').invalid">
+            <p>X</p>
+            <span>Wrong filetype</span>
+        </div>
         <div class='form-preview' *ngIf="cvPreview !== '' && cvPreview && form.get('cv').valid">
             <p>OK!</p>
         </div>
         <button type='button' (click)="cvPicker.click()" class='btn green credentials'>Upload</button>
-        <input type='file' name='cv' #cvPicker (change)="oncvPicked($event)">
+        <input type='file' name='cv' #cvPicker (change)="onCvPicked($event)">
+        <span>Please upload in PDF</span>
       </div>
     </div>
   </div>

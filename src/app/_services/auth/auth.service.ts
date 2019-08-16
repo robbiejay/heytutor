@@ -80,6 +80,7 @@ this.http.post<{message: string; tutor: Tutor}>('http://localhost:3000/api/tutor
   console.log(response.status);
   if(response.status === 201) {
     this.userIsCreated = true;
+    this.router.navigate(['/registration']);
   }
 });
 }
@@ -130,7 +131,8 @@ loginTutor(email: string, password: string, firstname: string, lastname: string)
       const now = new Date();
       const expirationDate = new Date(now.getTime() + expiresInDuration * 1000);
       this.saveTutorAuthData(token, this.tutorId, expirationDate);
-        this.router.navigate(['/dashboard']);
+      this.getAuthStatusListener();
+        this.router.navigate(['/registration']);
 
     }
   }, error => {
@@ -196,10 +198,13 @@ private clearAuthData() {
 
 getAuthData() {
   const token = localStorage.getItem('token');
+  console.log(token);
   const studentId = localStorage.getItem('studentId');
+  console.log(studentId);
   const tutorId = localStorage.getItem('tutorId');
+  console.log(tutorId);
   const expirationDate = localStorage.getItem('expiration');
-  if (!token || !expirationDate || (!studentId || !tutorId)) {
+  if (!token || !expirationDate) {
     return;
   } else if (studentId) {
     return {

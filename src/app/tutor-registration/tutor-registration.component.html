@@ -1,12 +1,26 @@
 <div class='fluid-container'>
   <div class='container'>
-    <app-registration-identification [userId]='userId' *ngIf="currentRegistrationStage=='id'"></app-registration-identification>
-    <app-registration-bio *ngIf="currentRegistrationStage=='bio'"></app-registration-bio>
+    <app-registration-login *ngIf='!isAuth'></app-registration-login>
+
+    <ng-template [ngIf]='isAuth && !isIdentified'>
+    <app-registration-identification [tutorId]='tutorId' *ngIf="!isIdentified"></app-registration-identification>
+    </ng-template>
+
+    <ng-template [ngIf]='isAuth && isIdentified && !isBio'>
+    <app-registration-bio [tutorId]='tutorId' *ngIf="!isBio"></app-registration-bio>
+    </ng-template>
+
+    <ng-template>
     <app-registration-experience *ngIf="currentRegistrationStage=='experience'"></app-registration-experience>
+    </ng-template>
+
+    <ng-template>
     <app-registration-subjects *ngIf="currentRegistrationStage=='subjects'"></app-registration-subjects>
+    </ng-template>
+
+    <ng-template>
     <app-registration-availability *ngIf="currentRegistrationStage=='availability'"></app-registration-availability>
-
-
+    </ng-template>
 
 
   </div>
