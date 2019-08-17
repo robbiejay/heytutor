@@ -9,17 +9,17 @@
     <ng-template [ngIf]='isAuth && isIdentified && !isBio'>
     <app-registration-bio [tutorId]='tutorId' *ngIf="!isBio"></app-registration-bio>
     </ng-template>
+<!--
+    <ng-template [ngIf]='isAuth && isIdentified && isBio && !isExperience'>
+    <app-registration-experience [tutorId]='tutorId' *ngIf="!isExperience"></app-registration-experience>
+    </ng-template> -->
 
-    <ng-template>
-    <app-registration-experience *ngIf="currentRegistrationStage=='experience'"></app-registration-experience>
+    <ng-template [ngIf]='isAuth && isIdentified && isBio && !isSubject'>
+    <app-registration-subjects [tutorId]='tutorId' *ngIf="!isSubject"></app-registration-subjects>
     </ng-template>
 
-    <ng-template>
-    <app-registration-subjects *ngIf="currentRegistrationStage=='subjects'"></app-registration-subjects>
-    </ng-template>
-
-    <ng-template>
-    <app-registration-availability *ngIf="currentRegistrationStage=='availability'"></app-registration-availability>
+    <ng-template [ngIf]='isAuth'>
+    <app-registration-availability [tutorId]='tutorId' *ngIf="!isAvailability"></app-registration-availability>
     </ng-template>
 
 

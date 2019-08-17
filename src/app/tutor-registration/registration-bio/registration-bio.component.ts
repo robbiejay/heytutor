@@ -1,8 +1,10 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { TutorService } from '../../_services/tutor.service';
 import { AuthService } from '../../_services/auth/auth.service';
 import { Subscription } from 'rxjs';
+import { mimeType } from '../mime-type.validator';
+
 
 
 
@@ -13,6 +15,8 @@ import { Subscription } from 'rxjs';
 })
 export class RegistrationBioComponent implements OnInit {
 
+  form: FormGroup;
+  profilePreview: string;
 
   @Input() tutorId: string;
   isBio: boolean;
@@ -23,6 +27,25 @@ export class RegistrationBioComponent implements OnInit {
               public tutorService: TutorService) { }
 
   ngOnInit() {
+
+    this.form = new FormGroup({
+      profile: new FormControl(null, {
+        validators: [
+          Validators.required
+        ],
+        asyncValidators:
+        [
+          mimeType
+        ]
+      }),
+      bio: new FormControl(null, {
+              validators: [
+                Validators.required
+              ]
+            })
+          });
+
+
     this.isAuth = this.authService.getIsAuth();
     this.authListenerSubs = this.authService
     .getAuthStatusListener()
@@ -35,10 +58,22 @@ export class RegistrationBioComponent implements OnInit {
   }
   }
 
+  onProfilePicked(event: Event) {
+    const file = (event.target as HTMLInputElement).files[0];
+    this.form.patchValue({profile: file});
+    this.form.get('profile').updateValueAndValidity();
+    const reader = new FileReader();
+    reader.onload = () => {
+      this.profilePreview = <string>reader.result;
+    };
+    reader.readAsDataURL(file);
+  }
 
-onFormSubmit(form: NgForm) {
-  const bio = form.value.bio;
-  this.tutorService.updateBio( this.tutorId, bio)
+onFormSubmit() {
+  if(this.form.invalid) {
+    return;
+  }
+  this.tutorService.updateBio( this.tutorId, this.form.value.bio, this.form.value.profile)
   console.log('FormSubmit was triggered')
 }
 }

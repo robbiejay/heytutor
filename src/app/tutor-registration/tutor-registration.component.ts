@@ -12,9 +12,15 @@ export class TutorRegistrationComponent implements OnInit {
   isAuth: boolean;
   private authListenerSubs: Subscription;
   private identificationListenerSubs: Subscription;
-  private bioListenerSubs: Subscription
+  private bioListenerSubs: Subscription;
+  private experienceListenerSubs: Subscription;
+  private subjectListenerSubs: Subscription;
+  private availabilityListenerSubs: Subscription;
   isIdentified: boolean;
   isBio: boolean;
+  isExperience: boolean;
+  isSubject: boolean;
+  isAvailability: boolean;
   tutorId: string;
   currentRegistrationStage: string;
   public registrationStage = ['id','bio','subject','experience','availability']
@@ -49,6 +55,30 @@ export class TutorRegistrationComponent implements OnInit {
     this.isBio = isBio;
     console.log("THIS IS THE BIO")
     console.log(isBio);
+  })
+
+  this.experienceListenerSubs = this.tutorService
+  .getExperienceStatusListener()
+  .subscribe(isExperience => {
+    this.isExperience = isExperience;
+    console.log("THIS IS THE EXPERIENCE")
+    console.log(isExperience);
+  })
+
+  this.subjectListenerSubs = this.tutorService
+  .getSubjectStatusListener()
+  .subscribe(isSubject => {
+    this.isSubject = isSubject;
+    console.log("THIS IS THE SUBJECT")
+    console.log(isSubject);
+  })
+
+  this.availabilityListenerSubs = this.tutorService
+  .getAvailabilityStatusListener()
+  .subscribe(isAvailability => {
+    this.isAvailability = isAvailability;
+    console.log("THIS IS THE AVAILABILITY")
+    console.log(isAvailability);
   })
 
   }

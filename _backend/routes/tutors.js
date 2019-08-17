@@ -21,6 +21,25 @@ const DOC_TYPE_MAP = {
   'application/msword': 'doc'
 }
 
+const profileStorage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    const isValid = IMG_TYPE_MAP[file.mimetype];
+    let error = new Error("Invalid mime type");
+    if (isValid) {
+      error = null;
+    }
+    cb(error, "images");
+  },
+  filename: (req, file, cb) => {
+    const name = file.originalname
+      .toLowerCase()
+      .split(" ")
+      .join("-");
+    const ext = IMG_TYPE_MAP[file.mimetype];
+    cb(null, name + "-" + Date.now() + "." + ext);
+  }
+});
+
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
     const identificationValid = IMG_TYPE_MAP[file.mimetype];
@@ -140,10 +159,15 @@ router.put(
 router.put(
   '/bio/:id',
   checkAuth,
+  multer({ storage: profileStorage}).single("profile"),
   (req,res,next) => {
+    let profilePath = req.body.profile;
+    const url = req.protocol + "://" + req.get("host");
+    profilePath = url + "/images/" + req.file.filename
     const bioCredentials = new Tutor({
       _id: req.body.id,
-      bio: req.body.bio
+      bio: req.body.bio,
+      profilePath: profilePath
     });
     console.log(bioCredentials);
     Tutor.updateOne({_id: req.params.id}, bioCredentials)
@@ -152,6 +176,24 @@ router.put(
       res.status(200).json({ message: 'You just successfully updated the bio credentials my dude!'});
     });
 });
+
+router.put(
+  '/subject/:id',
+  checkAuth,
+  (req,res,next) => {
+    const subjectCredentials = new Tutor({
+      _id: req.body.id,
+      subject: req.body.subject,
+      specialisationList: req.body.specialisationList
+    });
+    console.log(subjectCredentials);
+    Tutor.updateOne({_id: req.params.id}, subjectCredentials)
+    .then(result => {
+      console.log(result);
+      res.status(200).json({ message: 'You just successfully updated the subject credentials!'})
+    });
+  });
+
 
 
 module.exports = router;

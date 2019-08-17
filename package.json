@@ -25,6 +25,7 @@
     "core-js": "^2.5.4",
     "font-awesome": "^4.7.0",
     "ngx-bootstrap": "^5.0.0",
+    "ngx-material-timepicker": "^4.0.2",
     "ngx-smart-modal": "^7.1.1",
     "primeicons": "^2.0.0",
     "primeng": "^8.0.2",

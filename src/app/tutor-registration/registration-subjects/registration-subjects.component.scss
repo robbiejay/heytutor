@@ -23,6 +23,7 @@ button[type='submit'] {
   background-color: rgba(255,255,255,0.5);
   transition: 0.2s;
   cursor: pointer;
+  margin-top: 42px;
 }
 
 button[type='submit']:hover {
@@ -69,7 +70,7 @@ select {
   width: 100%;
 }
 
-.add-new-specialization {
+.add-new-specialisation {
   background: #0ff140;
   border: 2px solid #0ff140;
   font-size: 1em;
@@ -77,7 +78,7 @@ select {
   border-radius: 7px;
 }
 
-.specialization-input {
+.specialisation-input {
 
   border: 7px;
   padding: 7px;
@@ -85,7 +86,7 @@ select {
   border: 2px solid #fff;
 }
 
-.specialization-submit {
+.specialisation-submit {
   background-color: #f10d63 !important;
   width: 100% !important;
   margin-left: 0 !important;
@@ -104,4 +105,19 @@ h6 {
   margin-top: 14px;
   margin-bottom: 14px;
 
+}
+
+.hidden {
+  visibility: hidden;
+  opacity: 0;
+}
+
+.visible {
+  visibility:inherit;
+  opacity: 1;
+}
+
+.tag-container {
+  width: 100%;
+  display: block;
 }

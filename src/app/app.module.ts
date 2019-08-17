@@ -20,6 +20,7 @@ import { BulletinsComponent } from './home/bulletins/bulletins.component';
 import { BulletinComponent } from './home/bulletins/bulletin/bulletin.component';
 import { SubjectsComponent } from './home/subjects/subjects.component';
 import { NgxSmartModalModule, NgxSmartModalService } from 'ngx-smart-modal';
+import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker';
 import { SignupComponent } from './signup/signup.component';
 import { LoginComponent } from './login/login.component';
 
@@ -89,6 +90,7 @@ import { RegistrationLoginComponent } from './tutor-registration/registration-lo
     MatExpansionModule,
     MatTabsModule,
     SliderModule,
+    NgxMaterialTimepickerModule,
     NgxSmartModalModule.forRoot()
   ],
   providers: [NgxSmartModalService,

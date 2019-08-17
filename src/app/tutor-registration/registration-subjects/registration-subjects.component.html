@@ -1,9 +1,9 @@
 <div class='form-container'>
-  <form>
+  <form [formGroup]='form' (submit)='onFormSubmit()'>
   <h1>Choose your Subjects</h1>
-  <p>This is where you start to specialise! You can add specializations within each subject. You can add multiple subjects later if you wish.</p>
+  <p>This is where you start to specialise! You can add specialisations within each subject. You can add multiple subjects later if you wish.</p>
   <div class='form-group'>
-  <select>
+  <select formControlName='subject'>
   <option>English</option>
   <option>Maths</option>
   <option>Mandarin</option>
@@ -13,19 +13,24 @@
   <option>Other...</option>
   </select>
   </div>
-  <p>You can add a new specialization for SUBJECT here</p>
+  <p>You can add a new specialisation for SUBJECT here</p>
   <div class='row'>
     <div class='col-4'>
-    <button class='btn add-new-specialization'>Add New Specialisation +</button>
+    <button type='button' class='btn add-new-specialisation' (click)='addNewSpecialisation()'>Add New Specialisation +</button>
+    </div>
+   <ng-template [ngIf]='newSpecialisationAdded'>
+    <div class='col-4'>
+    <input type='text' formControlName='newSpecialisation' class='specialisation-input'>
     </div>
     <div class='col-4'>
-    <input type='text' class='specialization-input'>
+    <button type='button' class='specialisation-submit' (click)='saveNewSpecialisation()'>Save</button>
+
     </div>
-    <div class='col-4'>
-    <button type='submit' class='specialization-submit'>Save</button>
-    </div>
+    </ng-template>
   </div>
-  <h6>Literature</h6><h6>IELTS</h6><h6>Phonics</h6>
+  <div class='tag-container'>
+  <h6 *ngFor='let specialisation of specialisationList'>{{specialisation}}</h6>
+  </div>
   <button type='submit'>Continue</button>
   </form>
 </div>

@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { IdentificationData } from '../_models/tutor-data/identificationData.model';
 import { BioData } from '../_models/tutor-data/bioData.model';
+import { SubjectData } from '../_models/tutor-data/subjectData.model';
 import { Subject } from 'rxjs';
 
 @Injectable({
@@ -15,6 +16,12 @@ export class TutorService {
   identificationIsAdded: boolean;
   private bioStatusListener = new Subject<boolean>();
   bioIsAdded: boolean;
+  private experienceStatusListener = new Subject<boolean>();
+  experienceIsAdded: boolean;
+  private subjectStatusListener = new Subject<boolean>();
+  subjectIsAdded: boolean;
+  private availabilityStatusListener = new Subject<boolean>();
+  availabilityIsAdded: boolean;
 
   getIsIdentified() {
     return this.identificationIsAdded;
@@ -55,13 +62,13 @@ export class TutorService {
 
   updateBio(
     id: string,
-    bio: string
+    bio: string,
+    profile: File
   ) {
-    let bioData: BioData;
-    bioData = {
-      id: id,
-      bio: bio
-    }
+    let bioData = new FormData();
+    bioData.append("id", id);
+    bioData.append("bio", bio);
+    bioData.append("profile", profile);
     console.log(bioData);
     this.http.put('http://localhost:3000/api/tutors/bio/' + id, bioData, { observe: 'response'})
     .subscribe(response => {
@@ -73,4 +80,52 @@ export class TutorService {
       }
     })
   }
+
+  getIsExperience() {
+    return this.experienceIsAdded;
+  }
+
+  getExperienceStatusListener() {
+    return this.experienceStatusListener.asObservable();
+  }
+
+  getIsSubject() {
+    return this.subjectIsAdded;
+  }
+
+  getSubjectStatusListener() {
+    return this.subjectStatusListener.asObservable();
+  }
+
+  updateSubject(
+    id: string,
+    subject: string,
+    specialisationList: string
+  ) {
+    let subjectData: SubjectData;
+    subjectData = {
+      id: id,
+      subject: subject,
+      specialisationList: specialisationList
+    }
+
+    this.http.put('http://localhost:3000/api/tutors/subject/' + id, subjectData, { observe: 'response'})
+    .subscribe(response => {
+      console.log(response);
+      console.log(response.status)
+      if(response.status === 200) {
+        this.subjectIsAdded = true;
+        this.subjectStatusListener.next(true);
+      }
+    })
+  }
+
+  getIsAvailability() {
+    return this.availabilityIsAdded;
+  }
+
+  getAvailabilityStatusListener() {
+    return this.availabilityStatusListener.asObservable();
+  }
+
 }
