@@ -194,6 +194,29 @@ router.put(
     });
   });
 
+router.put(
+  '/availability/:id',
+  checkAuth,
+  (req, res, next) => {
+    const scheduleCredentials = new Tutor({
+      _id: req.body.id,
+      monday: req.body.monday,
+      tuesday: req.body.tuesday,
+      wednesday: req.body.wednesday,
+      thursday: req.body.thursday,
+      friday: req.body.friday,
+      saturday: req.body.saturday,
+      sunday: req.body.sunday
+    });
+    console.log(scheduleCredentials);
+    Tutor.updateOne({_id: req.params.id}, scheduleCredentials)
+    .then(result => {
+      console.log(result);
+      res.status(200).json({ message: 'You just successfully updated the schedule!'})
+    })
+  }
+)
+
 
 
 module.exports = router;

@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { IdentificationData } from '../_models/tutor-data/identificationData.model';
 import { BioData } from '../_models/tutor-data/bioData.model';
 import { SubjectData } from '../_models/tutor-data/subjectData.model';
+import { AvailabilityData } from '../_models/tutor-data/availabilityData.model';
 import { Subject } from 'rxjs';
 
 @Injectable({
@@ -126,6 +127,40 @@ export class TutorService {
 
   getAvailabilityStatusListener() {
     return this.availabilityStatusListener.asObservable();
+  }
+
+  updateAvailability(
+    id: string,
+    monday: string,
+    tuesday: string,
+    wednesday: string,
+    thursday: string,
+    friday: string,
+    saturday: string,
+    sunday: string
+  ) {
+    let availabilityData: AvailabilityData;
+    availabilityData = {
+      id: id,
+      monday: monday,
+      tuesday: tuesday,
+      wednesday: wednesday,
+      thursday: thursday,
+      friday: friday,
+      saturday: saturday,
+      sunday: sunday
+    }
+
+    this.http.put('http://localhost:3000/api/tutors/availability/' + id, availabilityData, { observe: 'response'})
+    .subscribe(response => {
+      console.log(response);
+      console.log(response.status)
+      if(response.status === 200) {
+        this.availabilityIsAdded = true;
+        this.availabilityStatusListener.next(true);
+      }
+    })
+
   }
 
 }

@@ -1,8 +1,8 @@
 <div class='form-container'>
-  <form>
+  <form [formGroup]='form' (submit)='onFormSubmit()'>
   <h1>Choose your availability</h1>
-  <p>When are you available to teach? Highlight the times when you are <u>available</u></p>
-  <div class='table-container'>
+  <p>When are you available to teach? Highlight the days when you teach. After clicking continue, you will be able to fine-tune the specific times that you are available</p>
+  <!-- <div class='table-container'>
   <table>
     <tr>
     <th></th>
@@ -175,7 +175,155 @@
       <td></td>
     </tr>
   </table>
+  </div> -->
+<div class='week-container'>
+
+  <div class='week-day'>
+  <label class='weekday-label' for='monday'>Mon</label>
+  <mat-checkbox (change)='mondayToggle()' name='monday' id='monday' formControlName='monday'></mat-checkbox>
+  <ng-template [ngIf]='mondayOn === true'>
+  <label class='time-label' for='monday-from'>From</label>
+  <select formControlName='mondayFromHour'>
+    <option *ngFor='let hour of scheduleHours'>{{hour}}</option>
+  </select> :
+  <select formControlName='mondayFromPeriod'>
+    <option *ngFor='let period of schedulePeriods'>{{period}}</option>
+  </select>
+  <label class='time-label' for='monday-to'>to</label>
+  <select formControlName='mondayToHour'>
+    <option *ngFor='let hour of scheduleHours'>{{hour}}</option>
+  </select> :
+  <select formControlName='mondayToPeriod'>
+    <option *ngFor='let period of schedulePeriods'>{{period}}</option>
+  </select>
+  </ng-template>
   </div>
+
+  <div class='week-day'>
+  <label class='weekday-label' for='tuesday'>Tue</label>
+  <mat-checkbox (change)='tuesdayToggle()' name='tuesday' id='tuesday' formControlName='tuesday'></mat-checkbox>
+  <ng-template [ngIf]='tuesdayOn === true'>
+  <label class='time-label' for='monday-from'>From</label>
+  <select formControlName='tuesdayFromHour'>
+    <option *ngFor='let hour of scheduleHours; let i = index' [attr.selected]='i == 0 ? true : null'>{{hour}}</option>
+  </select> :
+  <select formControlName='tuesdayFromPeriod'>
+    <option *ngFor='let period of schedulePeriods; let i = index' [attr.selected]='i == 0 ? true : null'>{{period}}</option>
+  </select>
+  <label class='time-label' for='tuesday-to'>to</label>
+  <select formControlName='tuesdayToHour'>
+    <option *ngFor='let hour of scheduleHours; let i = index' [attr.selected]='i == 0 ? true : null'>{{hour}}</option>
+  </select> :
+  <select formControlName='tuesdayToPeriod'>
+    <option *ngFor='let period of schedulePeriods; let i = index' [attr.selected]='i == 0 ? true : null'>{{period}}</option>
+  </select>  </ng-template>
+  </div>
+
+  <div class='week-day'>
+  <label class='weekday-label' for='wednesday'>Wed</label>
+  <mat-checkbox (change)='wednesdayToggle()' name='wednesday' id='wednesday' formControlName='wednesday'></mat-checkbox>
+  <ng-template [ngIf]='wednesdayOn === true'>
+  <label class='time-label' for='wednesday-from'>From</label>
+  <select formControlName='wednesdayFromHour'>
+    <option *ngFor='let hour of scheduleHours; let i = index' [attr.selected]='i == 0 ? true : null'>{{hour}}</option>
+  </select> :
+  <select formControlName='wednesdayFromPeriod'>
+    <option *ngFor='let period of schedulePeriods; let i = index' [attr.selected]='i == 0 ? true : null'>{{period}}</option>
+  </select>
+  <label class='time-label' for='wednesday-to'>to</label>
+  <select formControlName='wednesdayToHour'>
+    <option *ngFor='let hour of scheduleHours; let i = index' [attr.selected]='i == 0 ? true : null'>{{hour}}</option>
+  </select> :
+  <select formControlName='wednesdayToPeriod'>
+    <option *ngFor='let period of schedulePeriods; let i = index' [attr.selected]='i == 0 ? true : null'>{{period}}</option>
+  </select>
+  </ng-template>
+  </div>
+
+  <div class='week-day'>
+  <label class='weekday-label' for='thursday'>Thu</label>
+  <mat-checkbox (change)='thursdayToggle()' name='thursday' id='thursday' formControlName='thursday'></mat-checkbox>
+  <ng-template [ngIf]='thursdayOn === true'>
+  <label class='time-label' for='thursday-from'>From</label>
+  <select formControlName='thursdayFromHour'>
+    <option *ngFor='let hour of scheduleHours; let i = index' [attr.selected]='i == 0 ? true : null'>{{hour}}</option>
+  </select> :
+  <select formControlName='thursdayFromPeriod'>
+    <option *ngFor='let period of schedulePeriods; let i = index' [attr.selected]='i == 0 ? true : null'>{{period}}</option>
+  </select>
+  <label class='time-label' for='thursday-to'>to</label>
+  <select formControlName='thursdayToHour'>
+    <option *ngFor='let hour of scheduleHours; let i = index' [attr.selected]='i == 0 ? true : null'>{{hour}}</option>
+  </select> :
+  <select formControlName='thursdayToPeriod'>
+    <option *ngFor='let period of schedulePeriods; let i = index' [attr.selected]='i == 0 ? true : null'>{{period}}</option>
+  </select>
+  </ng-template>
+  </div>
+
+  <div class='week-day'>
+  <label class='weekday-label' for='friday'>Fri</label>
+  <mat-checkbox (change)='fridayToggle()' name='friday' id='friday' formControlName='friday'></mat-checkbox>
+  <ng-template [ngIf]='fridayOn === true'>
+  <label class='time-label' for='monday-from'>From</label>
+  <select formControlName='fridayFromHour'>
+    <option *ngFor='let hour of scheduleHours; let i = index' [attr.selected]='i == 0 ? true : null'>{{hour}}</option>
+  </select> :
+  <select formControlName='fridayFromPeriod'>
+    <option *ngFor='let period of schedulePeriods; let i = index' [attr.selected]='i == 0 ? true : null'>{{period}}</option>
+  </select>
+  <label class='time-label' for='monday-to'>to</label>
+  <select formControlName='fridayToHour'>
+    <option *ngFor='let hour of scheduleHours; let i = index' [attr.selected]='i == 0 ? true : null'>{{hour}}</option>
+  </select> :
+  <select formControlName='fridayToPeriod'>
+    <option *ngFor='let period of schedulePeriods; let i = index' [attr.selected]='i == 0 ? true : null'>{{period}}</option>
+  </select>
+  </ng-template>
+  </div>
+
+  <div class='week-day'>
+  <label class='weekday-label' for='saturday'>Sat</label>
+  <mat-checkbox (change)='saturdayToggle()' name='saturday' id='saturday' formControlName='saturday'></mat-checkbox>
+  <ng-template [ngIf]='saturdayOn === true'>
+  <label class='time-label' for='monday-from'>From</label>
+  <select formControlName='saturdayFromHour'>
+    <option *ngFor='let hour of scheduleHours; let i = index' [attr.selected]='i == 0 ? true : null'>{{hour}}</option>
+  </select> :
+  <select formControlName='saturdayFromPeriod'>
+    <option *ngFor='let period of schedulePeriods; let i = index' [attr.selected]='i == 0 ? true : null'>{{period}}</option>
+  </select>
+  <label class='time-label' for='monday-to'>to</label>
+  <select formControlName='saturdayToHour'>
+    <option *ngFor='let hour of scheduleHours; let i = index' [attr.selected]='i == 0 ? true : null'>{{hour}}</option>
+  </select> :
+  <select formControlName='saturdayToPeriod'>
+    <option *ngFor='let period of schedulePeriods; let i = index' [attr.selected]='i == 0 ? true : null'>{{period}}</option>
+  </select>
+  </ng-template>
+  </div>
+
+  <div class='week-day'>
+  <label class='weekday-label' for='sunday'>Sun</label>
+  <mat-checkbox (change)='sundayToggle()' name='sunday' id='sunday' formControlName='sunday'></mat-checkbox>
+  <ng-template [ngIf]='sundayOn === true'>
+  <label class='time-label' for='monday-from'>From</label>
+  <select formControlName='sundayFromHour'>
+    <option *ngFor='let hour of scheduleHours; let i = index' [attr.selected]='i == 0 ? true : null'>{{hour}}</option>
+  </select> :
+  <select formControlName='sundayFromPeriod'>
+    <option *ngFor='let period of schedulePeriods; let i = index' [attr.selected]='i == 0 ? true : null'>{{period}}</option>
+  </select>
+  <label class='time-label' for='monday-to'>to</label>
+  <select formControlName='sundayToHour'>
+    <option *ngFor='let hour of scheduleHours; let i = index' [attr.selected]='i == 0 ? true : null'>{{hour}}</option>
+  </select> :
+  <select formControlName='sundayToPeriod'>
+    <option *ngFor='let period of schedulePeriods; let i = index' [attr.selected]='i == 0 ? true : null'>{{period}}</option>
+  </select>
+  </ng-template>
+  </div>
+</div>
   <button type='submit'>Continue</button>
   </form>
 </div>

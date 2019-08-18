@@ -11,7 +11,14 @@ const tutorSchema = mongoose.Schema({
   bio: { type: String },
   profilePath: { type: String },
   subject: {type: String},
-  specialisationList: {type: String}
+  specialisationList: {type: String},
+  monday: {type: String},
+  tuesday: {type: String},
+  wednesday: {type: String},
+  thursday: {type: String},
+  friday: {type: String},
+  saturday: {type: String},
+  sunday: {type: String}
 });
 
 tutorSchema.plugin(uniqueValidator);

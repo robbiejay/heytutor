@@ -18,8 +18,15 @@
     <app-registration-subjects [tutorId]='tutorId' *ngIf="!isSubject"></app-registration-subjects>
     </ng-template>
 
-    <ng-template [ngIf]='isAuth'>
+    <ng-template [ngIf]='isAuth && isIdentified && isBio && isSubject && !isAvailability'>
     <app-registration-availability [tutorId]='tutorId' *ngIf="!isAvailability"></app-registration-availability>
+    </ng-template>
+
+    <ng-template [ngIf]='isAuth && isIdentified && isBio && isSubject && isAvailability'>
+      <div class='form-container'>
+      <h1>That's everything!</h1>
+      <a routerLink='/dashboard'><button class='btn btn-success'>Go To Dashboard</button></a>
+      </div>
     </ng-template>
 
 

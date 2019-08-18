@@ -20,12 +20,13 @@ import { BulletinsComponent } from './home/bulletins/bulletins.component';
 import { BulletinComponent } from './home/bulletins/bulletin/bulletin.component';
 import { SubjectsComponent } from './home/subjects/subjects.component';
 import { NgxSmartModalModule, NgxSmartModalService } from 'ngx-smart-modal';
-import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker';
 import { SignupComponent } from './signup/signup.component';
 import { LoginComponent } from './login/login.component';
 
 import {MatExpansionModule } from '@angular/material/expansion';
 import {MatTabsModule} from '@angular/material/tabs';
+import {MatCheckboxModule} from '@angular/material/checkbox';
+
 
 import { FindTutorComponent } from './home/find-tutor/find-tutor.component';
 import { TutorsNearMeComponent } from './tutors-near-me/tutors-near-me.component';
@@ -49,6 +50,7 @@ import { RegistrationBioComponent } from './tutor-registration/registration-bio/
 import { RegistrationIdentificationComponent } from './tutor-registration/registration-identification/registration-identification.component';
 import { RegistrationLoginComponent } from './tutor-registration/registration-login/registration-login.component';
 
+import bootstrap from "bootstrap";
 
 @NgModule({
   declarations: [
@@ -89,8 +91,8 @@ import { RegistrationLoginComponent } from './tutor-registration/registration-lo
     AngularFontAwesomeModule,
     MatExpansionModule,
     MatTabsModule,
+    MatCheckboxModule,
     SliderModule,
-    NgxMaterialTimepickerModule,
     NgxSmartModalModule.forRoot()
   ],
   providers: [NgxSmartModalService,
