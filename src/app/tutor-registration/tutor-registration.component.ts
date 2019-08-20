@@ -3,6 +3,8 @@ import { AuthService } from '../_services/auth/auth.service';
 import { TutorService } from '../_services/tutor.service';
 import { Subscription } from 'rxjs';
 
+import { IdentificationData } from '../_models/tutor-data/identificationData.model';
+
 @Component({
   selector: 'app-tutor-registration',
   templateUrl: './tutor-registration.component.html',
@@ -16,20 +18,21 @@ export class TutorRegistrationComponent implements OnInit {
   private experienceListenerSubs: Subscription;
   private subjectListenerSubs: Subscription;
   private availabilityListenerSubs: Subscription;
+
+  identificationData = [];
+
   isIdentified: boolean;
   isBio: boolean;
   isExperience: boolean;
   isSubject: boolean;
   isAvailability: boolean;
   tutorId: string;
-  currentRegistrationStage: string;
-  public registrationStage = ['id','bio','subject','experience','availability']
+
   constructor(private authService: AuthService,
               private tutorService: TutorService) { }
 
   ngOnInit() {
     this.isAuth = this.authService.getIsAuth();
-    this.currentRegistrationStage = 'id'
     this.authListenerSubs = this.authService
     .getAuthStatusListener()
     .subscribe(isAuthenticated => {
@@ -39,48 +42,40 @@ export class TutorRegistrationComponent implements OnInit {
     if(this.isAuth){
     this.tutorId = this.authService.getAuthData().tutorId;
   }
-
+  this.tutorService.checkIdentification(this.tutorId);
+  this.tutorService.checkBio(this.tutorId);
+  this.tutorService.checkSubject(this.tutorId);
+  this.tutorService.checkAvailability(this.tutorId);
 
   this.identificationListenerSubs = this.tutorService
   .getIdentificationStatusListener()
   .subscribe(isIdentified => {
     this.isIdentified = isIdentified;
-    console.log("THIS IS THE IDENTIFIED")
-    console.log(isIdentified);
   })
 
   this.bioListenerSubs = this.tutorService
   .getBioStatusListener()
   .subscribe(isBio => {
     this.isBio = isBio;
-    console.log("THIS IS THE BIO")
-    console.log(isBio);
   })
 
   this.experienceListenerSubs = this.tutorService
   .getExperienceStatusListener()
   .subscribe(isExperience => {
     this.isExperience = isExperience;
-    console.log("THIS IS THE EXPERIENCE")
-    console.log(isExperience);
   })
 
   this.subjectListenerSubs = this.tutorService
   .getSubjectStatusListener()
   .subscribe(isSubject => {
     this.isSubject = isSubject;
-    console.log("THIS IS THE SUBJECT")
-    console.log(isSubject);
   })
 
   this.availabilityListenerSubs = this.tutorService
   .getAvailabilityStatusListener()
   .subscribe(isAvailability => {
     this.isAvailability = isAvailability;
-    console.log("THIS IS THE AVAILABILITY")
-    console.log(isAvailability);
   })
-
   }
 
 }

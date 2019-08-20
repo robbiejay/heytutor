@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { FormControl, FormGroup } from '@angular/forms';
 import { TutorService } from '../../_services/tutor.service';
+import { AuthService } from '../../_services/auth/auth.service';
 import { Subscription } from 'rxjs';
 @Component({
   selector: 'app-registration-availability',
@@ -21,7 +22,7 @@ export class RegistrationAvailabilityComponent implements OnInit {
 
 
   form: FormGroup;
-  monday: FormControl = new FormControl();
+    monday: FormControl = new FormControl();
   mondayOn: boolean;
   tuesdayOn: boolean;
   wednesdayOn: boolean;
@@ -30,8 +31,12 @@ export class RegistrationAvailabilityComponent implements OnInit {
   saturdayOn: boolean;
   sundayOn: boolean;
 
+  isAuth:boolean;
+  private authListenerSubs: Subscription;
+
   @Input() tutorId: string;
-  constructor(public tutorService: TutorService) { }
+  constructor(public authService: AuthService,
+              public tutorService: TutorService) { }
 
   ngOnInit() {
     this.mondayOn = false;
@@ -89,6 +94,17 @@ export class RegistrationAvailabilityComponent implements OnInit {
       sundayToHour: new FormControl(null, {    }),
       sundayToPeriod: new FormControl(null, {  }),
   })
+
+  this.isAuth = this.authService.getIsAuth();
+  this.authListenerSubs = this.authService
+  .getAuthStatusListener()
+  .subscribe(isAuthenticated => {
+    this.isAuth = isAuthenticated;
+    console.log(isAuthenticated);
+  })
+  if(this.isAuth){
+  this.tutorId = this.authService.getAuthData().tutorId;
+}
 }
 
 mondayToggle() {
@@ -228,14 +244,43 @@ sundayToggle() {
 }
 
 onFormSubmit() {
-  const monday = this.form.value.mondayFromHour + ':' + this.form.value.mondayFromPeriod + '-' + this.form.value.mondayToHour + ':' + this.form.value.mondayToPeriod;
-  const tuesday = this.form.value.tuesdayFromHour + ':' + this.form.value.tuesdayFromPeriod + '-' + this.form.value.tuesdayToHour + ':' + this.form.value.tuesdayToPeriod;
-  const wednesday = this.form.value.wednesdayFromHour + ':' + this.form.value.wednesdayFromPeriod + '-' + this.form.value.wednesdayToHour + ':'+ this.form.value.wednesdayToPeriod;
-  const thursday = this.form.value.thursdayFromHour + ':'+ this.form.value.thursdayFromPeriod + '-' + this.form.value.thursdayToHour + ':' + this.form.value.thursdayToPeriod;
-  const friday = this.form.value.fridayFromHour + ':' + this.form.value.fridayFromPeriod + '-' + this.form.value.fridayToHour + ':' + this.form.value.fridayToPeriod;
-  const saturday = this.form.value.saturdayFromHour + ':' + this.form.value.saturdayFromPeriod + '-' + this.form.value.saturdayToHour + ':' + this.form.value.saturdayToPeriod;
-  const sunday = this.form.value.sundayFromHour + ':' + this.form.value.sundayFromPeriod + '-' + this.form.value.sundayToHour + ':' + this.form.value.sundayToPeriod;
 
+  let monday = this.form.value.mondayFromHour + ':' + this.form.value.mondayFromPeriod + '-' + this.form.value.mondayToHour + ':' + this.form.value.mondayToPeriod;
+  if(!this.form.value.mondayFromHour && !this.form.value.mondayFromPeriod && !this.form.value.mondayToHour && !this.form.value.mondayToPeriod) {
+    monday = '';
+  }
+
+  let tuesday = this.form.value.tuesdayFromHour + ':' + this.form.value.tuesdayFromPeriod + '-' + this.form.value.tuesdayToHour + ':' + this.form.value.tuesdayToPeriod;
+  if(!this.form.value.tuesdayFromHour && !this.form.value.tuesdayFromPeriod && !this.form.value.tuesdayToHour && !this.form.value.tuesdayToPeriod) {
+    tuesday = '';
+  }
+
+  let wednesday = this.form.value.wednesdayFromHour + ':' + this.form.value.wednesdayFromPeriod + '-' + this.form.value.wednesdayToHour + ':'+ this.form.value.wednesdayToPeriod;
+  if(!this.form.value.wednesdayFromHour && !this.form.value.wednesdayFromPeriod && !this.form.value.wednesdayToHour && !this.form.value.wednesdayToPeriod) {
+    wednesday = '';
+  }
+
+  let thursday = this.form.value.thursdayFromHour + ':'+ this.form.value.thursdayFromPeriod + '-' + this.form.value.thursdayToHour + ':' + this.form.value.thursdayToPeriod;
+  if(!this.form.value.thursdayFromHour && !this.form.value.thursdayFromPeriod && !this.form.value.thursdayToHour && !this.form.value.thursdayToPeriod) {
+    thursday = '';
+  }
+
+  let friday = this.form.value.fridayFromHour + ':' + this.form.value.fridayFromPeriod + '-' + this.form.value.fridayToHour + ':' + this.form.value.fridayToPeriod;
+  if(!this.form.value.fridayFromHour && !this.form.value.fridayFromPeriod && !this.form.value.fridayToHour && !this.form.value.fridayToPeriod) {
+    friday = '';
+  }
+  let saturday = this.form.value.saturdayFromHour + ':' + this.form.value.saturdayFromPeriod + '-' + this.form.value.saturdayToHour + ':' + this.form.value.saturdayToPeriod;
+  if(!this.form.value.saturdayFromHour && !this.form.value.saturdayFromPeriod && !this.form.value.saturdayToHour && !this.form.value.saturdayToPeriod) {
+    saturday = '';
+  }
+
+  let sunday = this.form.value.sundayFromHour + ':' + this.form.value.sundayFromPeriod + '-' + this.form.value.sundayToHour + ':' + this.form.value.sundayToPeriod;
+  if(!this.form.value.sundayFromHour && !this.form.value.sundayFromPeriod && !this.form.value.sundayToHour && !this.form.value.sundayToPeriod) {
+    sunday = '';
+  }
+
+
+console.log(monday + tuesday + wednesday + thursday + friday + saturday + sunday)
 this.tutorService.updateAvailability(this.tutorId,monday,tuesday,wednesday,thursday,friday,saturday,sunday);
 
 

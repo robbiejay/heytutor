@@ -4,15 +4,20 @@ import { IdentificationData } from '../_models/tutor-data/identificationData.mod
 import { BioData } from '../_models/tutor-data/bioData.model';
 import { SubjectData } from '../_models/tutor-data/subjectData.model';
 import { AvailabilityData } from '../_models/tutor-data/availabilityData.model';
+import { TutorData } from '../_models/tutor-data/tutorData.model';
 import { Subject } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TutorService {
 
-  constructor(private http: HttpClient) { }
+  private tutors: TutorData[] = [];
+  private tutorsUpdated = new Subject<TutorData[]>();
 
+  constructor(private http: HttpClient) { }
+// Consider splitting out into Tutor Registration Service and Tutor Listing Service
   private identificationStatusListener = new Subject<boolean>();
   identificationIsAdded: boolean;
   private bioStatusListener = new Subject<boolean>();
@@ -23,6 +28,20 @@ export class TutorService {
   subjectIsAdded: boolean;
   private availabilityStatusListener = new Subject<boolean>();
   availabilityIsAdded: boolean;
+
+  checkIdentification(
+    id: string
+  ) {
+    return this.http.get<{identification: any}>(
+        'http://localhost:3000/api/tutors/identification/' + id
+      ).subscribe(response => {
+        if(response.identification) {
+        if (response.identification.cvPath && response.identification.cvPath) {
+          this.identificationIsAdded = true;
+          this.identificationStatusListener.next(true);
+        }
+      }
+      })};
 
   getIsIdentified() {
     return this.identificationIsAdded;
@@ -53,6 +72,18 @@ export class TutorService {
     });
   }
 
+  checkBio(id: string
+  ) {
+    return this.http.get<{bio: any}>(
+        'http://localhost:3000/api/tutors/bio/' + id
+      ).subscribe(response => {
+        console.log(response);
+        if (response.bio.bio && response.bio.profilePath) {
+          this.bioIsAdded = true;
+          this.bioStatusListener.next(true);
+        }
+      })};
+
   getIsBio() {
     return this.bioIsAdded;
   }
@@ -82,6 +113,7 @@ export class TutorService {
     })
   }
 
+
   getIsExperience() {
     return this.experienceIsAdded;
   }
@@ -89,6 +121,20 @@ export class TutorService {
   getExperienceStatusListener() {
     return this.experienceStatusListener.asObservable();
   }
+
+  checkSubject(
+    id: string
+    ) {
+      return this.http.get<{subject: any}>(
+          'http://localhost:3000/api/tutors/subject/' + id
+        ).subscribe(response => {
+          console.log(response);
+          if (response.subject.subject && response.subject.specialisationList) {
+
+            this.subjectIsAdded = true;
+            this.subjectStatusListener.next(true);
+          }
+        })};
 
   getIsSubject() {
     return this.subjectIsAdded;
@@ -101,7 +147,7 @@ export class TutorService {
   updateSubject(
     id: string,
     subject: string,
-    specialisationList: string
+    specialisationList: Array<string>
   ) {
     let subjectData: SubjectData;
     subjectData = {
@@ -120,6 +166,19 @@ export class TutorService {
       }
     })
   }
+
+  checkAvailability(id: string
+  ) {
+    return this.http.get<{availability: any}>(
+        'http://localhost:3000/api/tutors/availability/' + id
+      ).subscribe(response => {
+        console.log(response);
+        if (response.availability.monday || response.availability.tuesday || response.availability.wednesday || response.availability.thursday || response.availability.friday || response.availability.saturday || response.availability.sunday) {
+          this.availabilityIsAdded = true;
+          this.availabilityStatusListener.next(true);
+          console.log('triggered');
+        }
+      })};
 
   getIsAvailability() {
     return this.availabilityIsAdded;
@@ -160,7 +219,41 @@ export class TutorService {
         this.availabilityStatusListener.next(true);
       }
     })
-
   }
+
+  getTutors() {
+    console.log('getTutors() is triggered');
+    this.http.get<{message: string; tutors: any}>(
+      'http://localhost:3000/api/tutors/list'
+    )
+    .pipe(
+      map(tutorData => {
+        return tutorData.tutors.map(tutor => {
+          return {
+            firstname: tutor.firstname,
+            lastname: tutor.lastname,
+            bio: tutor.bio,
+            profilePath: tutor.profilePath,
+            subject: tutor.subject,
+            specialisationList: tutor.specialisationList,
+            monday: tutor.monday,
+            tuesday: tutor.tuesday,
+            wednesday: tutor.wednesday,
+            thursday: tutor.thursday,
+            friday: tutor.friday,
+            saturday: tutor.saturday,
+            sunday: tutor.sunday
+          }
+        })
+      })
+    ).subscribe(transformedTutors => {
+      this.tutors = transformedTutors;
+      this.tutorsUpdated.next([...this.tutors]);
+    })
+  }
+
+  getTutorUpdateListener() {
+  return this.tutorsUpdated.asObservable();
+}
 
 }

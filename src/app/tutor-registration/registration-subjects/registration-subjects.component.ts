@@ -15,8 +15,12 @@ export class RegistrationSubjectsComponent implements OnInit {
   specialisationList = [];
   form: FormGroup;
 
+  isAuth: boolean;
+  private authListenerSubs: Subscription;
 
-  constructor(public tutorService: TutorService) { }
+
+  constructor(public tutorService: TutorService,
+              public authService: AuthService) { }
 
   ngOnInit() {
     this.newSpecialisationAdded = false;
@@ -30,6 +34,17 @@ export class RegistrationSubjectsComponent implements OnInit {
       newSpecialisation: new FormControl(null, {
       })
     });
+
+    this.isAuth = this.authService.getIsAuth();
+    this.authListenerSubs = this.authService
+    .getAuthStatusListener()
+    .subscribe(isAuthenticated => {
+      this.isAuth = isAuthenticated;
+      console.log(isAuthenticated);
+    })
+    if(this.isAuth){
+    this.tutorId = this.authService.getAuthData().tutorId;
+  }
 
   }
 
@@ -49,9 +64,8 @@ export class RegistrationSubjectsComponent implements OnInit {
     if (this.form.invalid && this.specialisationList.length <= 0) {
       return;
     }
-    const specialisationListString = this.specialisationList.toString();
-    console.log(specialisationListString);
-    this.tutorService.updateSubject(this.tutorId, this.form.value.subject, specialisationListString);
+    console.log(this.specialisationList);
+    this.tutorService.updateSubject(this.tutorId, this.form.value.subject, this.specialisationList);
   }
 
 }

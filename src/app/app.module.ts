@@ -51,6 +51,7 @@ import { RegistrationIdentificationComponent } from './tutor-registration/regist
 import { RegistrationLoginComponent } from './tutor-registration/registration-login/registration-login.component';
 
 import bootstrap from "bootstrap";
+import { TutorListComponent } from './tutor-list/tutor-list.component';
 
 @NgModule({
   declarations: [
@@ -79,7 +80,8 @@ import bootstrap from "bootstrap";
     RegistrationExperienceComponent,
     RegistrationBioComponent,
     RegistrationIdentificationComponent,
-    RegistrationLoginComponent
+    RegistrationLoginComponent,
+    TutorListComponent
   ],
   imports: [
     BrowserModule,

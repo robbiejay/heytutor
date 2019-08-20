@@ -1,0 +1,38 @@
+<div class='fluid-container'>
+<div class='container'>
+  <div class='row'>
+  <div class='col-8' id='subject-tutors'>
+    <h1><i style='color:#f00;font-size:1.777em;margin-right:14px;' class="fas fa-certificate"></i> New Tutors in your area !</h1>
+    <div class='tutor-card' *ngFor='let tutor of tutors'>
+      <div class='row'>
+        <div class='col-3'>
+          <div class='image-container'>
+            <img [src]="tutor.profilePath" [alt]="tutor.firstname">
+          </div>
+          <div class='schedule-container'>
+          <p><span>Mon:</span> {{tutor.monday}}</p>
+          <p><span>Tue:</span> {{tutor.tuesday}}</p>
+          <p><span>Wed:</span> {{tutor.wednesday}}</p>
+          <p><span>Thu:</span> {{tutor.thursday}}</p>
+          <p><span>Fri:</span> {{tutor.friday}}</p>
+          <p><span>Sat:</span> {{tutor.saturday}}</p>
+          <p><span>Sun:</span> {{tutor.sunday}}</p>
+          </div>
+          </div>
+          <div class='col-9'>
+            <h3>{{tutor.firstname}} {{tutor.lastname}}</h3>
+            <p>{{tutor.bio}}</p>
+            <h6 *ngFor='let specialisation of tutor.specialisationList'>{{specialisation}}</h6>
+            <button type='button' class='btn'>Book A Trial Lesson</button>
+            </div>
+        </div>
+    </div>
+
+
+    </div>
+    <div class='col-4'>
+      <h2>How Does It Work?</h2>
+    </div>
+  </div>
+  </div>
+  </div>

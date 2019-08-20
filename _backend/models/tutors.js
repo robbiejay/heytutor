@@ -11,7 +11,7 @@ const tutorSchema = mongoose.Schema({
   bio: { type: String },
   profilePath: { type: String },
   subject: {type: String},
-  specialisationList: {type: String},
+  specialisationList: {type: Array},
   monday: {type: String},
   tuesday: {type: String},
   wednesday: {type: String},

@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { Subject } from 'rxjs';
 import { AuthData } from './auth-data.model';
 import { NgxSmartModalService } from 'ngx-smart-modal';
+import { TutorService } from '../tutor.service';
 
 import { Student } from '../../_models/student.model';
 import { Tutor } from '../../_models/tutor.model';
@@ -30,7 +31,8 @@ private tutors: Tutor[] = [];
 
   constructor(private http: HttpClient,
               private router: Router,
-              private NgxSmartModalService: NgxSmartModalService) { }
+              private NgxSmartModalService: NgxSmartModalService,
+              public tutorService: TutorService) { }
 
   getToken() {
     return this.token;
@@ -133,6 +135,10 @@ loginTutor(email: string, password: string, firstname: string, lastname: string)
       this.saveTutorAuthData(token, this.tutorId, expirationDate);
       this.getAuthStatusListener();
         this.router.navigate(['/registration']);
+        this.tutorService.checkIdentification(this.tutorId);
+        this.tutorService.checkBio(this.tutorId);
+        this.tutorService.checkSubject(this.tutorId);
+        this.tutorService.checkAvailability(this.tutorId);
 
     }
   }, error => {
@@ -153,7 +159,6 @@ autoAuthUser() {
   if (expiresIn > 0) {
     this.token = authInformation.token;
     this.isAuthenticated = true;
-    console.log(this.isAuthenticated);
     this.setAuthTimer(expiresIn / 1000);
     this.authStatusListener.next(true);
   }
@@ -164,7 +169,6 @@ logout() {
   this.tutorId = null;
   this.isAuthenticated = false;
   this.authStatusListener.next(false);
-  console.log(this.token);
   clearTimeout(this.tokenTimer);
   this.clearAuthData();
   this.router.navigate(['/home']);
@@ -198,11 +202,8 @@ private clearAuthData() {
 
 getAuthData() {
   const token = localStorage.getItem('token');
-  console.log(token);
   const studentId = localStorage.getItem('studentId');
-  console.log(studentId);
   const tutorId = localStorage.getItem('tutorId');
-  console.log(tutorId);
   const expirationDate = localStorage.getItem('expiration');
   if (!token || !expirationDate) {
     return;
