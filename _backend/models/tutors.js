@@ -1,6 +1,12 @@
 const mongoose = require('mongoose');
 const uniqueValidator = require('mongoose-unique-validator');
 
+// const SpecialisationSchema = mongoose.Schema({
+//   title: { type: String}
+// });
+//
+// const Specialisation = mongoose.model('Specialisation', SpecialisationSchema)
+
 const tutorSchema = mongoose.Schema({
   firstname: { type: String },
   lastname: { type: String },
@@ -9,9 +15,11 @@ const tutorSchema = mongoose.Schema({
   identificationPath: { type: String },
   cvPath: { type: String },
   bio: { type: String },
+  location: { type: String },
   profilePath: { type: String },
   subject: {type: String},
-  specialisationList: {type: Array},
+  price: {type: Number},
+  specialisationList: [String],
   monday: {type: String},
   tuesday: {type: String},
   wednesday: {type: String},

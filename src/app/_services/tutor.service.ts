@@ -78,7 +78,7 @@ export class TutorService {
         'http://localhost:3000/api/tutors/bio/' + id
       ).subscribe(response => {
         console.log(response);
-        if (response.bio.bio && response.bio.profilePath) {
+        if (response.bio.bio && response.bio.location && response.bio.profilePath) {
           this.bioIsAdded = true;
           this.bioStatusListener.next(true);
         }
@@ -95,11 +95,13 @@ export class TutorService {
   updateBio(
     id: string,
     bio: string,
+    location: string,
     profile: File
   ) {
     let bioData = new FormData();
     bioData.append("id", id);
     bioData.append("bio", bio);
+    bioData.append("location", location);
     bioData.append("profile", profile);
     console.log(bioData);
     this.http.put('http://localhost:3000/api/tutors/bio/' + id, bioData, { observe: 'response'})
@@ -129,7 +131,7 @@ export class TutorService {
           'http://localhost:3000/api/tutors/subject/' + id
         ).subscribe(response => {
           console.log(response);
-          if (response.subject.subject && response.subject.specialisationList) {
+          if (response.subject.subject && response.subject.price && response.subject.specialisationList) {
 
             this.subjectIsAdded = true;
             this.subjectStatusListener.next(true);
@@ -147,12 +149,14 @@ export class TutorService {
   updateSubject(
     id: string,
     subject: string,
+    price: number,
     specialisationList: Array<string>
   ) {
     let subjectData: SubjectData;
     subjectData = {
       id: id,
       subject: subject,
+      price: price,
       specialisationList: specialisationList
     }
 

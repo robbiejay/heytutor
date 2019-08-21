@@ -1,5 +1,6 @@
 export interface BioData {
   id: string;
-  profile: string;
   bio: string;
+  location: string;
+  profilePath: string;
 }

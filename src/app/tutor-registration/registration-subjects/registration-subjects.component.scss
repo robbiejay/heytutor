@@ -42,15 +42,13 @@ p {
   margin-bottom: 14px;
   font-family: 'Open Sans', sans-serif;
   line-height: 1.333em;
+  padding: 14px;
 }
 
 label {
   width: 100%;
-  text-align: center;
+  text-align: left;
   margin-top: 14px;
-  margin-bottom: 14px;
-  padding-bottom: 14px;
-  border-bottom: 1px solid #fff;
 }
 
 textarea {
@@ -66,8 +64,29 @@ select {
   padding: 7px;
   border-radius: 7px;
   margin-bottom: 14px;
-  margin-top: 14px;
   width: 100%;
+}
+
+.price-input {
+  padding-top: 5px;
+  padding-bottom: 7px;
+  width: 100%;
+  border-radius: 7px;
+  border:none;
+  width: 87.5%;
+  margin-right:1%;
+  float: left;
+  display: inline;
+  padding-left: 7px;
+}
+
+span {
+  display: inline-block;
+  float: right;
+  width: 10.5%;
+  text-align: left;
+  margin-top: 7px;
+
 }
 
 .add-new-specialisation {
@@ -83,7 +102,8 @@ select {
   border: 7px;
   padding: 7px;
   border-radius: 7px;
-  border: 2px solid #fff;
+  padding-bottom: 8px;
+  width: 100%;
 }
 
 .specialisation-submit {
@@ -91,8 +111,10 @@ select {
   width: 100% !important;
   margin-left: 0 !important;
   border: 2px solid #f10d63 !important;
-  padding: 8px !important;
+  padding: 2px !important;
+  border-radius: 70px !important;
   color: #fff !important;
+  margin-top:3px !important;
 }
 
 h6 {

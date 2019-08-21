@@ -4,6 +4,7 @@ exports.updateSubject = (req,res,next) => {
   const subjectCredentials = new Tutor({
     _id: req.body.id,
     subject: req.body.subject,
+    price: req.body.price,
     specialisationList: req.body.specialisationList
   });
   console.log(subjectCredentials);
@@ -15,7 +16,7 @@ exports.updateSubject = (req,res,next) => {
 }
 
 exports.checkSubject = (req,res,next) => {
-  Tutor.findOne({_id: req.params.id}, {subject: 1, specialisationList: 1}).then(credentials => {
+  Tutor.findOne({_id: req.params.id}, {subject: 1, price: 1, specialisationList: 1}).then(credentials => {
     res.status(200).json({
       message: 'Subject fetched successfully',
       subject: credentials

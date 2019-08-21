@@ -3,6 +3,9 @@
   <h1>Choose your Subjects</h1>
   <p>This is where you start to specialise! You can add specialisations within each subject. You can add multiple subjects later if you wish.</p>
   <div class='form-group'>
+    <div class='row'>
+    <div class='col-6'>
+          <label for='subject'>Subject</label>
   <select formControlName='subject'>
   <option>English</option>
   <option>Maths</option>
@@ -13,8 +16,14 @@
   <option>Other...</option>
   </select>
   </div>
-  <p>You can add a new specialisation for SUBJECT here</p>
+  <div class='col-6'>
+    <label for='price'>Price</label><span>HKD</span>
+    <input type='text' formControlName='price' class='price-input'>
+    </div>
+  </div>
+  </div>
   <div class='row'>
+    <p>You can add specialisations in your subject, things such as phonics, drama or other special skills</p>
     <div class='col-4'>
     <button type='button' class='btn add-new-specialisation' (click)='addNewSpecialisation()'>Add New Specialisation +</button>
     </div>
@@ -23,7 +32,7 @@
     <input type='text' formControlName='newSpecialisation' class='specialisation-input'>
     </div>
     <div class='col-4'>
-    <button type='button' class='specialisation-submit' (click)='saveNewSpecialisation()'>Save</button>
+    <button type='button' class='btn specialisation-submit' (click)='saveNewSpecialisation()'>Save</button>
 
     </div>
     </ng-template>

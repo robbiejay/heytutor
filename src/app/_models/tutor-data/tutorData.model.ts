@@ -3,8 +3,9 @@ export interface TutorData {
   firstname: string;
   lastname: string;
   profile: string;
+  location: string;
   bio: string;
   subject: string;
-  price: string;
+  price: number;
   specialisationList: Array<string>;
 }

@@ -31,6 +31,11 @@ export class RegistrationSubjectsComponent implements OnInit {
           Validators.required
         ]
       }),
+      price: new FormControl(null, {
+        validators: [
+          Validators.required
+        ]
+      }),
       newSpecialisation: new FormControl(null, {
       })
     });
@@ -65,7 +70,7 @@ export class RegistrationSubjectsComponent implements OnInit {
       return;
     }
     console.log(this.specialisationList);
-    this.tutorService.updateSubject(this.tutorId, this.form.value.subject, this.specialisationList);
+    this.tutorService.updateSubject(this.tutorId, this.form.value.subject, this.form.value.price, this.specialisationList);
   }
 
 }

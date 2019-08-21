@@ -3,6 +3,10 @@
   <h1>It's time to let us know a bit more about yourself!</h1>
   <p>This is the first thing people will see when they're looking for a new teacher so give it your best shot! Upload a nice photo and write a short description about yourself in the area below. How long have you been teaching? What do you specialise in?</p>
   <div class='form-group white-border'>
+    <label for='location'>Location</label>
+      <select formControlName='location'>
+        <option *ngFor='let district of districts'>{{district}}</option>
+      </select>
     <label for='profile'>Add Profile Photo</label>
     <div class='temp-circle' *ngIf="!profilePreview && form.get('profile').invalid"></div>
     <div class='form-preview' *ngIf="profilePreview !== '' && profilePreview && form.get('profile').valid">

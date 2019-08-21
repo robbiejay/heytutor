@@ -7,6 +7,7 @@ exports.updateBio = (req,res,next) => {
   const bioCredentials = new Tutor({
     _id: req.body.id,
     bio: req.body.bio,
+    location: req.body.location,
     profilePath: profilePath
   });
   console.log(bioCredentials);
@@ -18,7 +19,7 @@ exports.updateBio = (req,res,next) => {
 }
 
 exports.checkBio = (req,res,next) => {
-  Tutor.findOne({_id: req.params.id}, {bio: 1, profilePath: 1}).then(credentials => {
+  Tutor.findOne({_id: req.params.id}, {bio: 1, location: 1, profilePath: 1}).then(credentials => {
     res.status(200).json({
       message: 'Bio fetched successfully',
       bio: credentials

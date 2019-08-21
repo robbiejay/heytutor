@@ -15,6 +15,26 @@ import { mimeType } from '../mime-type.validator';
 })
 export class RegistrationBioComponent implements OnInit {
 
+  public districts = [
+    'Island Central',
+    'Island West',
+    'Island East',
+    'Island South',
+    'Mong Kok',
+    'Sham Shui Po',
+    'Tsuen Wan',
+    'Wong Tai Sin',
+    'Kwun Tong',
+    'Sai Kung',
+    'Tsing Yi',
+    'Tung Chung',
+    'Shatin',
+    'Yuen Long',
+    'Tuen Mun',
+    'Lantau Island',
+    'Lamma Island',
+    'Cheung Chau'
+  ]
   form: FormGroup;
   profilePreview: string;
 
@@ -29,6 +49,11 @@ export class RegistrationBioComponent implements OnInit {
   ngOnInit() {
 
     this.form = new FormGroup({
+      location: new FormControl(null, {
+              validators: [
+                Validators.required
+              ]
+            }),
       profile: new FormControl(null, {
         validators: [
           Validators.required
@@ -73,7 +98,7 @@ onFormSubmit() {
   if(this.form.invalid) {
     return;
   }
-  this.tutorService.updateBio( this.tutorId, this.form.value.bio, this.form.value.profile)
+  this.tutorService.updateBio( this.tutorId, this.form.value.bio, this.form.value.location, this.form.value.profile)
   console.log('FormSubmit was triggered')
 }
 }
