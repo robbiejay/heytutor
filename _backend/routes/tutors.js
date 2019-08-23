@@ -33,6 +33,7 @@ router.put('/availability/:id', checkAuth, AvailabilityController.updateAvailabi
 router.get('/availability/:id', checkAuth, AvailabilityController.checkAvailability);
 
 router.get('/list', SearchController.getTutors);
+router.get('/:id', SearchController.getTutor);
 
 
 module.exports = router;

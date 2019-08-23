@@ -225,6 +225,12 @@ export class TutorService {
     })
   }
 
+  getTutor(id: string) {
+    return this.http.get<{tutor: any}> (
+      'http://localhost:3000/api/tutors/' + id
+    )
+}
+
   getTutors() {
     console.log('getTutors() is triggered');
     this.http.get<{message: string; tutors: any}>(

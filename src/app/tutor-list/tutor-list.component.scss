@@ -3,6 +3,7 @@
   background-color: #0f51f0;
   position: relative;
   z-index: 1;
+  padding-bottom: 140px;
 }
 
 h1 {
@@ -100,6 +101,32 @@ margin-right: 14px;
 }
 
 .tutor-card p {
+}
+
+.sidebar {
+  color: #fff;
+}
+
+.sidebar h2 {
+  transform: skewX(12deg);
+  border-bottom: 2px solid #fff;
+  padding-bottom: 14px;
+  margin-bottom: 14px;
+  font-family: 'Fredoka One', cursive;
+}
+
+.sidebar h3 {
+  font-family: 'Fredoka One', cursive;
+
+}
+
+.green-text {
+  color: #0ff140;
+}
+
+.pink-text {
+  color: #f5679c;
+  font-size: 1.777em;
 }
 
 .btn {

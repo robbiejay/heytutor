@@ -1,4 +1,102 @@
 <app-nav></app-nav>
 <div class='container' id='dashboard'>
-  <h1>Welcome PERSON!</h1>
-</div>
+  <div class="row">
+    <div class="col-4">
+
+      <div class='info-card'>
+        <div class='row'>
+        <div class="col-4">
+            <img src="{{tutor?.profile}}" alt="{{tutor?.firstname}}">
+        </div>
+        <div class="col-8">
+          <h2>{{tutor?.firstname}} {{tutor?.lastname}}</h2>
+          <h2>Tutor</h2>
+          <h2><i class="fas fa-map-pin"></i> &nbsp;{{tutor?.location}}</h2>
+        </div>
+      </div>
+      </div>
+      <div class='availability-widget'>
+        <h2>TUTOR SCHEDULE</h2>
+        <div class="week-day" matTooltip='{{tutor?.monday}}'>
+          <h3>MON</h3>
+          <span [className]="tutor?.monday ? 'weekday-active' : 'weekday-inactive'"></span>
+        </div>
+        <div class="week-day" matTooltip='{{tutor?.tuesday}}'>
+          <h3>TUE</h3>
+          <span [className]="tutor?.tuesday ? 'weekday-active' : 'weekday-inactive'"></span>
+        </div>
+        <div class="week-day" matTooltip='{{tutor?.wednesday}}'>
+          <h3>WED</h3>
+          <span [className]="tutor?.wednesday ? 'weekday-active' : 'weekday-inactive'"></span>
+        </div>
+        <div class="week-day" matTooltip='{{tutor?.thursday}}'>
+          <h3>THU</h3>
+          <span [className]="tutor?.thursday ? 'weekday-active' : 'weekday-inactive'"></span>
+        </div>
+        <div class="week-day" matTooltip='{{tutor?.friday}}'>
+          <h3>FRI</h3>
+          <span [className]="tutor?.friday ? 'weekday-active' : 'weekday-inactive'"></span>
+        </div>
+        <div class="week-day" matTooltip='{{tutor?.saturday}}'>
+          <h3>SAT</h3>
+          <span [className]="tutor?.saturday ? 'weekday-active' : 'weekday-inactive'"></span>
+        </div>
+        <div class="week-day" matTooltip='{{tutor?.sunday}}'>
+          <h3>SUN</h3>
+          <span [className]="tutor?.sunday ? 'weekday-active' : 'weekday-inactive'"></span>
+        </div>
+      </div>
+      <!-- <div class='bio-card'>
+          <p>{{tutor?.bio}}Lorem ipsum, or lipsum as it is sometimes known, is dummy text used in laying out print, graphic or web designs. The passage is attributed to an unknown typesetter in the 15th century who is thought to have scrambled parts of Cicero's De Finibus Bonorum et Malorum for use in a type specimen book.</p>
+      </div>3
+      <div class="availability-card">
+        <h2>MON: {{tutor?.monday}}</h2>
+        <h2>TUE: {{tutor?.tuesday}}</h2>
+        <h2>WED: {{tutor?.wednesday}}</h2>
+        <h2>THU: {{tutor?.thursday}}</h2>
+        <h2>FRI: {{tutor?.friday}}</h2>
+        <h2>SAT: {{tutor?.saturday}}</h2>
+        <h2>SUN: {{tutor?.sunday}}</h2>
+      </div> -->
+
+
+
+      <div class='subject-card'>
+        <h2>{{tutor?.subject}} <span style='font-size:0.75em;  background-color: rgba(45,101,240,1); padding: 3px; border-radius: 7px; color:#fff;letter-spacing:1px;'>{{tutor?.price}} <span style='font-size:0.75em;'>HKD</span></span></h2>
+        <h3 *ngFor='let specialisation of tutor?.specialisationList'>{{specialisation}}</h3>
+      </div>
+    </div>
+
+    <div class="col-8">
+
+      <div class="started-card">
+        <h2>Welcome to HeyTutor</h2>
+        <p>Download the Heytutor app to receive notifications about any new bookings straight away</p>
+      </div>
+      <div class='lesson-card'>
+        <h2>Upcoming Lessons</h2>
+        <div class='row booking'>
+          <div class='col-2'>
+          <h3>11:30</h3>
+          </div>
+          <div class='col-3'>
+          <h4>Sun 27th Sept</h4>
+          </div>
+          <div class='col-3'>
+          <h5>Shau Kei Wan</h5>
+          </div>
+          <div class='col-2'>
+          <h6>Charlisha</h6>
+          </div>
+          <div class='col-2'>
+          <h6>English</h6>
+          </div>
+        </div>
+      </div>
+      <div class="bulletin-card">
+        <h2>See latest bulletins &nbsp;<i class="far fa-sticky-note" style='color:#6af489;'></i></h2>
+
+      </div>
+      </div>
+    </div>
+  </div>

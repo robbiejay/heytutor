@@ -26,6 +26,8 @@ import { LoginComponent } from './login/login.component';
 import {MatExpansionModule } from '@angular/material/expansion';
 import {MatTabsModule} from '@angular/material/tabs';
 import {MatCheckboxModule} from '@angular/material/checkbox';
+import {MatTooltipModule} from '@angular/material/tooltip';
+
 
 
 import { FindTutorComponent } from './home/find-tutor/find-tutor.component';
@@ -52,6 +54,7 @@ import { RegistrationLoginComponent } from './tutor-registration/registration-lo
 
 import bootstrap from "bootstrap";
 import { TutorListComponent } from './tutor-list/tutor-list.component';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -81,7 +84,8 @@ import { TutorListComponent } from './tutor-list/tutor-list.component';
     RegistrationBioComponent,
     RegistrationIdentificationComponent,
     RegistrationLoginComponent,
-    TutorListComponent
+    TutorListComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
@@ -93,6 +97,7 @@ import { TutorListComponent } from './tutor-list/tutor-list.component';
     AngularFontAwesomeModule,
     MatExpansionModule,
     MatTabsModule,
+    MatTooltipModule,
     MatCheckboxModule,
     SliderModule,
     NgxSmartModalModule.forRoot()
