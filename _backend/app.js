@@ -7,16 +7,17 @@ const bodyParser = require('body-parser');
 const bulletinRoutes = require('./routes/bulletins');
 const studentRoutes = require('./routes/students');
 const tutorRoutes = require('./routes/tutors');
+const bookingRoutes = require('./routes/bookings');
 
 mongoose.connect(
  'mongodb+srv://robbie:$impsons10HEYTUTOR@heytutor-vlnhh.azure.mongodb.net/test?retryWrites=true&w=majority',
  {useNewUrlParser: true}
 )
 .then(() => {
-  console.log('Connected to the database!')
+  console.log('\x1b[32m%s\x1b[0m', 'Connected to the database!')
 })
 .catch(() => {
-  console.log('Connection Failed!');
+  console.log('\x1b[31m%s\x1b[0m', 'Connection Failed!');
 });
 
 app.use(bodyParser.json());
@@ -36,5 +37,6 @@ app.use((req, res, next) => {
 app.use('/api/bulletins', bulletinRoutes);
 app.use('/api/students', studentRoutes);
 app.use('/api/tutors', tutorRoutes);
+app.use('/api/bookings', bookingRoutes);
 
 module.exports = app;

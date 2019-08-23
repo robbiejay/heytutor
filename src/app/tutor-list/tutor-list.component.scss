@@ -27,11 +27,13 @@ h2 {
 }
 
 .tutor-card {
-  color: #fff;
-  background-color: #2d65f0;
+  color: #000;
+  background-color: #fefe73;
   border-radius: 7px;
   padding: 14px;
   margin-bottom: 7px;
+  border: 2px solid #000;
+
 }
 
 .tutor-card .image-container {
@@ -51,8 +53,8 @@ h2 {
   margin-right: auto;
   display: inline-block;
   float: left;
-  border: 4px solid #0f51f0;
-  box-shadow: 0px 0px 0px 2px #000;
+  border: 5px solid #0f51f0;
+  box-shadow: 0px 0px 0px 4px #333;
   border-radius: 100%;
 }
 
@@ -60,7 +62,6 @@ h2 {
 
 margin-top: 14px;
 padding-bottom: 7px;
-border-bottom: 2px solid rgba(255,255,255,0.75);
 letter-spacing: 1px;
 font-size: 1.333em;
 width: 96%;
@@ -78,9 +79,15 @@ font-family: 'Fredoka One', cursive;
   margin-top: 4px;
   margin-bottom: 4px;
 
+
 }
 
 .schedule-container span {
+  font-family: 'Fredoka One', cursive;
+  color: #f10d63;
+  display: inline-block;
+  width: 28px;
+
 
 }
 
@@ -93,14 +100,45 @@ font-family: 'Fredoka One', cursive;
   font-family: 'Fredoka One', cursive;
 border-radius: 14px;
 padding: 4px;
-border: 2px solid #fff;
+border: 2px solid #0ff140;
 display: inline;
 float: left;
 margin-right: 14px;
+padding-left: 10px;
+padding-right: 10px;
 
 }
 
 .tutor-card p {
+  font-family: 'Open Sans', sans-serif;
+}
+
+.tutor-card .price {
+  position: absolute;
+  background-color: #0ff140;
+  padding: 4px;
+  right: -14px;
+  top: -15px;
+  width: 154px;
+  padding-left: 14px;
+  display: block;
+  color: #fff;
+  font-size: 1.777em;
+
+}
+
+.tutor-card .triangle {
+  position: absolute;
+  right: -14px;
+  top: -8px;
+  width: 0;
+height: 0;
+border-bottom: 7px solid #00bd2a;
+border-right: 13px solid transparent;
+}
+
+.bio {
+padding: 7px;
 }
 
 .sidebar {
@@ -145,12 +183,11 @@ margin-right: 14px;
   width: 100%;
   position: relative;
   font-family: 'Fredoka One', cursive;
-background: linear-gradient(135deg, rgba(45,101,240,1) 0%,rgba(15,79,240,1) 50%,rgba(4,59,197,1) 100%);
-  border: 0px solid transparent;
+background: linear-gradient(135deg, rgba(243,57,126,1) 0%,rgba(241,13,99,1) 50%,rgba(236,0,97,1) 100%);
+  border: 2px solid #000;
   border-radius: 7px;
-  background-clip: padding-box;
   padding: 7px;
-  box-shadow: 0 3px 9px rgba(0,0,0,0.5);
+
 }
 
 .btn::after {

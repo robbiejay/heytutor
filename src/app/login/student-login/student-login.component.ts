@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { AuthService } from '../../_services/auth/auth.service';
+import { NgxSmartModalService } from 'ngx-smart-modal';
 
 @Component({
   selector: 'app-student-login',
@@ -9,7 +10,8 @@ import { AuthService } from '../../_services/auth/auth.service';
 })
 export class StudentLoginComponent implements OnInit {
 
-  constructor(public authService: AuthService) { }
+  constructor(public authService: AuthService,
+              public NgxSmartModalService: NgxSmartModalService) { }
 
   ngOnInit() {
   }
@@ -19,5 +21,12 @@ export class StudentLoginComponent implements OnInit {
     const firstname = null;
     const lastname = null;
     this.authService.login(email, password, firstname, lastname);
+  }
+
+  onSignUp() {
+
+        this.NgxSmartModalService.getModal('logIn').close();
+        this.NgxSmartModalService.getModal('signUp').open();
+
   }
 }

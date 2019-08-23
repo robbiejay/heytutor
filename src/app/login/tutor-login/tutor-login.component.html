@@ -1,4 +1,4 @@
-<h2>Tutor</h2>
+<h2>Sign in as <span style='color:#0f51f0;'>Tutor</span></h2>
 <form (ngSubmit)='onTutorLogin(f)' #f=ngForm>
 <div class='form-group'>
 <label for='email'>Mail</label>
@@ -8,6 +8,7 @@
 <label for='password'>Password</label>
 <input type='password' id='password' name='password' ngModel class='form-control'>
 </div>
-<button class='btn' type='submit'>Log In</button>
+<button class='btn login' type='submit'>Log In</button>
+<button class='btn sign-up' type='button' (click)="onSignUp()">or Sign Up here?</button>
 <ng-template [ngIf]='this.authService.userIsUnauthorized'><p><i class="far fa-times-circle"></i> Wrong Username or Password</p></ng-template>
 </form>

@@ -2,9 +2,10 @@
     <div class='container-fluid'>
 <h1>You're booking a lesson with {{tutor?.firstname}}<span style='color:#0f51f0;'>!</span></h1>
 <div class='form-container'>
+  <form [formGroup]='form' (submit)='onFormSubmit()'>
 <div class="form-group">
     <label>Date</label>
-  <input matInput [matDatepicker]="picker" placeholder="Choose a date">
+  <input matInput [matDatepicker]="picker" placeholder="Choose a date" formControlName='date'>
 <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
 <mat-datepicker #picker></mat-datepicker>
 </div>
@@ -12,24 +13,31 @@
   <label>Time</label>
   <div class="row">
       <div class="col-6">
-        <select class="" name="">
+        <select class="" name="" formControlName='hour'>
           <option *ngFor='let hour of scheduleHours' value="{{hour}}">{{hour}}</option>
         </select>
         <span>:</span>
   </div>
   <div class="col-6">
-        <select class="" name="">
-          <option *ngFor='let hour of schedulePeriods' value="{{hour}}">{{hour}}</option>
+        <select class="" name="" formControlName='minute'>
+          <option *ngFor='let period of schedulePeriods' value="{{period}}">{{period}}</option>
 
         </select>
   </div>
 </div>
 </div>
+
+<div class='form-group'>
+  <label>Location</label>
+  <input class='location' formControlName='location' type='text'>
+</div>
+
 <div class="form-group">
   <label>Lesson Requirements</label>
-  <textarea name="description" rows="8"></textarea>
+  <textarea name="description" formControlName='description' rows="5"></textarea>
 </div>
 <button class='btn' type="submit">Proceed</button>
+</form>
   </div>
     </div>
 </ngx-smart-modal>

@@ -21,9 +21,12 @@
           </div>
           <div class='col-9'>
             <h3>{{tutor.firstname}} {{tutor.lastname}}</h3>
-            <p>{{tutor.bio}}</p>
+            <h3 class='price'>{{tutor.price}} <span style='font-size: 0.75em;color:#000;'>HKD</span></h3>
+            <div class='triangle'></div>
+            <p class='bio'>{{tutor.bio}}</p>
             <h6 *ngFor='let specialisation of tutor.specialisationList'>{{specialisation}}</h6>
-            <button type='button' class='btn' (click)="openBookingModal(tutor)">Book A Trial Lesson</button>
+            <button *ngIf='!isAuth' type='button' class='btn' (click)="NgxSmartModalService.getModal('logIn').open()">Log in to Book</button>
+            <button *ngIf='isAuth' type='button' class='btn' (click)="openBookingModal(tutor)">Book A Trial Lesson</button>
             </div>
         </div>
     </div>

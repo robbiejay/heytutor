@@ -240,9 +240,11 @@ export class TutorService {
       map(tutorData => {
         return tutorData.tutors.map(tutor => {
           return {
+            id: tutor._id,
             firstname: tutor.firstname,
             lastname: tutor.lastname,
             bio: tutor.bio,
+            price: tutor.price,
             profilePath: tutor.profilePath,
             subject: tutor.subject,
             specialisationList: tutor.specialisationList,
