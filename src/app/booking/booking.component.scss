@@ -1,0 +1,129 @@
+h1 {
+  font-family: 'Fredoka One', cursive;
+  font-size: 1.333em;
+  margin-top: 17px;
+  letter-spacing: 1px;
+  margin-bottom: 10px;
+  background-color: #fefefe;
+  color: #000;
+  border: 3px solid #000;
+  border-radius: 7px;
+  padding: 14px;
+}
+
+.form-container {
+  min-height: 240px;
+  margin-top: 4px;
+  background-color: #0f51f0;
+  border: 3px solid #000;
+  border-radius: 7px;
+  padding: 14px;
+
+}
+
+label {
+  font-family: 'Fredoka One', cursive;
+  font-size: 1em;
+  margin-bottom: 3px;
+  margin-top: 14px;
+  color: #000;
+  width: 100%;
+  display: block;
+}
+
+input{
+  border: 2px solid #000;
+  width: 89.6%;
+  border-radius: 7px;
+  background: #fefefe;
+  font-family: 'Fredoka One', cursive;
+  padding:4px;
+    padding-left: 7px;
+
+}
+
+button[type=submit] {
+  font-family: 'Fredoka One', cursive;
+  width: 100%;
+  border: 2px solid #000;
+  background-color: #f10d63;
+  color: #fff;
+}
+
+textarea {
+  border: 2px solid #000;
+  width: 100%;
+  border-radius: 7px;
+  background: #fefefe;
+  font-family: 'Fredoka One', cursive;
+
+}
+
+.form-group span {
+  font-size: 1.333em;
+  color: #fff;
+  position: absolute;
+  right: -3px;
+}
+select {
+  border: 2px solid #000;
+  width: 100%;
+  background-color: #fefefe;
+  font-family: 'Fredoka One', cursive;
+  border-radius: 7px;
+  padding: 4px;
+}
+
+.container-fluid {
+  padding: 0;
+}
+
+::ng-deep .nsm-content {
+  border: 3px solid #000 !important;
+ background-color: #ffff5f;
+}
+
+::ng-deep .mat-calendar {
+  background-color: #fefe73;
+  color: #000;
+  border: 2px solid #000;
+  border-radius: 7px;
+
+}
+
+::ng-deep .mat-calendar-table-header {
+color: #f10d63;
+font-family: 'Fredoka One', cursive;
+
+}
+
+::ng-deep .mat-calendar-body-label {
+color: #f10d63;
+font-family: 'Fredoka One', cursive;
+position: relative;
+font-size: 1.777em;
+top: -84px;
+
+}
+
+::ng-deep .mat-datepicker-content .mat-calendar-next-button {
+  color: #0f51f0;
+}
+
+::ng-deep .mat-datepicker-content .mat-calendar-previous-button {
+  color: #0f51f0;
+}
+
+::ng-deep .mat-calendar-body-cell-content {
+  color: #000;
+  font-family: 'Fredoka One', cursive;
+
+}
+
+::ng-deep .mat-calendar-controls .mat-calendar-period-button {
+  display: none;
+}
+
+::ng-deep .cdk-overlay-container {
+  z-index:2000;
+}

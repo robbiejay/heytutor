@@ -23,7 +23,7 @@
             <h3>{{tutor.firstname}} {{tutor.lastname}}</h3>
             <p>{{tutor.bio}}</p>
             <h6 *ngFor='let specialisation of tutor.specialisationList'>{{specialisation}}</h6>
-            <button type='button' class='btn'>Book A Trial Lesson</button>
+            <button type='button' class='btn' (click)="openBookingModal(tutor)">Book A Trial Lesson</button>
             </div>
         </div>
     </div>

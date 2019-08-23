@@ -27,13 +27,12 @@ import {MatExpansionModule } from '@angular/material/expansion';
 import {MatTabsModule} from '@angular/material/tabs';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatTooltipModule} from '@angular/material/tooltip';
-
-
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import { MatMomentDateModule } from '@angular/material-moment-adapter';
 
 import { FindTutorComponent } from './home/find-tutor/find-tutor.component';
 import { TutorsNearMeComponent } from './tutors-near-me/tutors-near-me.component';
 import { NavComponent } from './nav/nav.component';
-import {SliderModule} from 'primeng/slider';
 import { NewBulletinComponent } from './home/bulletins/new-bulletin/new-bulletin.component';
 import { OnLogoutComponent } from './modals/on-logout/on-logout.component';
 import { OnLoginComponent } from './modals/on-login/on-login.component';
@@ -55,6 +54,7 @@ import { RegistrationLoginComponent } from './tutor-registration/registration-lo
 import bootstrap from "bootstrap";
 import { TutorListComponent } from './tutor-list/tutor-list.component';
 import { FooterComponent } from './footer/footer.component';
+import { BookingComponent } from './booking/booking.component';
 
 @NgModule({
   declarations: [
@@ -85,7 +85,8 @@ import { FooterComponent } from './footer/footer.component';
     RegistrationIdentificationComponent,
     RegistrationLoginComponent,
     TutorListComponent,
-    FooterComponent
+    FooterComponent,
+    BookingComponent,
   ],
   imports: [
     BrowserModule,
@@ -99,7 +100,8 @@ import { FooterComponent } from './footer/footer.component';
     MatTabsModule,
     MatTooltipModule,
     MatCheckboxModule,
-    SliderModule,
+    MatDatepickerModule,
+    MatMomentDateModule,
     NgxSmartModalModule.forRoot()
   ],
   providers: [NgxSmartModalService,
