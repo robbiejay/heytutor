@@ -23,6 +23,7 @@ public userIsCreated = false;
 public userIsUnauthorized = false;
 
 private tutorId: string;
+private studentId: string;
 
 private students: Student[] = [];
 private tutors: Tutor[] = [];
@@ -44,6 +45,10 @@ private tutors: Tutor[] = [];
 
   getTutorId() {
     return this.tutorId;
+  }
+
+  getStudentId() {
+    return this.studentId;
   }
 
   getAuthStatusListener() {
@@ -94,7 +99,7 @@ login(email: string, password: string, firstname: string, lastname: string ) {
   .subscribe(response => {
     console.dir(response);
     const token = response.token;
-    const studentId = response.studentId;
+    this.studentId = response.studentId;
     this.token = token;
     if (token) {
       const expiresInDuration = response.expiresIn;
@@ -103,10 +108,10 @@ login(email: string, password: string, firstname: string, lastname: string ) {
       this.authStatusListener.next(true);
       const now = new Date();
       const expirationDate = new Date(now.getTime() + expiresInDuration * 1000);
-      this.saveAuthData(token, studentId, expirationDate);
-      this.NgxSmartModalService.close('logIn');
-      this.NgxSmartModalService.open('onLogin');
-
+      this.saveAuthData(token, this.studentId, expirationDate);
+              // this.router.navigate(['/dashboard']);
+              this.NgxSmartModalService.close('logIn');
+              this.NgxSmartModalService.open('onLogin');
     }
   }, error => {
       if(error.status === 401) {

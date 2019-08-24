@@ -1,20 +1,27 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-
+import { Router } from '@angular/router';
+import { Subject } from 'rxjs';
 import { Booking } from '../_models/booking.model';
+import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
 export class BookingService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient,
+              private router: Router) { }
+
+  private bookings: Booking[] = [];
+  private bookingsUpdated = new Subject<Booking[]>();
 
   createBooking(
     studentId: string,
     tutorId: string,
     price: number,
-    date: string,
+    subject: string,
+    date: Date,
     time: string,
     location: string,
     description: string
@@ -23,6 +30,7 @@ export class BookingService {
       studentId: studentId,
       tutorId: tutorId,
       price: price,
+      subject: subject,
       date: date,
       time: time,
       location: location,
@@ -31,10 +39,44 @@ export class BookingService {
     console.log(bookingData);
     this.http.post<{message:string; booking: Booking}>(
       'http://localhost:3000/api/bookings',
-      bookingData
+      bookingData,
+      {observe: 'response'}
     )
     .subscribe(response => {
-    console.log(response);
+    if(response.status === 201) {
+    this.router.navigate(['/confirmation']);
+    }
     })
   }
+
+  getTutorBookings(tutorId: string) {
+    console.log('This is the TUTOR ID sent to the BOOKINGS API' + tutorId)
+    this.http.get<{message: string; bookings: any}>(
+      'http://localhost:3000/api/bookings/' + tutorId,
+    ).pipe(
+      map(bookingData => {
+
+        return bookingData.bookings.map(booking => {
+          return {
+            studentId: booking.studentId,
+            tutorId: booking.tutorId,
+            price: booking.price,
+            subject: booking.subject,
+            date: booking.date,
+            time: booking.time,
+            location: booking.location,
+            description: booking.description
+          }
+        })
+      })
+    ).subscribe(transformedBookings => {
+      this.bookings = transformedBookings;
+      this.bookingsUpdated.next([...this.bookings]);
+    })
+  }
+
+  getBookingUpdateListener() {
+    return this.bookingsUpdated.asObservable();
+  }
+
 }

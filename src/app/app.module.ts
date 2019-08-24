@@ -55,6 +55,8 @@ import bootstrap from "bootstrap";
 import { TutorListComponent } from './tutor-list/tutor-list.component';
 import { FooterComponent } from './footer/footer.component';
 import { BookingComponent } from './booking/booking.component';
+import { StudentDashboardComponent } from './student-dashboard/student-dashboard.component';
+import { ConfirmationComponent } from './confirmation/confirmation.component';
 
 @NgModule({
   declarations: [
@@ -87,6 +89,8 @@ import { BookingComponent } from './booking/booking.component';
     TutorListComponent,
     FooterComponent,
     BookingComponent,
+    StudentDashboardComponent,
+    ConfirmationComponent,
   ],
   imports: [
     BrowserModule,

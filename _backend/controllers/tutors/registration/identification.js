@@ -16,7 +16,6 @@ exports.updateIdentification = (req,res,next) => {
 }
 
 exports.checkIdentification = (req,res,next) => {
-  console.log('triggered');
   Tutor.findOne({_id: req.params.id}, {cvPath: 1, identificationPath: 1}).then(credentials => {
     res.status(200).json({
       message: 'Identification fetched successfully',

@@ -50,6 +50,9 @@ tutor: TutorData;
   if(this.isAuth){
   this.studentId = this.authService.getAuthData().studentId;
   console.log('The student ID is ' + this.studentId);
+  if (!this.studentId) {
+    console.log('There is no StudentID')
+  }
 }
 }
 
@@ -60,15 +63,14 @@ tutor: TutorData;
   }
 
   onFormSubmit() {
-    let date = ''
-    date = this.form.value.date.format("DD MM YYYY");
+    let date: Date;
+    date = this.form.value.date.format('YYYY-MM-DD');
     const time = this.form.value.hour + ':' + this.form.value.minute;
     const location = this.form.value.location;
     const description = this.form.value.description;
     console.log(this.tutor.id);
     console.log(this.studentId);
-
-    this.bookingService.createBooking(this.studentId,this.tutor.id,this.tutor.price,date,time,location,description);
+    this.bookingService.createBooking(this.studentId,this.tutor.id,this.tutor.price,this.tutor.subject,date,time,location,description);
   }
 
 }

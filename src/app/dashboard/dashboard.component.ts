@@ -1,15 +1,17 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { AuthService } from '../_services/auth/auth.service';
 import { TutorService } from '../_services/tutor.service';
 import { TutorData } from '../_models/tutor-data/tutorData.model';
 import { Subscription } from 'rxjs';
+import { Booking } from '../_models/booking.model';
+import { BookingService  } from '../_services/booking.service';
 
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.scss']
 })
-export class DashboardComponent implements OnInit {
+export class DashboardComponent implements OnInit, OnDestroy {
 
   times = [
 
@@ -19,10 +21,13 @@ export class DashboardComponent implements OnInit {
   tutor: any;
   isAuth: boolean;
   tutorId: string;
+  public bookings: Booking[] = [];
+  private bookingSubscription: Subscription;
 
   tutorSubscription: Subscription;
   constructor(private authService: AuthService,
-              private tutorService: TutorService) { }
+              private tutorService: TutorService,
+              private bookingService: BookingService) { }
 
   ngOnInit() {
     this.isAuth = this.authService.getIsAuth();
@@ -57,8 +62,17 @@ export class DashboardComponent implements OnInit {
       }
     });
 
+    this.bookingService.getTutorBookings(this.tutorId);
+    this.bookingSubscription = this.bookingService.getBookingUpdateListener()
+    .subscribe((bookings: Booking[]) => {
+      this.bookings = bookings;
+    })
   }
+}
 
+ngOnDestroy() {
+  this.bookingSubscription.unsubscribe();
+  this.tutorSubscription.unsubscribe();
 }
 
 }

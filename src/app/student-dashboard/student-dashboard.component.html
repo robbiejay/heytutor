@@ -1,0 +1,58 @@
+<h1>Welcome Student!</h1>
+<div class="row">
+  <div class="col-4">
+
+
+
+  </div>
+
+  <div class="col-8">
+
+    <div class="started-card">
+      <h2>Welcome to HeyTutor</h2>
+      <p>Download the Heytutor app to receive vital information about your booking straight away</p>
+    </div>
+    <div class='lesson-card'>
+      <h2>Upcoming Lessons</h2>
+      <div class='row booking' *ngFor='let booking of bookings'>
+        <div class='col-2'>
+        <h3>{{booking.time}}</h3>
+        </div>
+        <div class='col-3'>
+        <h4>{{booking.date}}</h4>
+        </div>
+        <div class='col-3'>
+        <h5>{{booking.location}}</h5>
+        </div>
+        <div class='col-2'>
+        <h6>{{booking.price}}</h6>
+        </div>
+        <div class='col-2'>
+        <h6>SUBJECT</h6>
+        </div>
+      </div>
+
+      <div class='row booking'>
+        <div class='col-2'>
+        <h3>11:30</h3>
+        </div>
+        <div class='col-3'>
+        <h4>Sun 27th Sept</h4>
+        </div>
+        <div class='col-3'>
+        <h5>Shau Kei Wan</h5>
+        </div>
+        <div class='col-2'>
+        <h6>Charlisha</h6>
+        </div>
+        <div class='col-2'>
+        <h6>English</h6>
+        </div>
+      </div>
+    </div>
+    <div class="bulletin-card">
+      <h2>Post a Bulletin &nbsp;<i class="far fa-sticky-note" style='color:#6af489;'></i></h2>
+
+    </div>
+    </div>
+  </div>
