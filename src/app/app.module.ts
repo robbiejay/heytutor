@@ -57,6 +57,7 @@ import { FooterComponent } from './footer/footer.component';
 import { BookingComponent } from './booking/booking.component';
 import { StudentDashboardComponent } from './student-dashboard/student-dashboard.component';
 import { ConfirmationComponent } from './confirmation/confirmation.component';
+import { PaymentComponent } from './payment/payment.component';
 
 @NgModule({
   declarations: [
@@ -91,6 +92,7 @@ import { ConfirmationComponent } from './confirmation/confirmation.component';
     BookingComponent,
     StudentDashboardComponent,
     ConfirmationComponent,
+    PaymentComponent,
   ],
   imports: [
     BrowserModule,

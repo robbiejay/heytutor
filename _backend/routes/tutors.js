@@ -17,18 +17,14 @@ const router = express.Router();
 
 
 router.post('/signup', SignupController.createTutor);
-
 router.post('/signin', LoginController.loginTutor);
 
 router.put('/identification/:id', checkAuth, credentialUpload, IdentificationController.updateIdentification);
 router.get('/identification/:id', checkAuth, IdentificationController.checkIdentification);
-
 router.put('/bio/:id', checkAuth, profileUpload, BioController.updateBio);
 router.get('/bio/:id', checkAuth, BioController.checkBio);
-
 router.put('/subject/:id', checkAuth, SubjectController.updateSubject);
 router.get('/subject/:id', checkAuth, SubjectController.checkSubject);
-
 router.put('/availability/:id', checkAuth, AvailabilityController.updateAvailability);
 router.get('/availability/:id', checkAuth, AvailabilityController.checkAvailability);
 

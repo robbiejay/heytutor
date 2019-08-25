@@ -1,0 +1,167 @@
+.container-fluid {
+   background-color: #0f51f0;
+   padding-top: 42px;
+   min-height: 100vh;
+}
+
+form.checkout {
+width: 96%;
+margin-left: 2%;
+  text-align: center;
+  border: 2px solid #000;
+  border-radius: 7px;
+  padding: 1rem 2rem;
+  background: #fefe73;
+
+  font-family: monospace;
+  color: #000;
+  font-size: 1em;
+  font-family: 'Fredoka One', cursive;
+
+}
+
+form.checkout h1 {
+
+    font-size: 1.333em;
+    text-align: left;
+    padding-bottom: 4px;
+    margin-top: 14px;
+
+}
+
+.form-container {
+  width: 90%;
+  margin-left: 5%;
+}
+
+.confirmation {
+width: 96%;
+margin-left: 2%;
+  text-align: center;
+  border: 2px solid #000;
+  border-radius: 7px;
+  padding: 1rem 2rem;
+  background: #fff;
+
+  font-family: monospace;
+  color: #000;
+  font-size: 1em;
+  font-family: 'Fredoka One', cursive;
+
+}
+
+.confirmation h1 {
+  font-size: 1.333em;
+  text-align: left;
+  padding-bottom: 4px;
+  border-bottom: 2px solid #0f51f0;
+  margin-top: 14px;
+}
+
+.confirmation h2 {
+  font-size: 1em;
+  text-align: left;
+  padding-bottom: 4px;
+  border-bottom: 2px dotted #f0f0f0;
+  margin-top: 42px;
+}
+
+.confirmation h3 {
+  font-size: 0.75em;
+  text-align: left;
+  padding: 3px 14px;
+}
+
+.confirmation h4 {
+  font-size: 0.75em;
+  text-align: left;
+  padding: 3px 14px;
+  width: 50%;
+  display: inline-block;
+  float: left;
+}
+
+.confirmation h5 {
+  font-size: 0.75em;
+  text-align: right;
+  padding: 3px 14px;
+  width: 50%;
+  display: inline-block;
+  float: right;
+}
+
+.confirmation .row {
+  width: 90%;
+  margin-left: 5%;
+}
+
+form.checkout button {
+  padding: 0.5rem 1rem;
+  color: white;
+  background: #f10d63;
+  border-radius: 4px;
+  margin-top: 1rem;
+  font-family: 'Fredoka One', cursive;
+color: #fff;
+width: 100%;
+}
+
+form.checkout button:active {
+  background: #0f51f0;
+}
+
+form label {
+  margin-top: 14px;
+}
+
+.payment-input {
+  background-color: white;
+  padding: 4px 14px;
+  border-radius: 4px;
+  border: 1px solid transparent;
+  box-shadow: 0 1px 3px 0 #e6ebf1;
+  -webkit-transition: box-shadow 150ms ease;
+  transition: box-shadow 150ms ease;
+  width: 100%;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 1em;
+  
+}
+
+.payment-input--focus {
+  box-shadow: 0 1px 3px 0 #cfd7df;
+}
+
+.payment-input--invalid {
+  border-color: #fa755a;
+}
+
+.payment-input--webkit-autofill {
+  background-color: #fefde5 !important;
+}
+
+.StripeElement {
+   margin-bottom: 14px;
+   font-family: 'Fredoka One', cursive;
+
+  background-color: white;
+  padding: 7px 14px;
+  border-radius: 4px;
+  border: 1px solid transparent;
+  box-shadow: 0 1px 3px 0 #e6ebf1;
+  -webkit-transition: box-shadow 150ms ease;
+  transition: box-shadow 150ms ease;
+  width: 100%;
+}
+
+.StripeElement--focus {
+  box-shadow: 0 1px 3px 0 #cfd7df;
+}
+
+.StripeElement--invalid {
+  border-color: #fa755a;
+}
+
+.StripeElement--webkit-autofill {
+  background-color: #fefde5 !important;
+}

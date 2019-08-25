@@ -1,0 +1,84 @@
+<div class='container-fluid'>
+  <div class='container'>
+  <div class='row'>
+    <div class="col-6">
+<form #checkout="ngForm" (ngSubmit)="onSubmit(checkout)" class="checkout">
+    <h1>Billing Details</h1>
+    <div class='form-container'>
+  <div class='form-row'>
+    <label for='name'>Name</label>
+    <input class='payment-input' type='text' ngModel name='name'>
+  </div>
+  <div class='form-row'>
+    <label for='addressLine1'>Address Line 1</label>
+    <input class='payment-input' type='text' ngModel name='addressLine1'>
+  </div>
+  <div class='form-row'>
+    <label for='addressLine2'>Address Line 2</label>
+    <input class='payment-input' type='text' ngModel name='addressLine2'>
+  </div>
+  <div class='form-row'>
+    <label for='addressLine3'>Address Line 3</label>
+    <input class='payment-input' type='text' ngModel name='addressLine3'>
+  </div>
+  <div class="form-row">
+    <label for="card-info">Card Info</label>
+    <div id="card-info" #cardInfo>
+
+    </div>
+
+    <div id="card-errors" role="alert" *ngIf="error">{{ error }}</div>
+  </div>
+  <div class='form-row'>
+  <button class='btn' type="submit">Pay $777</button>
+  </div>
+  </div>
+</form>
+</div>
+<div class="col-6">
+<div class="confirmation">
+  <h1>Confirmation</h1>
+  <div class='row'>
+<h2>Your Lesson Details</h2>
+</div>
+<div class='row'>
+<h3>Date: </h3>
+</div>
+<div class='row'>
+<h3>Time: </h3>
+</div>
+<div class='row'>
+<h3>Meeting Location: </h3>
+</div>
+<div class='row'>
+<h3>Lesson Requirements: </h3>
+</div>
+<div class='row'>
+<h2>Your Tutor</h2>
+</div>
+<div class='row'>
+<h3>Name: </h3>
+</div>
+<div class='row'>
+<h3>Education: </h3>
+</div>
+<div class='row'>
+<h3>Experience: </h3>
+</div>
+<div class='row'>
+<h3>Specialities: </h3>
+</div>
+<div style='height:42px'></div>
+<div class='row'>
+<h4>Lesson Price :</h4><h5>300HKD</h5>
+</div>
+<hr>
+<div class='row'>
+<h4>Booking Fee (10% of lesson charge): </h4><h5>29HKD</h5>
+</div>
+<hr>
+</div>
+</div>
+</div>
+</div>
+</div>

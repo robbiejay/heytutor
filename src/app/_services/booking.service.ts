@@ -44,7 +44,7 @@ export class BookingService {
     )
     .subscribe(response => {
     if(response.status === 201) {
-    this.router.navigate(['/confirmation']);
+    this.router.navigate(['/payment']);
     }
     })
   }

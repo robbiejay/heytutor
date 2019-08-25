@@ -8,6 +8,7 @@ const bulletinRoutes = require('./routes/bulletins');
 const studentRoutes = require('./routes/students');
 const tutorRoutes = require('./routes/tutors');
 const bookingRoutes = require('./routes/bookings');
+const paymentRoutes = require('./routes/payments');
 
 mongoose.connect(
  'mongodb+srv://robbie:$impsons10HEYTUTOR@heytutor-vlnhh.azure.mongodb.net/test?retryWrites=true&w=majority',
@@ -38,5 +39,6 @@ app.use('/api/bulletins', bulletinRoutes);
 app.use('/api/students', studentRoutes);
 app.use('/api/tutors', tutorRoutes);
 app.use('/api/bookings', bookingRoutes);
+app.use('/api/payments', paymentRoutes);
 
 module.exports = app;
