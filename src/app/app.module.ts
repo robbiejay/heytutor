@@ -58,6 +58,7 @@ import { BookingComponent } from './booking/booking.component';
 import { StudentDashboardComponent } from './student-dashboard/student-dashboard.component';
 import { ConfirmationComponent } from './confirmation/confirmation.component';
 import { PaymentComponent } from './payment/payment.component';
+import { TutorRestrictedComponent } from './modals/tutor-restricted/tutor-restricted.component';
 
 @NgModule({
   declarations: [
@@ -93,6 +94,7 @@ import { PaymentComponent } from './payment/payment.component';
     StudentDashboardComponent,
     ConfirmationComponent,
     PaymentComponent,
+    TutorRestrictedComponent,
   ],
   imports: [
     BrowserModule,

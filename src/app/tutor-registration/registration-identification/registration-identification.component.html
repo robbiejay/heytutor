@@ -1,4 +1,4 @@
-<div class='form-container'>
+<div class='form-container' [@slide]='state'>
   <form [formGroup]='form' (ngSubmit)='onFormSubmit(f)' enctype="multipart/form-data">
   <h1>Welcome to the teaching community at HeyTutor!</h1>
   <p>Before you start teaching, we need you to supply some information about yourself first. You will need a form of ID and your most recent CV</p>

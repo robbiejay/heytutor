@@ -1,15 +1,37 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, AfterViewInit, Input } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { FormControl, FormGroup } from '@angular/forms';
+import { trigger, state, style, transition, animate } from '@angular/animations';
 import { TutorService } from '../../_services/tutor.service';
 import { AuthService } from '../../_services/auth/auth.service';
 import { Subscription } from 'rxjs';
 @Component({
   selector: 'app-registration-availability',
   templateUrl: './registration-availability.component.html',
-  styleUrls: ['./registration-availability.component.scss']
+  styleUrls: ['./registration-availability.component.scss'],
+  animations: [
+    trigger('slide', [
+      state('slidOut', style({
+        'opacity':'0',
+        'transform':'translateX(40px)'
+      })),
+      state('slidIn', style({
+        'opacity':'1',
+        'transform':'translateX(0px)'
+      })),
+      state('slideOut', style({
+        'opacity':'0',
+        'transform':'translateX(-40px)'
+      })),
+      transition('slidOut => slidIn', animate(200)),
+      transition('slidIn => slideOut', animate(200)),
+      transition('slidIn => slidOut', animate(100)),
+
+    ])
+  ]
 })
-export class RegistrationAvailabilityComponent implements OnInit {
+export class RegistrationAvailabilityComponent implements OnInit, AfterViewInit {
+  state='slidOut';
 
   scheduleHours = [
     '07','08','09','10','11','12','13','14','15','16','17','18','19','20','21','22','23'
@@ -106,6 +128,15 @@ export class RegistrationAvailabilityComponent implements OnInit {
   this.tutorId = this.authService.getAuthData().tutorId;
 }
 }
+
+ngAfterViewInit() {
+  setTimeout(() => {
+    this.slideIn();
+  });
+}
+
+  slideIn() { this.state = 'slidIn'}
+
 
 mondayToggle() {
   if (this.mondayOn === false ) {
@@ -282,11 +313,7 @@ onFormSubmit() {
 
 console.log(monday + tuesday + wednesday + thursday + friday + saturday + sunday)
 this.tutorService.updateAvailability(this.tutorId,monday,tuesday,wednesday,thursday,friday,saturday,sunday);
-
-
-
-
- console.log(monday);
+this.state='slideOut';
 }
 
 }

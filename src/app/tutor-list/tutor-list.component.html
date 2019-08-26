@@ -27,6 +27,7 @@
             <h6 *ngFor='let specialisation of tutor.specialisationList'>{{specialisation}}</h6>
             <button *ngIf='!isAuth' type='button' class='btn' (click)="NgxSmartModalService.getModal('logIn').open()">Log in to Book</button>
             <button *ngIf='isAuth' type='button' class='btn' (click)="openBookingModal(tutor)">Book A Trial Lesson</button>
+            <button *ngIf='isAuth && tutorId' type='button' class='btn' (click)="NgxSmartModalService.getModal('tutorRestricted').open()">Book A Trial Lesson</button>
             </div>
         </div>
     </div>

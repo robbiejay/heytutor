@@ -70,7 +70,6 @@ font-family: 'Fredoka One', cursive;
 }
 
 .schedule-container {
-  font-size: 0.666em;
   font-family: 'Roboto Mono', monospace;
 
 }
@@ -78,15 +77,16 @@ font-family: 'Fredoka One', cursive;
 .schedule-container p {
   margin-top: 4px;
   margin-bottom: 4px;
-
-
+    font-size: 0.75em;
 }
 
 .schedule-container span {
+  font-size: 1em;
   font-family: 'Fredoka One', cursive;
+  text-align: right;
   color: #f10d63;
   display: inline-block;
-  width: 28px;
+  width: 42px;
 
 
 }

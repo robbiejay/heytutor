@@ -1,4 +1,5 @@
 <app-find-tutor></app-find-tutor>
+<app-tutor-restricted></app-tutor-restricted>
 <app-booking></app-booking>
 <app-nav></app-nav>
 <div class='container-fluid'>
@@ -7,21 +8,21 @@
     <div class='col-6'>
         <h2>Find private tutors in Hong Kong!</h2>
       <div class='img-container'>
-        <img class='header-map' src='assets/images/map.png'>
-        <button class='btn header-btn' (click)="NgxSmartModalService.getModal('findTutor').open()">Find Tutor Now</button>
-        <img class='header-bunny' src='assets/images/bunny.png'>
+        <img class='header-map' [@fade]='state' src='assets/images/map.png'>
+        <button class='btn header-btn' [@fade]='state' (click)="NgxSmartModalService.getModal('findTutor').open()">Find Tutor Now</button>
+        <img class='header-bunny' [@slide]='slidState' src='assets/images/bunny.png'>
       </div>
     </div>
     <div class='col-6'>
-      <div class='header-card pink'>
+      <div class='header-card pink' [@slide]='slidState1'>
         <h3>Find a tutor close to home</h3>
         <h4>Search for a tutor that matches your location, subject or budget</h4>
       </div>
-      <div class='header-card green'>
+      <div class='header-card green' [@slide]='slidState2'>
         <h3>Verified, accountable tutors</h3>
         <h4>All tutors undergo background checks and assessments</h4>
       </div>
-      <div class='header-card blue'>
+      <div class='header-card blue' [@slide]='slidState3'>
         <h3>Learn from bright minds</h3>
         <h4>We love what we do. We love to teach. Join us for a lesson today</h4>
       </div>

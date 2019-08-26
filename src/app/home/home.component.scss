@@ -4,13 +4,13 @@ body {
 
 .container-fluid {
   padding: 0px;
+  background-color: #ffe11d;
 
 }
 
 #header {
-  margin-bottom: 80px;
-    margin-top: 2vh;
-    padding-top: 70px;
+    padding-top: 96px;
+    min-height: 80vh;
 }
 
 // DELETE DELETE DELETE
@@ -60,9 +60,6 @@ body {
 
 // DELETE DELETE DELETE DELETE
 
-#header {
-      margin-top: 42px;
-}
 
 #header .img-container {
   position: relative;

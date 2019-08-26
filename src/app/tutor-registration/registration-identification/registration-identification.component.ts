@@ -1,5 +1,6 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, AfterViewInit, Input } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { trigger, state, style, transition, animate } from '@angular/animations';
 import { AuthService } from '../../_services/auth/auth.service';
 import { TutorService } from '../../_services/tutor.service';
 import { Subscription } from 'rxjs';
@@ -11,10 +12,31 @@ import { mimeTypePdf } from '../mime-type-pdf.validator';
 @Component({
   selector: 'app-registration-identification',
   templateUrl: './registration-identification.component.html',
-  styleUrls: ['./registration-identification.component.scss']
-})
-export class RegistrationIdentificationComponent implements OnInit {
+  styleUrls: ['./registration-identification.component.scss'],
+  animations: [
+    trigger('slide', [
+      state('slidOut', style({
+        'opacity':'0',
+        'transform':'translateX(40px)'
+      })),
+      state('slidIn', style({
+        'opacity':'1',
+        'transform':'translateX(0px)'
+      })),
+      state('slideOut', style({
+        'opacity':'0',
+        'transform':'translateX(-40px)'
+      })),
+      transition('slidOut => slidIn', animate(200)),
+      transition('slidIn => slideOut', animate(200)),
+      transition('slidIn => slidOut', animate(100)),
 
+    ])
+  ]
+})
+export class RegistrationIdentificationComponent implements OnInit, AfterViewInit {
+
+  state='slidOut';
   @Input() tutorId: string;
   form: FormGroup;
   identificationPreview: string;
@@ -61,6 +83,14 @@ export class RegistrationIdentificationComponent implements OnInit {
     })
   }
 
+  ngAfterViewInit() {
+    setTimeout(() => {
+      this.slideIn();
+    });
+  }
+
+  slideIn() { this.state = 'slidIn'}
+
 onFormSubmit() {
   if (this.form.invalid) {
     return;
@@ -71,6 +101,7 @@ onFormSubmit() {
     this.form.value.cv,
     this.form.value.identification
   );
+    this.state = 'slideOut';
 // Emit event
   }
 
