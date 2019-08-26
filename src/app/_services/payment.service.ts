@@ -9,11 +9,17 @@ export class PaymentService {
   constructor(private http: HttpClient) { }
 
   makePayment(
-    token: any
+    token: any,
+    price: String
   ) {
+    const paymentData = {
+      token: token,
+      price: price
+    }
+    console.log(paymentData);
     this.http.post<{message: string; token: any}>(
       'http://localhost:3000/api/payments/order',
-      token
+      paymentData
     )
     .subscribe(response => {
       console.log(response);

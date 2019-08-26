@@ -6,13 +6,13 @@ const stripe = require('stripe')('sk_test_Gfz2bLKCQvkThjBNdPrMlZR000HMry4HyU');
 
 router.post('/order', async (req, res) => {
   console.log(req.body);
-  const token = req.body.id;
-
+  const token = req.body.token.id;
+  const price = req.body.price;
   (async () => {
     const charge = await stripe.charges.create({
-      amount: 100 * 100,
+      amount: price * 100,
       currency: 'hkd',
-      description: 'This is my test charge',
+      description: req.body.token.name +  ', ' + req.body.price + ', ' + req.body.token.created,
       source: token,
     })
   })();

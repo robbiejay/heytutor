@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, AfterViewInit, Input } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { TutorData } from '../_models/tutor-data/tutorData.model';
 import { NgxSmartModalModule, NgxSmartModalService } from 'ngx-smart-modal';
@@ -11,7 +11,7 @@ import { Subscription } from 'rxjs';
   templateUrl: './booking.component.html',
   styleUrls: ['./booking.component.scss']
 })
-export class BookingComponent implements OnInit {
+export class BookingComponent implements OnInit, AfterViewInit {
 
   scheduleHours = [
     '07','08','09','10','11','12','13','14','15','16','17','18','19','20','21','22','23'
@@ -24,6 +24,8 @@ export class BookingComponent implements OnInit {
 isAuth: boolean;
 private authListenerSubs: Subscription;
 studentId: string;
+firstname: string;
+lastname: string;
 form: FormGroup;
 tutor: TutorData;
 
@@ -39,38 +41,44 @@ tutor: TutorData;
         location: new FormControl(null, { validators: [ Validators.required ] }),
         description: new FormControl(null, { validators: [ Validators.required ] })
   })
-
-  this.isAuth = this.authService.getIsAuth();
-  this.authListenerSubs = this.authService
-  .getAuthStatusListener()
-  .subscribe(isAuthenticated => {
-    this.isAuth = isAuthenticated;
-    console.log(isAuthenticated);
-  })
-  if(this.isAuth){
-  this.studentId = this.authService.getAuthData().studentId;
-  console.log('The student ID is ' + this.studentId);
-  if (!this.studentId) {
-    console.log('There is no StudentID')
-  }
 }
+
+ngAfterViewInit() {
+
 }
 
   updateTutorData() {
     const tutorData = this.NgxSmartModalService.getModal('booking');
     this.tutor = tutorData._data;
     console.log(this.tutor);
+
+    this.isAuth = this.authService.getIsAuth();
+    this.authListenerSubs = this.authService
+    .getAuthStatusListener()
+    .subscribe(isAuthenticated => {
+      this.isAuth = isAuthenticated;
+      console.log(isAuthenticated);
+    })
+    if(this.isAuth){
+    this.studentId = this.authService.getAuthData().studentId;
+    console.log('The student ID is ' + this.studentId);
+    if (!this.studentId) {
+      console.log('There is no StudentID')
+    }
+  }
   }
 
   onFormSubmit() {
     let date: Date;
     date = this.form.value.date.format('YYYY-MM-DD');
     const time = this.form.value.hour + ':' + this.form.value.minute;
+    const tutorName = this.tutor.firstname + ' ' + this.tutor.lastname;
     const location = this.form.value.location;
     const description = this.form.value.description;
+
     console.log(this.tutor.id);
     console.log(this.studentId);
-    this.bookingService.createBooking(this.studentId,this.tutor.id,this.tutor.price,this.tutor.subject,date,time,location,description);
+    this.bookingService.createBooking(this.studentId,this.tutor.id,this.tutor.price,this.tutor.subject,tutorName,date,time,location,description);
   }
 
 }

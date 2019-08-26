@@ -3,6 +3,7 @@ export interface Booking {
   tutorId: String;
   price: String;
   subject: String;
+  tutorName: string;
   date: Date;
   time: String;
   location: String;

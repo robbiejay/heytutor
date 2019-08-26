@@ -12,11 +12,19 @@ router.post(
       tutorId: req.body.tutorId,
       price: req.body.price,
       subject: req.body.subject,
+      tutorName: req.body.tutorName,
       date: req.body.date,
       time: req.body.time,
       location: req.body.location,
-      description: req.body.description
+      description: req.body.description,
+      confirmed: false,
+      payment_received: false,
     });
+
+    Booking.remove({studentId: req.body.studentId, payment_received: false}).then(unpaidBookings => {
+      console.log(unpaidBookings);
+    })
+
     booking.save()
     .then(result => {
       res.status(201).json({
@@ -38,7 +46,18 @@ router.get(
         message: 'Bookings fetched successfully',
         bookings: bookings
       });
-      console.log(bookings);
+    })
+  }
+)
+
+router.get(
+  '/unpaid/:id',
+  (req,res,next) => {
+    Booking.find({studentId: req.params.id, payment_received: false}).then(booking => {
+      res.status(200).json({
+        message: 'Booking fetched successfully',
+        booking: booking
+      });
     })
   }
 )

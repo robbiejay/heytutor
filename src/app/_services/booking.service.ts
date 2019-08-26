@@ -21,6 +21,7 @@ export class BookingService {
     tutorId: string,
     price: number,
     subject: string,
+    tutorName: string,
     date: Date,
     time: string,
     location: string,
@@ -31,6 +32,7 @@ export class BookingService {
       tutorId: tutorId,
       price: price,
       subject: subject,
+      tutorName: tutorName,
       date: date,
       time: time,
       location: location,
@@ -77,6 +79,12 @@ export class BookingService {
 
   getBookingUpdateListener() {
     return this.bookingsUpdated.asObservable();
+  }
+
+  getUnpaidBooking(studentId: string) {
+  return this.http.get<{message: string; booking: any}>(
+      'http://localhost:3000/api/bookings/unpaid/' + studentId,
+    )
   }
 
 }

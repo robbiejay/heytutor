@@ -8,10 +8,10 @@ form.checkout {
 width: 96%;
 margin-left: 2%;
   text-align: center;
-  border: 2px solid #000;
   border-radius: 7px;
   padding: 1rem 2rem;
-  background: #fefe73;
+  background: rgba(255,255,255,0.75);
+  padding-bottom: 56px;
 
   font-family: monospace;
   color: #000;
@@ -88,7 +88,9 @@ margin-left: 2%;
   width: 50%;
   display: inline-block;
   float: right;
+  color: #f10d63;
 }
+
 
 .confirmation .row {
   width: 90%;
@@ -125,7 +127,7 @@ form label {
   width: 100%;
   font-family: 'Open Sans', sans-serif;
   font-size: 1em;
-  
+
 }
 
 .payment-input--focus {
@@ -164,4 +166,19 @@ form label {
 
 .StripeElement--webkit-autofill {
   background-color: #fefde5 !important;
+}
+
+.app-card img {
+  width: 100%;
+}
+
+.app-card h1 {
+  border-bottom: none;
+  color: #0f51f0;
+}
+
+.app-card {
+  background-color: #f6f6f6;
+  border-radius: 7px;
+  padding: 14px;
 }

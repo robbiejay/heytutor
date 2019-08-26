@@ -1,3 +1,4 @@
+<app-nav></app-nav>
 <div class='container-fluid'>
   <div class='container'>
   <div class='row'>
@@ -30,7 +31,7 @@
     <div id="card-errors" role="alert" *ngIf="error">{{ error }}</div>
   </div>
   <div class='form-row'>
-  <button class='btn' type="submit">Pay $777</button>
+  <button class='btn' type="submit">Pay Now</button>
   </div>
   </div>
 </form>
@@ -42,41 +43,43 @@
 <h2>Your Lesson Details</h2>
 </div>
 <div class='row'>
-<h3>Date: </h3>
+<h4>Your Tutor: </h4><h5>{{booking?.tutorName}}</h5>
 </div>
 <div class='row'>
-<h3>Time: </h3>
+<h4>Date: </h4><h5>{{booking?.date | date:'EEE d MMM'}}</h5>
 </div>
 <div class='row'>
-<h3>Meeting Location: </h3>
+<h4>Time: </h4><h5>{{booking?.time}}</h5>
 </div>
 <div class='row'>
-<h3>Lesson Requirements: </h3>
+<h4>Meeting Location: </h4><h5>{{booking?.location}}</h5>
 </div>
 <div class='row'>
-<h2>Your Tutor</h2>
+<h4>Lesson Requirements: </h4><h5>{{booking?.description}}</h5>
 </div>
-<div class='row'>
-<h3>Name: </h3>
-</div>
-<div class='row'>
-<h3>Education: </h3>
-</div>
-<div class='row'>
-<h3>Experience: </h3>
-</div>
-<div class='row'>
-<h3>Specialities: </h3>
-</div>
+
 <div style='height:42px'></div>
-<div class='row'>
-<h4>Lesson Price :</h4><h5>300HKD</h5>
+<!-- <div class='row'>
+<h4>Lesson Price :</h4><h5>{{booking?.price}}</h5>
 </div>
 <hr>
 <div class='row'>
 <h4>Booking Fee (10% of lesson charge): </h4><h5>29HKD</h5>
+</div> -->
+<div class='row'>
+<h4>Subtotal: </h4><h5 style='font-size: 1.777em;'>{{booking?.price}}.00<span style='font-size: 0.75em;color:#000;'> HKD</span></h5>
 </div>
 <hr>
+<div class="app-card">
+  <div class='row'>
+    <div class="col-6">
+      <h1>Receive notifications straight to your mobile with the app!</h1>
+    </div>
+    <div class="col-6">
+      <img src='assets/images/app-reminder.png'>
+    </div>
+  </div>
+</div>
 </div>
 </div>
 </div>
