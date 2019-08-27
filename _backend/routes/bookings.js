@@ -41,7 +41,7 @@ router.post(
 router.get(
   '/:id',
   (req, res, next) => {
-    Booking.find({tutorId: req.params.id}).then(bookings => {
+    Booking.find({tutorId: req.params.id, payment_received: true}).then(bookings => {
       res.status(200).json({
         message: 'Bookings fetched successfully',
         bookings: bookings
@@ -58,6 +58,18 @@ router.get(
         message: 'Booking fetched successfully',
         booking: booking
       });
+    })
+  }
+)
+
+router.get(
+  '/paid/:id',
+  (req,res,next) => {
+    Booking.find({studentId: req.params.id, payment_received: true}).sort({_id:1}).then(booking => {
+      res.status(200).json({
+        message: 'Booking fetched successfully',
+        booking: booking[0]
+      })
     })
   }
 )

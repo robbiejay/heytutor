@@ -11,7 +11,8 @@ const bookingSchema = mongoose.Schema({
   location: { type: String, required: true },
   description: { type: String },
   confirmed: { type: Boolean },
-  payment_received: { type: Boolean }
+  payment_received: { type: Boolean },
+  booking_date: { type: Date }
 
 });
 

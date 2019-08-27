@@ -29,6 +29,40 @@ form.checkout h1 {
 
 }
 
+form.checkout h2 {
+
+    font-size: 1em;
+    text-align: left;
+    padding-bottom: 4px;
+    margin-top: 14px;
+
+}
+
+form.checkout h2 i {
+  color: #353535;
+  font-size: 1.333em;
+  margin-left: 11px;
+  transform: translateY(2px);
+}
+
+form.checkout {
+position: relative;
+}
+
+form.checkout span {
+  color: #acacac;
+  font-family: 'Fredoka One', cursive;
+  position: absolute;
+  bottom: 7px;
+  right: 14px;
+}
+
+form.checkout span i {
+  font-size: 1.333em;
+  padding-right: 7px;
+  transform: translateY(2px);
+}
+
 .form-container {
   width: 90%;
   margin-left: 5%;
@@ -63,7 +97,7 @@ margin-left: 2%;
   text-align: left;
   padding-bottom: 4px;
   border-bottom: 2px dotted #f0f0f0;
-  margin-top: 42px;
+  margin-top: 28px;
 }
 
 .confirmation h3 {

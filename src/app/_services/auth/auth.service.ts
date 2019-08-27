@@ -69,6 +69,8 @@ this.http.post<{message: string; student: Student}>('http://localhost:3000/api/s
   console.log(response.status);
   if(response.status === 201) {
     this.userIsCreated = true;
+    this.NgxSmartModalService.close('signUp');
+    this.NgxSmartModalService.open('logIn');
   }
 });
 }

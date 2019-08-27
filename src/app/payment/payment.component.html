@@ -5,6 +5,8 @@
     <div class="col-6">
 <form #checkout="ngForm" (ngSubmit)="onSubmit(checkout)" class="checkout">
     <h1>Billing Details</h1>
+    <h2>Pay with Credit / Debit Card <i class="fas fa-credit-card"></i></h2>
+
     <div class='form-container'>
   <div class='form-row'>
     <label for='name'>Name</label>
@@ -32,6 +34,7 @@
   </div>
   <div class='form-row'>
   <button class='btn' type="submit">Pay Now</button>
+  <span><i class="fas fa-lock"></i> Secure Connection</span>
   </div>
   </div>
 </form>

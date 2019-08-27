@@ -1,9 +1,9 @@
 export interface Bulletin {
   id: string;
-  timePosted: String;
-  location: String;
-  subject: String;
-  price : String;
-  description: String;
-  fullname: String;
+  timePosted: string;
+  location: string;
+  subject: string;
+  price : string;
+  description: string;
+  fullname: string;
 }

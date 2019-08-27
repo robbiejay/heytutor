@@ -1,3 +1,24 @@
-<p>
-  confirmation works!
-</p>
+<div class="container-fluid">
+  <div class="container">
+    <div class="confirmation-container">
+      <div class="row">
+      <div class='order-summary'>
+      <i class="fas fa-check-circle"></i>
+      <h2>Booking Successful!</h2>
+      <span style='width:50%;display:inline-block;font-size:0.75em;'>* Please note we haven't charged your account yet. The payment will only go through once the tutor has accepted the lesson</span>
+      <h1>Your Order</h1>
+      <h3>Order ID:</h3><h4>{{booking?.id}}</h4>
+      <h3>Date/Time:</h3><h4>{{booking?.bookingDate}}</h4>
+      <h3>Order Summary:</h3><h4>1 x 1 Hour of Private Tuition</h4>
+
+      <h5>Lesson Details</h5>
+      <h6>Your Tutor</h6><p>{{booking?.tutorName}}</p>
+      <h6>Date of Lesson</h6><p>{{booking?.date}}</p>
+      <h6>Time of Lesson</h6><p>{{booking?.time}}</p>
+      <h6>Meeting Location</h6><p>{{booking?.location}}</p>
+      <h6>Lesson Requirements</h6><p>{{booking?.description}}</p>
+      </div>
+    </div>
+    </div>
+  </div>
+</div>

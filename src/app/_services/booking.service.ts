@@ -87,4 +87,10 @@ export class BookingService {
     )
   }
 
+  getPaidBooking(studentId: string) {
+    return this.http.get<{message: string; booking: any}>(
+      'http://localhost:3000/api/bookings/paid/' + studentId,
+    )
+  }
+
 }

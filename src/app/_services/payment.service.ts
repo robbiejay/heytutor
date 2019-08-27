@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 
 @Injectable({
@@ -6,23 +7,30 @@ import { HttpClient } from '@angular/common/http';
 })
 export class PaymentService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient,
+              private router: Router) { }
 
   makePayment(
     token: any,
-    price: String
+    id: string,
+    price: string
   ) {
     const paymentData = {
       token: token,
-      price: price
+      id: id,
+      price: price,
+      bookingDate: new Date()
     }
     console.log(paymentData);
     this.http.post<{message: string; token: any}>(
-      'http://localhost:3000/api/payments/order',
-      paymentData
+      'http://localhost:3000/api/payments/order/' + id,
+      paymentData,
+      {observe: 'response'}
     )
     .subscribe(response => {
-      console.log(response);
+      if(response.status === 201) {
+       this.router.navigate(['/confirmation']);
+      }
     })
   }
 }

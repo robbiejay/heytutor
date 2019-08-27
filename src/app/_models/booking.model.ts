@@ -1,11 +1,13 @@
 export interface Booking {
-  studentId: String;
-  tutorId: String;
-  price: String;
-  subject: String;
+  id: string;
+  studentId: string;
+  tutorId: string;
+  price: string;
+  subject: string;
   tutorName: string;
   date: Date;
-  time: String;
-  location: String;
-  description: String;
+  time: string;
+  location: string;
+  description: string;
+  bookingDate: Date;
 }

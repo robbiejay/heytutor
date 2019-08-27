@@ -30,6 +30,7 @@ public booking: Booking;
    this.bookingService.getUnpaidBooking(this.studentId)
    .subscribe(bookingData => {
      this.booking = {
+       id: bookingData.booking[0]._id,
        studentId: bookingData.booking[0].studentId,
        tutorId: bookingData.booking[0].tutorId,
        price: bookingData.booking[0].price,
@@ -38,7 +39,8 @@ public booking: Booking;
        date: bookingData.booking[0].date,
        time: bookingData.booking[0].time,
        location: bookingData.booking[0].location,
-       description: bookingData.booking[0].description
+       description: bookingData.booking[0].description,
+       bookingDate: bookingData.booking[0].bookingDate
      }
    })
    console.log(this.booking);
@@ -84,7 +86,7 @@ public booking: Booking;
       console.log(form.value.addressLine2);
       console.log(form.value.addressLine3);
       console.log('Success!', token);
-    this.paymentService.makePayment(token, this.booking.price);
+    this.paymentService.makePayment(token, this.booking.id , this.booking.price);
     }
   }
 
