@@ -10,18 +10,3 @@ of writing your own CSS rules. For a full list of class names in the theme
 refer to http://docs.nativescript.org/ui/theme.
 */
 @import '~nativescript-theme-core/css/core.light.css';
-
-.btn {
-  background: #f10d63;
-  border-width: 1;
-  border-color: #f10d63;
-  color: #fff;
-  width: 250;
-  padding: 5 10;
-  border-radius: 14px;
-  margin: 5 0;
-}
-
-TextField {
-
-}

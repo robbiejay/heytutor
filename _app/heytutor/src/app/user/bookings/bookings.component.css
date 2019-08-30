@@ -1,0 +1,61 @@
+.heading {
+  border-color: #f10d63;
+  border-width: 7;
+  font-size: 30;
+  color: #fff;
+  background-color: #f10d63;
+}
+
+.booking-container {background-color: #0f51f0;
+  height: 100%;
+  border-color: #0f51f0;
+  border-width: 14;}
+
+.booking-card {
+  background-color: #fff;
+  border-radius: 7;
+  border-color: #fff;
+  border-width: 14;
+}
+
+.booking-column-8 {
+  border-color: #fff;
+  border-width: 14;
+  width: 66.666%;
+}
+
+.booking-column-4 {
+  border-color: #fff;
+  border-width: 14;
+  width: 33.333%;
+}
+
+.tutor-name {
+  color: #000;
+  font-size: 24;
+}
+
+.tutor-subject {
+  color: #0f51f0;
+  font-size: 16;
+}
+
+.tutor-see-map {
+  color: #f10d63;
+}
+
+.lesson-day {
+  font-size: 16;
+  color: #f10d63;
+  margin-top: 30;
+}
+
+.lesson-date {
+  font-size: 16;
+  color: #000;
+}
+
+.lesson-time {
+  font-size: 24;
+  color: #f10d63;
+}

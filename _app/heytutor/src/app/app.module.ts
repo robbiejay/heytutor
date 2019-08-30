@@ -1,9 +1,12 @@
 import { NgModule, NO_ERRORS_SCHEMA } from "@angular/core";
 import { NativeScriptModule } from "nativescript-angular/nativescript.module";
-import { NativeScriptFormsModule } from "nativescript-angular/forms"
-
+import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
-import {CurrentChallengeComponent } from './challenges/current-challenge/current-challenge.component';
+import { HomeComponent } from "./user/home/home.component";
+import { BookingsComponent } from "./user/bookings/bookings.component";
+import { SettingsComponent } from "./user/settings/settings.component";
+import { NavComponent } from "./user/nav/nav.component";
+import { AuthComponent } from "./auth/auth.component";
 
 // Uncomment and add to NgModule imports if you need to use two-way binding
 // import { NativeScriptFormsModule } from "nativescript-angular/forms";
@@ -16,11 +19,15 @@ import {CurrentChallengeComponent } from './challenges/current-challenge/current
         AppComponent
     ],
     imports: [
-        NativeScriptModule, NativeScriptFormsModule
+        NativeScriptModule, AppRoutingModule
     ],
     declarations: [
         AppComponent,
-        CurrentChallengeComponent
+        AuthComponent,
+        NavComponent,
+        HomeComponent,
+        BookingsComponent,
+        SettingsComponent
     ],
     providers: [],
     schemas: [

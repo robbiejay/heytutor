@@ -1,0 +1,12 @@
+.heading {
+  border-color: #f10d63;
+  border-width: 7;
+  font-size: 30;
+  color: #fff;
+  background-color: #f10d63;
+}
+
+.settings-container {background-color: #0f51f0;
+  height: 100%;
+  border-color: #0f51f0;
+  border-width: 14;}

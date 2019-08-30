@@ -1,0 +1,17 @@
+<TabView
+androidTabsPosition="bottom"
+androidSelectedTabHighlightColor="#f10d63"
+selectedTabTextColor="#f10d63">
+  <StackLayout *tabItem="{title: 'Home'}">
+  <router-outlet  name="home">
+  </router-outlet>
+  </StackLayout>
+  <StackLayout *tabItem="{title: 'Bookings'}">
+  <router-outlet name="bookings">
+  </router-outlet>
+  </StackLayout>
+  <StackLayout *tabItem="{title: 'Settings'}">
+  <router-outlet name="settings">
+  </router-outlet>
+  </StackLayout>
+</TabView>
