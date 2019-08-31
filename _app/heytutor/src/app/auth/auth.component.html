@@ -1,2 +1,16 @@
-<Label text="Auth Component works!"></Label>
-<Button text="Login" class="btn btn-primary" nsRouterLink="/user" [clearHistory]="true"></Button>
+<StackLayout class="auth-container">
+  <Label text="HeyTutor" class="heading"></Label>
+    <StackLayout class="form" [formGroup]="form">
+      <StackLayout class="input-field">
+        <Label class="label" text="Email" [ngClass]="{ invalid: !emailControlIsValid }"></Label>
+        <TextField #emailEl [autocorrect]="false" keyboardType="email" autocapitalizationType="none" class="input" formControlName="email"></TextField>
+        <Label *ngIf="!emailControlIsValid" class="validation" text="Please enter a valid email"></Label>
+      </StackLayout>
+      <StackLayout class="input-field">
+        <Label class="label" text="Password" [ngClass]="{ invalid: !passwordControlIsValid }"></Label>
+        <TextField #passwordEl [autocorrect]="false" returnKeyType="done" [secure]="true" autocapitalizationType="none" class="input" hint="Min length 6 characters" formControlName="password" (returnPress)="onDone()"></TextField>
+        <Label *ngIf="!passwordControlIsValid" class="validation" text="Please enter valid password (6+ chars)"></Label>
+      </StackLayout>
+    </StackLayout>
+  <Button [isEnabled]="form.valid" text="Login" class="btn btn-primary" (tap)="onSubmit()" [clearHistory]="true" [ngClass]="{ invalid: !form.valid}"></Button>
+</StackLayout>

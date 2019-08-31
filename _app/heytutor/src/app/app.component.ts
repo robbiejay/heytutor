@@ -1,5 +1,4 @@
 import { Component } from "@angular/core";
-import { Page } from "tns-core-modules/ui/page";
 
 @Component({
     selector: "ns-app",
@@ -7,6 +6,5 @@ import { Page } from "tns-core-modules/ui/page";
     templateUrl: "./app.component.html"
 })
 export class AppComponent {
-cosntructor(private page: Page) {
-  page.actionBarHidden = true;
+constructor() {
 } }

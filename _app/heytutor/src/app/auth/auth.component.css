@@ -1,0 +1,69 @@
+.auth-container {
+  background-color: #0f51f0;
+}
+
+.heading {
+  color: #fff;
+  font-size: 30;
+  width: 50%;
+  text-align: center;
+  margin-bottom: 14;
+  margin-top: 14;
+
+}
+
+.form {
+
+border-width: 14;
+border-color: rgba(255,255,255,0.0);
+width: 90%;
+border-radius: 42px;
+background-color: rgba(255,255,255,0.2);
+
+}
+
+.input-field {
+
+}
+
+.form .input-field .label .invalid {
+  color: #ff0000;
+}
+
+.btn.invalid {
+  background-color: rgba(241,13,99,0.5);
+  color: rgba(255,255,255,0.5);
+}
+
+.form .input-field .label {
+color: #fff;
+font-size: 18;
+height: 36;
+}
+
+.form .input.ng-invalid.ng-touched {
+  border-bottom-color: #ff0000;
+  color: #ff0000;
+}
+
+.form .input-field .input {
+border-bottom-width: 2;
+border-color: rgba(255,255,255,0.8);
+font-size: 20;
+background-color: rgba(255,255,255,0.14);
+height: 48;
+padding: 4;
+}
+
+.btn {
+  margin-top: 30;
+  height: 70;
+  font-size: 24;
+  background-color: #f10d63;
+  border-radius: 14px;
+  width: 66.666%;
+}
+
+.invalid-btn {
+  background-color: #fff;
+}
