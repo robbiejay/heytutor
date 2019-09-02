@@ -1,20 +1,25 @@
 <h2>Find new students, keep up to date with new private tutor posts nearby, be your own boss and work in your own time. You could pick up a little extra cash on the side or get your hustle on instead!</h2>
-<form (ngSubmit)='onCreateTutor(f)' #f='ngForm'>
-<div class='form-group'>
-  <label for='email'>First Name</label>
-  <input type='text' id='firstname' name='firstname' ngModel class='form-control'>
-</div>
-<div class='form-group'>
-<label for='email'>Last Name</label>
-<input type='text' id='lastname' name='lastname' ngModel class='form-control'>
-</div>
-<div class='form-group'>
-<label for='email'>Mail</label>
-<input type='email' id='email' name='email' ngModel class='form-control'>
-</div>
-<div class='form-group'>
-<label for='email'>Password</label>
-<input type='password' id='password' name='password' ngModel class='form-control'>
-</div>
-<button class='btn' type='submit'>Sign Up</button>
-</form>
+<form [formGroup]="form" (submit)='onCreateTutor()'>
+  <div class='form-group'>
+    <label for='email'>First Name</label>
+    <input type='text' id='firstname' name='firstname' formControlName='firstname' class='form-control'>
+    <ng-template [ngIf]="!this.form.get('firstname').valid && form.get('firstname').touched"><p class='unauthorized'>Please enter a first name</p></ng-template>
+  </div>
+  <div class='form-group'>
+  <label for='email'>Last Name</label>
+  <input type='text' id='lastname' name='lastname' formControlName='lastname' class='form-control'>
+  <ng-template [ngIf]="!this.form.get('lastname').valid && form.get('lastname').touched"><p class='unauthorized'>Please enter a last name</p></ng-template>
+  </div>
+  <div class='form-group'>
+  <label for='email'>Mail</label>
+  <input type='email' id='email' name='email' formControlName='email' class='form-control'>
+  <ng-template [ngIf]="!this.form.get('email').valid && form.get('email').touched"><p class='unauthorized'>Please enter a valid email address</p></ng-template>
+  </div>
+  <div class='form-group'>
+  <label for='email'>Password</label>
+  <input type='password' id='password' name='password' formControlName='password' class='form-control'>
+  <ng-template [ngIf]="!this.form.get('password').valid && form.get('password').touched"><p class='unauthorized'>Please enter a valid password</p></ng-template>
+  <ng-template [ngIf]="form.get('password').hasError('passwordStrength')"><p class='unauthorized'>{{form.get('password').errors['passwordStrength']}}</p></ng-template>
+  </div>
+  <button class='btn' type='submit'>Sign Up</button>
+  </form>

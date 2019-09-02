@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../../_services/auth/auth.service';
 import { NgxSmartModalService } from 'ngx-smart-modal';
 
@@ -10,14 +10,19 @@ import { NgxSmartModalService } from 'ngx-smart-modal';
 })
 export class StudentLoginComponent implements OnInit {
 
+  form: FormGroup;
   constructor(public authService: AuthService,
               public NgxSmartModalService: NgxSmartModalService) { }
 
   ngOnInit() {
+    this.form = new FormGroup({
+      email: new FormControl(null, { validators: [Validators.required, Validators.email]}),
+      password: new FormControl(null, { validators: [Validators.required, Validators.minLength(8)]})
+    })
   }
-  onStudentLogin(form: NgForm) {
-    const email = form.value.email;
-    const password = form.value.password;
+  onStudentLogin() {
+    const email = this.form.value.email;
+    const password = this.form.value.password;
     const firstname = null;
     const lastname = null;
     this.authService.login(email, password, firstname, lastname);

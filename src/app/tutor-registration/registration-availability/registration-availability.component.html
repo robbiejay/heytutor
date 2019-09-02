@@ -184,17 +184,17 @@
   <ng-template [ngIf]='mondayOn === true'>
   <label class='time-label' for='monday-from'>From</label>
   <select formControlName='mondayFromHour'>
-    <option *ngFor='let hour of scheduleHours'>{{hour}}</option>
+    <option *ngFor='let hour of scheduleHours; let i = index' [attr.selected]='i == 0 ? true : null'>{{hour}}</option>
   </select> :
   <select formControlName='mondayFromPeriod'>
-    <option *ngFor='let period of schedulePeriods'>{{period}}</option>
+    <option *ngFor='let period of schedulePeriods; let i = index' [attr.selected]='i == 0 ? true : null'>{{period}}</option>
   </select>
   <label class='time-label' for='monday-to'>to</label>
   <select formControlName='mondayToHour'>
-    <option *ngFor='let hour of scheduleHours'>{{hour}}</option>
+    <option *ngFor='let hour of scheduleHours; let i = index' [attr.selected]='i == 0 ? true : null'>{{hour}}</option>
   </select> :
   <select formControlName='mondayToPeriod'>
-    <option *ngFor='let period of schedulePeriods'>{{period}}</option>
+    <option *ngFor='let period of schedulePeriods; let i = index' [attr.selected]='i == 0 ? true : null'>{{period}}</option>
   </select>
   </ng-template>
   </div>

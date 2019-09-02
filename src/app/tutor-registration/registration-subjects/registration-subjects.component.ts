@@ -55,7 +55,9 @@ export class RegistrationSubjectsComponent implements OnInit, AfterViewInit {
       }),
       price: new FormControl(null, {
         validators: [
-          Validators.required
+          Validators.required,
+          Validators.min(100),
+          Validators.max(9999)
         ]
       }),
       newSpecialisation: new FormControl(null, {

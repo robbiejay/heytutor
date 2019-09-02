@@ -86,7 +86,8 @@ export class RegistrationBioComponent implements OnInit, AfterViewInit {
       }),
       bio: new FormControl(null, {
               validators: [
-                Validators.required
+                Validators.required,
+                Validators.minLength(140)
               ]
             })
           });

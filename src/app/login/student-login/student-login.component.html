@@ -1,14 +1,16 @@
 <h2>Sign in as <span style='color:#f10d63;'>Student</span></h2>
-<form (ngSubmit)='onStudentLogin(f)' #f=ngForm>
+<form [formGroup]="form" (submit)='onStudentLogin()'>
 <div class='form-group'>
 <label for='email'>Mail</label>
-<input type='email' id='email' name='email' ngModel class='form-control'>
+<input type='email' id='email' name='email' formControlName="email" class='form-control'/>
+<ng-template [ngIf]="!this.form.get('email').valid && form.get('email').touched"><p class='unauthorized'>Please enter a valid email address</p></ng-template>
 </div>
 <div class='form-group'>
 <label for='password'>Password</label>
-<input type='password' id='password' name='password' ngModel class='form-control'>
+<input type='password' id='password' name='password' formControlName="password" class='form-control'>
+<ng-template [ngIf]="!this.form.get('password').valid && form.get('password').touched"><p class='unauthorized'>Please enter a valid password</p></ng-template>
 </div>
 <button class='btn login' type='submit'>Log In</button>
 <button class='btn sign-up' type='button' (click)="onSignUp()">or Sign Up here?</button>
-<ng-template [ngIf]='this.authService.userIsUnauthorized'><p><i class="far fa-times-circle"></i> Wrong Username or Password</p></ng-template>
+<ng-template [ngIf]='this.authService.userIsUnauthorized'><p class='unauthorized'><i class="far fa-times-circle"></i> Wrong Username or Password</p></ng-template>
 </form>

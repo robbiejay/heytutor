@@ -18,7 +18,8 @@
   </div>
   <div class='col-6'>
     <label for='price'>Price</label><span>HKD</span>
-    <input type='text' formControlName='price' class='price-input'>
+    <input type='number' formControlName='price' class='price-input'>
+    <ng-template [ngIf]="!this.form.get('price').valid && form.get('price').touched"><p class='unauthorized'>Please enter a price between 100 and 9999</p></ng-template>
     </div>
   </div>
   </div>

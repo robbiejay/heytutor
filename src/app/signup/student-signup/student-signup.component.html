@@ -1,20 +1,25 @@
 <h2>Find tutors in your area. Browse through a growing marketplace of tutors in your area and take advantage of unique offers and benefits</h2>
-<form (ngSubmit)='onCreateStudent(f)' #f='ngForm'>
+<form [formGroup]='form' (submit)='onCreateStudent()'>
 <div class='form-group'>
   <label for='email'>First Name</label>
-  <input type='text' id='firstname' name='firstname' ngModel class='form-control'>
+  <input type='text' id='firstname' name='firstname' formControlName='firstname' class='form-control'>
+  <ng-template [ngIf]="!this.form.get('firstname').valid && form.get('firstname').touched"><p class='unauthorized'>Please enter a first name</p></ng-template>
 </div>
 <div class='form-group'>
 <label for='email'>Last Name</label>
-<input type='text' id='lastname' name='lastname' ngModel class='form-control'>
+<input type='text' id='lastname' name='lastname' formControlName='lastname' class='form-control'>
+<ng-template [ngIf]="!this.form.get('lastname').valid && form.get('lastname').touched"><p class='unauthorized'>Please enter a last name</p></ng-template>
 </div>
 <div class='form-group'>
 <label for='email'>Mail</label>
-<input type='email' id='email' name='email' ngModel class='form-control'>
+<input type='email' id='email' name='email' formControlName='email' class='form-control'>
+<ng-template [ngIf]="!this.form.get('email').valid && form.get('email').touched"><p class='unauthorized'>Please enter a valid email address</p></ng-template>
 </div>
 <div class='form-group'>
 <label for='email'>Password</label>
-<input type='password' id='password' name='password' ngModel class='form-control'>
+<input type='password' id='password' name='password' formControlName='password' class='form-control'>
+<ng-template [ngIf]="!this.form.get('password').valid && form.get('password').touched"><p class='unauthorized'>Please enter valid password (8+ characters)</p></ng-template>
+<ng-template [ngIf]="form.get('password').hasError('passwordStrength')"><p class='unauthorized'>{{form.get('password').errors['passwordStrength']}}</p></ng-template>
 </div>
 <button class='btn' type='submit'>Sign Up</button>
 </form>

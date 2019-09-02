@@ -1,5 +1,6 @@
 import { NgModule, NO_ERRORS_SCHEMA } from "@angular/core";
 import { NativeScriptModule } from "nativescript-angular/nativescript.module";
+import { NativeScriptHttpClientModule } from "nativescript-angular/http-client";
 import { NativeScriptFormsModule } from "nativescript-angular/forms";
 import { ReactiveFormsModule } from "@angular/forms";
 import { AppRoutingModule } from "./app-routing.module";
@@ -13,7 +14,6 @@ import { AuthComponent } from "./auth/auth.component";
 // Uncomment and add to NgModule imports if you need to use two-way binding
 
 // Uncomment and add to NgModule imports if you need to use the HttpClient wrapper
-// import { NativeScriptHttpClientModule } from "nativescript-angular/http-client";
 
 @NgModule({
     bootstrap: [
@@ -21,6 +21,7 @@ import { AuthComponent } from "./auth/auth.component";
     ],
     imports: [
         NativeScriptModule,
+        NativeScriptHttpClientModule,
         NativeScriptFormsModule,
         ReactiveFormsModule,
         AppRoutingModule

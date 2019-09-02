@@ -5,7 +5,7 @@
   <div class='form-group white-border'>
     <label for='location'>Location</label>
       <select formControlName='location'>
-        <option *ngFor='let district of districts'>{{district}}</option>
+        <option *ngFor='let district of districts; let i = index' [attr.selected]='i == 0 ? true : null'>{{district}}</option>
       </select>
     <label for='profile'>Add Profile Photo</label>
     <div class='temp-circle' *ngIf="!profilePreview && form.get('profile').invalid"></div>
@@ -16,8 +16,9 @@
     <input type='file' name='profile' #profilePicker (change)="onProfilePicked($event)">
   </div>
 <div class='form-group'>
-  <label for='bio'>Your Bio : Try to write between 50 - 100 words</label>
+  <label for='bio'>Your Bio : Minimum of 140 characters</label>
   <textarea formControlName='bio' id='bio' name='bio' ngModel class='form-control' rows='10'></textarea>
+  <ng-template [ngIf]="!this.form.get('bio').valid && form.get('bio').touched"><p class='unauthorized'>Bio must be at least 140 characters</p></ng-template>
 </div>
   <button type='submit'>Continue</button>
   </form>

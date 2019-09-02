@@ -18,7 +18,6 @@ border-width: 14;
 border-color: rgba(255,255,255,0.0);
 width: 90%;
 border-radius: 42px;
-background-color: rgba(255,255,255,0.2);
 
 }
 
@@ -56,12 +55,12 @@ padding: 4;
 }
 
 .btn {
-  margin-top: 30;
-  height: 70;
+  margin-top: 14;
+  height: 56;
   font-size: 24;
   background-color: #f10d63;
   border-radius: 14px;
-  width: 66.666%;
+  width: 80%;
 }
 
 .invalid-btn {

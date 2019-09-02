@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../../_services/auth/auth.service';
-
+import { PasswordStrengthValidator } from '../password-strength.validators';
 
 @Component({
   selector: 'app-student-signup',
@@ -10,22 +10,25 @@ import { AuthService } from '../../_services/auth/auth.service';
 })
 export class StudentSignupComponent implements OnInit {
 
+  form: FormGroup;
   constructor(public authService: AuthService) { }
 
   ngOnInit() {
       this.authService.userIsCreated = false;
-  }
-  onCreateStudent(form: NgForm) {
-    const firstname = form.value.firstname;
-    const lastname = form.value.lastname;
-    const email = form.value.email;
-    const password = form.value.password;
 
-  this.authService.createStudent(
-  form.value.firstname,
-  form.value.lastname,
-  form.value.email,
-  form.value.password
-);
+      this.form = new FormGroup({
+        firstname: new FormControl(null, {validators: [Validators.required]}),
+        lastname: new FormControl(null, {validators: [Validators.required]}),
+        email: new FormControl(null, { validators: [Validators.required, Validators.email]}),
+        password: new FormControl(null, { validators: [Validators.required, Validators.minLength(8), PasswordStrengthValidator]})
+      })
+  }
+  onCreateStudent() {
+    const firstname = this.form.value.firstname;
+    const lastname = this.form.value.lastname;
+    const email = this.form.value.email;
+    const password = this.form.value.password;
+
+  this.authService.createStudent(firstname, lastname, email, password);
   }
 }

@@ -12,5 +12,6 @@
         <Label *ngIf="!passwordControlIsValid" class="validation" text="Please enter valid password (6+ chars)"></Label>
       </StackLayout>
     </StackLayout>
-  <Button [isEnabled]="form.valid" text="Login" class="btn btn-primary" (tap)="onSubmit()" [clearHistory]="true" [ngClass]="{ invalid: !form.valid}"></Button>
+  <Button *ngIf="!isLoading" [isEnabled]="form.valid" text="Login" class="btn btn-primary" (tap)="onSubmit()" [clearHistory]="true" [ngClass]="{ invalid: !form.valid}"></Button>
+  <ActivityIndicator [busy]="isLoading"></ActivityIndicator>
 </StackLayout>
