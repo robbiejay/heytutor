@@ -3,8 +3,10 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false,
+  production: true,
   stripePublishKey: 'pk_test_FhpJnRz62rzhJ8tFXKbKA00m00PriOA2pH',
+  apiUrl: "159.89.210.82",
+
 };
 
 /*
@@ -14,4 +16,5 @@ export const environment = {
  * This import should be commented out in production mode because it will have a negative impact
  * on performance if an error is thrown.
  */
+   //apiUrl: "157.245.55.5/api",
 // import 'zone.js/dist/zone-error';  // Included with Angular CLI.

@@ -29,9 +29,9 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import { MatMomentDateModule } from '@angular/material-moment-adapter';
+import { MatMenuModule } from '@angular/material/menu';
 
 import { FindTutorComponent } from './home/find-tutor/find-tutor.component';
-import { TutorsNearMeComponent } from './tutors-near-me/tutors-near-me.component';
 import { NavComponent } from './nav/nav.component';
 import { NewBulletinComponent } from './home/bulletins/new-bulletin/new-bulletin.component';
 import { OnLogoutComponent } from './modals/on-logout/on-logout.component';
@@ -46,7 +46,6 @@ import { TutorRegistrationComponent } from './tutor-registration/tutor-registrat
 
 import { RegistrationAvailabilityComponent } from './tutor-registration/registration-availability/registration-availability.component';
 import { RegistrationSubjectsComponent } from './tutor-registration/registration-subjects/registration-subjects.component';
-import { RegistrationExperienceComponent } from './tutor-registration/registration-experience/registration-experience.component';
 import { RegistrationBioComponent } from './tutor-registration/registration-bio/registration-bio.component';
 import { RegistrationIdentificationComponent } from './tutor-registration/registration-identification/registration-identification.component';
 import { RegistrationLoginComponent } from './tutor-registration/registration-login/registration-login.component';
@@ -70,7 +69,6 @@ import { TutorRestrictedComponent } from './modals/tutor-restricted/tutor-restri
     SignupComponent,
     LoginComponent,
     FindTutorComponent,
-    TutorsNearMeComponent,
     NavComponent,
     NewBulletinComponent,
     OnLogoutComponent,
@@ -84,7 +82,6 @@ import { TutorRestrictedComponent } from './modals/tutor-restricted/tutor-restri
     TutorRegistrationComponent,
     RegistrationAvailabilityComponent,
     RegistrationSubjectsComponent,
-    RegistrationExperienceComponent,
     RegistrationBioComponent,
     RegistrationIdentificationComponent,
     RegistrationLoginComponent,
@@ -110,6 +107,7 @@ import { TutorRestrictedComponent } from './modals/tutor-restricted/tutor-restri
     MatCheckboxModule,
     MatDatepickerModule,
     MatMomentDateModule,
+    MatMenuModule,
     NgxSmartModalModule.forRoot()
   ],
   providers: [NgxSmartModalService,

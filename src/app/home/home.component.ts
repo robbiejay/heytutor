@@ -1,4 +1,4 @@
-import { Component, AfterViewInit } from '@angular/core';
+import { Component, AfterViewInit, HostListener, ElementRef } from '@angular/core';
 import {NgxSmartModalService } from 'ngx-smart-modal';
 import { trigger, state, style, transition, animate } from '@angular/animations';
 import { TutorData } from '../_models/tutor-data/tutorData.model';
@@ -33,7 +33,8 @@ import { TutorData } from '../_models/tutor-data/tutorData.model';
   ]
 })
 export class HomeComponent implements AfterViewInit {
-  constructor(public NgxSmartModalService: NgxSmartModalService) {
+  constructor(public NgxSmartModalService: NgxSmartModalService,
+              public el: ElementRef) {
 
   }
   state='fadedOut';
@@ -42,10 +43,6 @@ export class HomeComponent implements AfterViewInit {
   slidState2 = 'slidOut';
   slidState3 = 'slidOut';
   selectedTutor: TutorData;
-
-  ngOnInit() {
-
-  }
 
   ngAfterViewInit() {
     setTimeout(() => {

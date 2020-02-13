@@ -6,6 +6,12 @@ const uniqueValidator = require('mongoose-unique-validator');
 // });
 //
 // const Specialisation = mongoose.model('Specialisation', SpecialisationSchema)
+const notificationSchema = mongoose.Schema({
+  studentId: { type: String},
+  tutorId: { type: String},
+  type: { type: String, required: true },
+  message: { type: String, required: true }
+})
 
 const tutorSchema = mongoose.Schema({
   firstname: { type: String },
@@ -26,7 +32,8 @@ const tutorSchema = mongoose.Schema({
   thursday: {type: String},
   friday: {type: String},
   saturday: {type: String},
-  sunday: {type: String}
+  sunday: {type: String},
+  notifications: [notificationSchema]
 });
 
 tutorSchema.plugin(uniqueValidator);

@@ -9,6 +9,9 @@ import { TutorService } from '../tutor.service';
 import { Student } from '../../_models/student.model';
 import { Tutor } from '../../_models/tutor.model';
 
+import { environment } from '../../../environments/environment';
+
+
 
 @Injectable({
   providedIn: 'root'
@@ -63,7 +66,7 @@ const authData: AuthData = {
   password: password
  };
  console.log(authData);
-this.http.post<{message: string; student: Student}>('http://localhost:3000/api/students/signup', authData, { observe: 'response'})
+this.http.post<{message: string; student: Student}>( '/api/students/signup', authData, { observe: 'response'})
 .subscribe(response => {
   console.log(response);
   console.log(response.status);
@@ -83,7 +86,7 @@ const authData: AuthData = {
   password: password
  };
  console.log(authData);
-this.http.post<{message: string; tutor: Tutor}>('http://localhost:3000/api/tutors/signup', authData, { observe: 'response'})
+this.http.post<{message: string; tutor: Tutor}>('/api/tutors/signup', authData, { observe: 'response'})
 .subscribe(response => {
   console.log(response);
   console.log(response.status);
@@ -97,7 +100,7 @@ this.http.post<{message: string; tutor: Tutor}>('http://localhost:3000/api/tutor
 login(email: string, password: string, firstname: string, lastname: string ) {
   const authData: AuthData = {email: email, password: password, firstname: firstname, lastname: lastname, };
   console.log(authData);
-  this.http.post<{token: string, studentId: string, expiresIn: number }>("http://localhost:3000/api/students/signin", authData)
+  this.http.post<{token: string, studentId: string, expiresIn: number }>('/api/students/signin', authData)
   .subscribe(response => {
     console.dir(response);
     const token = response.token;
@@ -126,7 +129,7 @@ login(email: string, password: string, firstname: string, lastname: string ) {
 loginTutor(email: string, password: string, firstname: string, lastname: string) {
   const authData: AuthData = {email: email, password: password, firstname: firstname, lastname: lastname, };
   console.log(authData);
-  this.http.post<{token: string, tutorId: string, expiresIn: number }>("http://localhost:3000/api/tutors/signin", authData)
+  this.http.post<{token: string, tutorId: string, expiresIn: number }>('/api/tutors/signin', authData)
   .subscribe(response => {
     console.dir(response);
     const token = response.token;

@@ -21,7 +21,7 @@ export class AuthComponent implements OnInit {
   @ViewChild('passwordEl',{ static: false }) passwordEl: ElementRef<TextField>;
   @ViewChild('emailEl',{ static: false }) emailEl: ElementRef<TextField>;
 
-constructor(private page: Page, private authService: AuthService, private router: Router) {  page.actionBarHidden = true }
+constructor(page: Page, private authService: AuthService, private router: Router) {  page.actionBarHidden = true }
 ngOnInit() {
   this.form = new FormGroup({
     email: new FormControl(null, {
@@ -59,15 +59,16 @@ onSubmit() {
   const firstname = null;
   const lastname = null;
   this.isLoading = true;
-  this.authService.login(email, password, firstname, lastname)
-  .subscribe(response => {
-    this.isLoading = false;
-    console.log(response);
-    this.router.navigate(['/user']);
-  }, err => {
-    console.log(err);
-    this.isLoading = false;
-  });
+  this.router.navigate(['/user'])
+  // this.authService.login(email, password, firstname, lastname)
+  // .subscribe(response => {
+  //   this.isLoading = false;
+  //   console.log(response);
+  //   this.router.navigate(['/user']);
+  // }, err => {
+  //   console.log(err);
+  //   this.isLoading = false;
+  // });
 }
 
 onDone() {

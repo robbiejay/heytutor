@@ -1,8 +1,12 @@
 <div class='fluid-container'>
 <div class='container'>
   <div class='row'>
+<div class='col-12'>
+<h1 [@scroll]='scrollState'><i style='color:#f00;font-size:1.777em;margin-right:14px;' class="fas fa-certificate"></i> New Tutors in your area !</h1>
+  </div>
+  </div>
+  <div class='row'>
   <div class='col-8' id='subject-tutors'>
-    <h1><i style='color:#f00;font-size:1.777em;margin-right:14px;' class="fas fa-certificate"></i> New Tutors in your area !</h1>
     <div class='tutor-card' *ngFor='let tutor of tutors'>
       <div class='row'>
         <div class='col-3'>

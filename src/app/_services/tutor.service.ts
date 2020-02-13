@@ -7,6 +7,10 @@ import { AvailabilityData } from '../_models/tutor-data/availabilityData.model';
 import { TutorData } from '../_models/tutor-data/tutorData.model';
 import { Subject } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { environment } from '../../environments/environment';
+
+const BACKEND_URL = environment.apiUrl;
+
 
 @Injectable({
   providedIn: 'root'
@@ -33,7 +37,7 @@ export class TutorService {
     id: string
   ) {
     return this.http.get<{identification: any}>(
-        'http://localhost:3000/api/tutors/identification/' + id
+        '/api/tutors/identification/' + id
       ).subscribe(response => {
         if(response.identification) {
         if (response.identification.cvPath && response.identification.cvPath) {
@@ -61,7 +65,7 @@ export class TutorService {
       identificationData.append('id', id);
       identificationData.append('cv', cv);
       identificationData.append('identification', identification);
-    this.http.put('http://localhost:3000/api/tutors/identification/' + id, identificationData, { observe: 'response'})
+    this.http.put('/api/tutors/identification/' + id, identificationData, { observe: 'response'})
     .subscribe(response => {
       console.log(response);
       console.log(response.status)
@@ -75,7 +79,7 @@ export class TutorService {
   checkBio(id: string
   ) {
     return this.http.get<{bio: any}>(
-        'http://localhost:3000/api/tutors/bio/' + id
+        '/api/tutors/bio/' + id
       ).subscribe(response => {
         console.log(response);
         if (response.bio.bio && response.bio.location && response.bio.profilePath) {
@@ -104,7 +108,7 @@ export class TutorService {
     bioData.append("location", location);
     bioData.append("profile", profile);
     console.log(bioData);
-    this.http.put('http://localhost:3000/api/tutors/bio/' + id, bioData, { observe: 'response'})
+    this.http.put('/api/tutors/bio/' + id, bioData, { observe: 'response'})
     .subscribe(response => {
       console.log(response);
       console.log(response.status)
@@ -128,7 +132,7 @@ export class TutorService {
     id: string
     ) {
       return this.http.get<{subject: any}>(
-          'http://localhost:3000/api/tutors/subject/' + id
+          '/api/tutors/subject/' + id
         ).subscribe(response => {
           console.log(response);
           if (response.subject.subject && response.subject.price && response.subject.specialisationList) {
@@ -160,7 +164,7 @@ export class TutorService {
       specialisationList: specialisationList
     }
 
-    this.http.put('http://localhost:3000/api/tutors/subject/' + id, subjectData, { observe: 'response'})
+    this.http.put('/api/tutors/subject/' + id, subjectData, { observe: 'response'})
     .subscribe(response => {
       console.log(response);
       console.log(response.status)
@@ -174,7 +178,7 @@ export class TutorService {
   checkAvailability(id: string
   ) {
     return this.http.get<{availability: any}>(
-        'http://localhost:3000/api/tutors/availability/' + id
+        '/api/tutors/availability/' + id
       ).subscribe(response => {
         console.log(response);
         if (response.availability.monday || response.availability.tuesday || response.availability.wednesday || response.availability.thursday || response.availability.friday || response.availability.saturday || response.availability.sunday) {
@@ -214,7 +218,7 @@ export class TutorService {
       sunday: sunday
     }
 
-    this.http.put('http://localhost:3000/api/tutors/availability/' + id, availabilityData, { observe: 'response'})
+    this.http.put('/api/tutors/availability/' + id, availabilityData, { observe: 'response'})
     .subscribe(response => {
       console.log(response);
       console.log(response.status)
@@ -227,14 +231,14 @@ export class TutorService {
 
   getTutor(id: string) {
     return this.http.get<{tutor: any}> (
-      'http://localhost:3000/api/tutors/' + id
+      '/api/tutors/' + id
     )
 }
 
   getTutors() {
     console.log('getTutors() is triggered');
     this.http.get<{message: string; tutors: any}>(
-      'http://localhost:3000/api/tutors/list'
+      '/api/tutors/list'
     )
     .pipe(
       map(tutorData => {

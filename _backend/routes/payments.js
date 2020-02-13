@@ -2,6 +2,7 @@ const express = require('express');
 const path = require('path');
 const router = express.Router();
 const Booking = require('../models/bookings');
+const Tutor = require('../models/tutors');
 
 const stripe = require('stripe')('sk_test_Gfz2bLKCQvkThjBNdPrMlZR000HMry4HyU');
 
@@ -23,6 +24,20 @@ router.post('/order/:id', async (req, res) => {
         _id: req.body.id,
         booking_date: req.body.bookingDate,
         payment_received: true
+      })
+
+      const notification = {
+        studentId: req.body.studentId,
+        tutorId: req.body.tutorId,
+        type: 'NewLesson',
+        message: 'You have a new booking!'
+      };
+
+
+      Tutor.findOne({_id: req.body.tutorId})
+      .then(tutor => {
+        tutor.notifications.push(notification);
+        tutor.save();
       })
 
       Booking.updateOne({_id: req.params.id}, paymentCredentials).then(result => {

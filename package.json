@@ -22,6 +22,7 @@
     "@angular/platform-browser": "~7.2.0",
     "@angular/platform-browser-dynamic": "~7.2.0",
     "@angular/router": "~7.2.0",
+    "@types/googlemaps": "^3.37.7",
     "@types/stripe": "^6.31.20",
     "@types/stripe-v3": "^3.1.6",
     "angular-font-awesome": "^3.1.2",

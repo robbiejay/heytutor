@@ -5,6 +5,10 @@ import { Subject } from 'rxjs';
 import { Booking } from '../_models/booking.model';
 import { map } from 'rxjs/operators';
 
+import { environment } from '../../environments/environment';
+
+const BACKEND_URL = environment.apiUrl;
+
 @Injectable({
   providedIn: 'root'
 })
@@ -40,7 +44,7 @@ export class BookingService {
     }
     console.log(bookingData);
     this.http.post<{message:string; booking: Booking}>(
-      'http://localhost:3000/api/bookings',
+      '/api/bookings',
       bookingData,
       {observe: 'response'}
     )
@@ -54,7 +58,7 @@ export class BookingService {
   getTutorBookings(tutorId: string) {
     console.log('This is the TUTOR ID sent to the BOOKINGS API' + tutorId)
     this.http.get<{message: string; bookings: any}>(
-      'http://localhost:3000/api/bookings/' + tutorId,
+      '/api/bookings/' + tutorId,
     ).pipe(
       map(bookingData => {
 
@@ -83,14 +87,13 @@ export class BookingService {
 
   getUnpaidBooking(studentId: string) {
   return this.http.get<{message: string; booking: any}>(
-      'http://localhost:3000/api/bookings/unpaid/' + studentId,
+      '/api/bookings/unpaid/' + studentId,
     )
   }
 
   getPaidBooking(studentId: string) {
     return this.http.get<{message: string; booking: any}>(
-      'http://localhost:3000/api/bookings/paid/' + studentId,
+      '/api/bookings/paid/' + studentId,
     )
   }
-
 }

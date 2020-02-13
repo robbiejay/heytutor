@@ -1,7 +1,8 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, HostListener, ElementRef } from '@angular/core';
 import { Subscription } from 'rxjs';
 
 import { NgxSmartModalService } from 'ngx-smart-modal';
+import { trigger, state, style, transition, animate } from '@angular/animations';
 import { AuthService } from '../_services/auth/auth.service';
 import { TutorService } from '../_services/tutor.service';
 import { TutorData } from '../_models/tutor-data/tutorData.model';
@@ -9,7 +10,19 @@ import { TutorData } from '../_models/tutor-data/tutorData.model';
 @Component({
   selector: 'app-tutor-list',
   templateUrl: './tutor-list.component.html',
-  styleUrls: ['./tutor-list.component.scss']
+  styleUrls: ['./tutor-list.component.scss'],
+  animations: [
+    trigger('scroll', [
+      state('normal', style({
+        'position': 'relative'
+      })),
+      state('fixed', style({
+        'position': 'fixed'
+      })),
+      transition('normalScroll => fixedScroll', animate(0)),
+      transition('fixedScroll => normalScroll', animate(0))
+    ])
+  ]
 })
 export class TutorListComponent implements OnInit {
 
@@ -21,9 +34,24 @@ specialisationTagList = [];
 tutorId: string;
 studentId: string;
 
+scrollState= 'normalScroll';
+
   constructor(public tutorService: TutorService,
               public authService: AuthService,
-              public NgxSmartModalService: NgxSmartModalService) { }
+              public NgxSmartModalService: NgxSmartModalService,
+              public el: ElementRef) { }
+
+  @HostListener('window:scroll', ['$event'])
+  checkScroll() {
+    const componentPosition = this.el.nativeElement.offsetTop
+    const scrollPosition = window.pageYOffset
+    if(scrollPosition >= componentPosition) {
+            this.scrollState = 'normalScroll'
+    } else {
+
+            this.scrollState = 'fixedScroll'
+    }
+  }
 
   ngOnInit() {
     this.tutorService.getTutors();

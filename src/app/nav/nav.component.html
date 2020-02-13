@@ -17,6 +17,11 @@
           <li *ngIf='!isAuth'><button class='btn btn-login' (click)="NgxSmartModalService.getModal('logIn').open()">Log in</button></li>
           <li><button class='btn btn-transparent'>Parents</button></li>
           <li><button class='btn btn-transparent'>Tutors</button></li>
+          <button class='btn btn-notifications' [matMenuTriggerFor]="menu"><i class="fas fa-comment-alt"></i></button>
+<mat-menu #menu="matMenu" xPosition="before">
+  <button mat-menu-item><i style='color: #545454;margin-right:14px;' class="fas fa-circle"></i> You Have a new Booking!</button>
+  <button mat-menu-item><i style='color: #545454;margin-right:14px;' class="fas fa-circle"></i> You Have a Lesson in 24hrs!</button>
+</mat-menu>
           <a routerLink='/dashboard'><li *ngIf='isAuth'><button class='btn btn-signup'>Dashboard</button></li></a>
           <li *ngIf='isAuth'><button class='btn btn-login' (click)="onLogout()">Logout</button></li>
         </ul>

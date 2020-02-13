@@ -86,7 +86,7 @@ public booking: Booking;
       console.log(form.value.addressLine2);
       console.log(form.value.addressLine3);
       console.log('Success!', token);
-    this.paymentService.makePayment(token, this.booking.id , this.booking.price);
+    this.paymentService.makePayment(token, this.booking.studentId, this.booking.tutorId, this.booking.id , this.booking.price);
     }
   }
 

@@ -5,6 +5,10 @@ import { Subject } from 'rxjs';
 
 import { Bulletin } from '../_models/bulletin.model';
 
+import { environment } from '../../environments/environment';
+
+
+const BACKEND_URL = environment.apiUrl;
 
 @Injectable({
   providedIn: 'root'
@@ -17,7 +21,7 @@ export class BulletinService {
 
 getBulletins() {
   this.http.get<{message: string; bulletins: any}>(
-    'http://localhost:3000/api/bulletins'
+    '/api/bulletins'
   )
   .pipe(
     map(bulletinData => {
@@ -62,7 +66,7 @@ const bulletinData = {
 }
 console.log(bulletinData);
   this.http.post<{message: string; bulletin: Bulletin}>(
-    'http://localhost:3000/api/bulletins',
+    '/api/bulletins',
     bulletinData
   )
   .subscribe(response => {
